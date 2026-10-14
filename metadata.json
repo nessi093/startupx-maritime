@@ -1,0 +1,6 @@
+{
+  "name": "StartupX — Морской Техно-Хакатон 2026",
+  "description": "Корпоративная операционная платформа для коммерческого флота: автоматизация судовой документации, спутниковая телеметрия, предиктивное снабжение и калькулятор Unit-экономики.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
