@@ -14,6 +14,7 @@
 <body>
 
     <!-- 1. Корпоративная навигация -->
+    <!-- 1. Корпоративная навигация -->
     <nav>
         <div class="container nav-wrapper">
             <a href="#hero" class="nav-brand">
@@ -41,11 +42,39 @@
             </ul>
 
             <div class="nav-cta-group">
-                <a href="#calculator" class="nav-cta">
+                <a href="#calculator" class="nav-cta nav-cta-desktop">
                     <span>Калькулятор ROI</span>
                 </a>
-                <button class="nav-cta nav-cta-primary" data-open-modal="pilot">
-                    <span>Запустить пилот</span>
+                <button class="nav-cta nav-cta-primary nav-mobile-cta" data-open-modal="pilot">
+                    <span class="cta-text-full">Запустить пилот</span>
+                    <span class="cta-text-short">Пилот</span>
+                </button>
+                <button class="nav-burger-btn" id="burger-btn" aria-label="Открыть мобильное меню" aria-expanded="false">
+                    <span class="burger-bar"></span>
+                    <span class="burger-bar"></span>
+                    <span class="burger-bar"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Выпадающая панель мобильного меню -->
+        <div id="mobile-menu" class="mobile-nav-panel">
+            <ul class="mobile-nav-links">
+                <li><a href="#dashboard" class="mobile-nav-link">Платформа</a></li>
+                <li><a href="#features" class="mobile-nav-link">Продукт</a></li>
+                <li><a href="#comparison" class="mobile-nav-link">Сравнение</a></li>
+                <li><a href="#monetization" class="mobile-nav-link">Монетизация</a></li>
+                <li><a href="#pricing" class="mobile-nav-link">Тарифы</a></li>
+                <li><a href="#faq" class="mobile-nav-link">FAQ</a></li>
+                <li><a href="#calculator" class="mobile-nav-link mobile-calc-link">Калькулятор ROI</a></li>
+            </ul>
+            <div class="mobile-nav-footer">
+                <button class="mobile-pilot-btn" data-open-modal="pilot">
+                    <span>Запросить пилотный доступ</span>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
                 </button>
             </div>
         </div>
@@ -163,40 +192,42 @@
                                     </svg>
                                     Активная судоходная телеметрия
                                 </h4>
-                                <table class="fleet-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Судно</th>
-                                            <th>Тип</th>
-                                            <th>Маршрут</th>
-                                            <th>Скорость</th>
-                                            <th>Статус</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td style="color:#ffffff; font-weight:600;">MV Baltica Leader</td>
-                                            <td>Контейнеровоз</td>
-                                            <td>Роттердам &rarr; СПБ</td>
-                                            <td class="tabular-numbers">16.8 узл.</td>
-                                            <td><span class="status-pill">По графику</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td style="color:#ffffff; font-weight:600;">MT Nordic Pioneer</td>
-                                            <td>Танкер Aframax</td>
-                                            <td>Приморск &rarr; Суэц</td>
-                                            <td class="tabular-numbers">13.2 узл.</td>
-                                            <td><span class="status-pill">Оптимизирован</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td style="color:#ffffff; font-weight:600;">Arctic Star II</td>
-                                            <td>Балкер ARC-4</td>
-                                            <td>Мурманск &rarr; Циндао</td>
-                                            <td class="tabular-numbers">14.1 узл.</td>
-                                            <td><span class="status-pill">Sat-Sync OK</span></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <div class="table-scroll-container">
+                                    <table class="fleet-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Судно</th>
+                                                <th>Тип</th>
+                                                <th>Маршрут</th>
+                                                <th>Скорость</th>
+                                                <th>Статус</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td style="color:#ffffff; font-weight:600;">MV Baltica Leader</td>
+                                                <td>Контейнеровоз</td>
+                                                <td>Роттердам &rarr; СПБ</td>
+                                                <td class="tabular-numbers">16.8 узл.</td>
+                                                <td><span class="status-pill">По графику</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="color:#ffffff; font-weight:600;">MT Nordic Pioneer</td>
+                                                <td>Танкер Aframax</td>
+                                                <td>Приморск &rarr; Суэц</td>
+                                                <td class="tabular-numbers">13.2 узл.</td>
+                                                <td><span class="status-pill">Оптимизирован</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="color:#ffffff; font-weight:600;">Arctic Star II</td>
+                                                <td>Балкер ARC-4</td>
+                                                <td>Мурманск &rarr; Циндао</td>
+                                                <td class="tabular-numbers">14.1 узл.</td>
+                                                <td><span class="status-pill">Sat-Sync OK</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                             <div class="panel-card">
                                 <h4>
@@ -235,36 +266,38 @@
                         <div class="dash-grid-2col">
                             <div class="panel-card">
                                 <h4>Реестр портовых манифестов & сертификатов</h4>
-                                <table class="fleet-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Документ</th>
-                                            <th>Судно / Флаг</th>
-                                            <th>Порт захода</th>
-                                            <th>Статус</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td style="color:#ffffff;">IMO General Declaration</td>
-                                            <td>Baltica Leader</td>
-                                            <td>Сингапур</td>
-                                            <td><span class="status-pill">Подтверждено</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td style="color:#ffffff;">Bunker Delivery Note (BDN)</td>
-                                            <td>Nordic Pioneer</td>
-                                            <td>Роттердам</td>
-                                            <td><span class="status-pill">ЭЦП валидна</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td style="color:#ffffff;">Dangerous Goods Manifest</td>
-                                            <td>Arctic Star II</td>
-                                            <td>Шанхай</td>
-                                            <td><span class="status-pill">На проверке</span></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <div class="table-scroll-container">
+                                    <table class="fleet-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Документ</th>
+                                                <th>Судно / Флаг</th>
+                                                <th>Порт захода</th>
+                                                <th>Статус</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td style="color:#ffffff;">IMO General Declaration</td>
+                                                <td>Baltica Leader</td>
+                                                <td>Сингапур</td>
+                                                <td><span class="status-pill">Подтверждено</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="color:#ffffff;">Bunker Delivery Note (BDN)</td>
+                                                <td>Nordic Pioneer</td>
+                                                <td>Роттердам</td>
+                                                <td><span class="status-pill">ЭЦП валидна</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="color:#ffffff;">Dangerous Goods Manifest</td>
+                                                <td>Arctic Star II</td>
+                                                <td>Шанхай</td>
+                                                <td><span class="status-pill">На проверке</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                             <div class="panel-card">
                                 <h4>Готовность к Port State Control (PSC)</h4>
@@ -283,36 +316,38 @@
                         <div class="dash-grid-2col">
                             <div class="panel-card">
                                 <h4>Снабжение, ЗИП и бункеровочные заявки</h4>
-                                <table class="fleet-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Заявка</th>
-                                            <th>Борт</th>
-                                            <th>Локация поставки</th>
-                                            <th>Срок (ETA)</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td style="color:#ffffff;">Судовое топливо VLSFO (420т)</td>
-                                            <td>MV Baltica Leader</td>
-                                            <td>Рейд Гибралтар</td>
-                                            <td><span class="status-pill">Завтра, 06:00</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td style="color:#ffffff;">ЗИП ГД: Форсунки MAN B&W</td>
-                                            <td>MT Nordic Pioneer</td>
-                                            <td>Порт Антверпен</td>
-                                            <td><span class="status-pill">Доставлено на борт</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td style="color:#ffffff;">Навигационные карты ECDIS</td>
-                                            <td>Arctic Star II</td>
-                                            <td>OTA-обновление</td>
-                                            <td><span class="status-pill">Синхронизировано</span></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <div class="table-scroll-container">
+                                    <table class="fleet-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Заявка</th>
+                                                <th>Борт</th>
+                                                <th>Локация поставки</th>
+                                                <th>Срок (ETA)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td style="color:#ffffff;">Судовое топливо VLSFO (420т)</td>
+                                                <td>MV Baltica Leader</td>
+                                                <td>Рейд Гибралтар</td>
+                                                <td><span class="status-pill">Завтра, 06:00</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="color:#ffffff;">ЗИП ГД: Форсунки MAN B&W</td>
+                                                <td>MT Nordic Pioneer</td>
+                                                <td>Порт Антверпен</td>
+                                                <td><span class="status-pill">Доставлено на борт</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="color:#ffffff;">Навигационные карты ECDIS</td>
+                                                <td>Arctic Star II</td>
+                                                <td>OTA-обновление</td>
+                                                <td><span class="status-pill">Синхронизировано</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                             <div class="panel-card">
                                 <h4>Прозрачность цепочек снабжения</h4>

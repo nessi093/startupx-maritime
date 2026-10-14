@@ -27,12 +27,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // --------------------------------------------------------------------------
-    // 2. Gentle Micro-Parallax for Hero Dashboard (60 FPS via rAF)
+    // 2. Gentle Micro-Parallax for Hero Dashboard (Disabled on < 768px for 60 FPS)
     // --------------------------------------------------------------------------
     const heroDashboard = document.getElementById('hero-dashboard');
     let isTicking = false;
 
     window.addEventListener('scroll', () => {
+        if (window.innerWidth < 768) {
+            if (heroDashboard) heroDashboard.style.transform = 'none';
+            return;
+        }
         if (!isTicking) {
             window.requestAnimationFrame(() => {
                 const scrolled = window.pageYOffset || document.documentElement.scrollTop;
@@ -45,6 +49,60 @@ document.addEventListener("DOMContentLoaded", () => {
             isTicking = true;
         }
     }, { passive: true });
+
+    // --------------------------------------------------------------------------
+    // 2.1. Mobile Navigation Burger Menu & Drawer
+    // --------------------------------------------------------------------------
+    const burgerBtn = document.getElementById('burger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+    if (burgerBtn && mobileMenu) {
+        function openMobileMenu() {
+            mobileMenu.classList.add('open');
+            burgerBtn.classList.add('active');
+            burgerBtn.setAttribute('aria-expanded', 'true');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('open');
+            burgerBtn.classList.remove('active');
+            burgerBtn.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        }
+
+        burgerBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (mobileMenu.classList.contains('open')) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
+        });
+
+        mobileLinks.forEach((link) => {
+            link.addEventListener('click', () => {
+                closeMobileMenu();
+            });
+        });
+
+        // Close on click outside mobile panel
+        document.addEventListener('click', (e) => {
+            if (mobileMenu.classList.contains('open') &&
+                !mobileMenu.contains(e.target) &&
+                !burgerBtn.contains(e.target)) {
+                closeMobileMenu();
+            }
+        });
+
+        // Close on escape key
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
+                closeMobileMenu();
+            }
+        });
+    }
 
     // --------------------------------------------------------------------------
     // 3. Card Spotlight Border & Surface Highlight
@@ -269,6 +327,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const confirmationCode = document.getElementById('confirmation-code');
 
     function openModal() {
+        if (mobileMenu && mobileMenu.classList.contains('open')) {
+            mobileMenu.classList.remove('open');
+            if (burgerBtn) {
+                burgerBtn.classList.remove('active');
+                burgerBtn.setAttribute('aria-expanded', 'false');
+            }
+        }
         if (!pilotModal) return;
         pilotModal.classList.add('open');
         document.body.style.overflow = 'hidden';
