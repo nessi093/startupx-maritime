@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
             card.style.setProperty('--mouse-x', `${x}px`);
             card.style.setProperty('--mouse-y', `${y}px`);
         });
-    });
+    }, { passive: true });
 
     // --------------------------------------------------------------------------
     // 4. Unit Economics (ROI) Calculator
