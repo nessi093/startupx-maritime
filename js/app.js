@@ -824,9 +824,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const cartCounter = document.getElementById('cart-counter');
     const btnClearCart = document.getElementById('btn-clear-cart');
     const cartCheckoutForm = document.getElementById('cart-checkout-form');
-    const cartPassStatus = document.getElementById('cart-pass-status');
-    const cartPassTitle = document.getElementById('cart-pass-title');
-    const cartPassDesc = document.getElementById('cart-pass-desc');
 
     let currentMenuCategory = 'all';
 
@@ -890,17 +887,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function updateCartPassBanner(sub) {
-        if (!cartPassStatus || !cartPassTitle || !cartPassDesc) return;
+        const passStatus = document.getElementById('cart-pass-status');
+        const passTitle = document.getElementById('cart-pass-title');
+        const passDesc = document.getElementById('cart-pass-desc');
+        if (!passStatus || !passTitle || !passDesc) return;
 
         if (sub && sub.cupsLeft > 0) {
             const discountPct = sub.tier === 'milk' ? 20 : 15;
-            cartPassStatus.classList.add('pass-active');
-            cartPassTitle.textContent = `Активний Coffee Pass: ${sub.name}`;
-            cartPassDesc.textContent = `Знижка ${discountPct}% автоматично застосовується до кожного замовлення`;
+            passStatus.classList.add('pass-active');
+            passTitle.textContent = `Активний Coffee Pass: ${sub.name}`;
+            passDesc.textContent = `Знижка ${discountPct}% автоматично застосовується до кожного замовлення`;
         } else {
-            cartPassStatus.classList.remove('pass-active');
-            cartPassTitle.textContent = `Coffee Pass не активний`;
-            cartPassDesc.textContent = `Оформіть або активуйте підписку для знижки 15–20%`;
+            passStatus.classList.remove('pass-active');
+            passTitle.textContent = `Coffee Pass не активний`;
+            passDesc.textContent = `Оформіть або активуйте підписку для знижки 15–20%`;
         }
     }
 
