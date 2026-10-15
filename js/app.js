@@ -1,12 +1,13 @@
 // ==========================================================================
-// StartupX — Maritime Enterprise Platform (Interactive Master Script)
-// Modules: Dashboard Tabs, Micro-Parallax, Spotlight Border, ROI Calculator,
-//          Fixed SVG Chart, FAQ Accordion, Live Pilot Modal, Scroll Reveal.
+// CHROME & BEAN — Conceptual Venue & Gastro-Bar (Interactive Master Script)
+// Modules: Interactive Floor & Menu Tabs, Micro-Parallax, Spotlight Border,
+//          Restaurant Unit-Economics Calculator, Dynamic SVG Trend Chart,
+//          FAQ Accordion, Instant Online Booking Modal, Smooth Scroll.
 // ==========================================================================
 
 document.addEventListener("DOMContentLoaded", () => {
     // --------------------------------------------------------------------------
-    // 1. Dashboard Segmented Tabs (Hero Section)
+    // 1. Dashboard Segmented Tabs (Floor Plan & Digital Menu)
     // --------------------------------------------------------------------------
     const tabButtons = document.querySelectorAll('.tab-btn');
     const tabPanels = document.querySelectorAll('.tab-panel');
@@ -51,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { passive: true });
 
     // --------------------------------------------------------------------------
-    // 2.1. Mobile Navigation Burger Menu & Drawer
+    // 2.1. Mobile Navigation Burger Menu & Glassmorphism Drawer
     // --------------------------------------------------------------------------
     const burgerBtn = document.getElementById('burger-btn');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -105,9 +106,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // --------------------------------------------------------------------------
-    // 3. Card Spotlight Border & Surface Highlight
+    // 3. Card Spotlight Border & Surface Highlight (Linear Aesthetic)
     // --------------------------------------------------------------------------
-    const spotlightCards = document.querySelectorAll('.card, .team-role-card, .pricing-card, .timeline-step');
+    const spotlightCards = document.querySelectorAll('.card, .pricing-card, .timeline-step, .panel-card');
 
     window.addEventListener('mousemove', (e) => {
         spotlightCards.forEach((card) => {
@@ -121,10 +122,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { passive: true });
 
     // --------------------------------------------------------------------------
-    // 4. Unit Economics (ROI) Calculator
+    // 4. Restaurant Unit Economics Calculator (Dine-in & To-Go)
     // --------------------------------------------------------------------------
-    const rangeB2C = document.getElementById('range-b2c');
-    const rangeB2B = document.getElementById('range-b2b');
+    const rangeB2C = document.getElementById('range-b2c'); // Dine-in guests ($8)
+    const rangeB2B = document.getElementById('range-b2b'); // To-Go orders ($6)
     const valB2C = document.getElementById('val-b2c');
     const valB2B = document.getElementById('val-b2b');
 
@@ -153,8 +154,8 @@ document.addEventListener("DOMContentLoaded", () => {
     function updateChartPath(arr) {
         if (!chartLine || !chartArea) return;
 
-        const maxScaleARR = 408000;
-        const ratio = Math.min(Math.max(arr / maxScaleARR, 0.12), 1.0);
+        const maxScaleARR = 1800000;
+        const ratio = Math.min(Math.max(arr / maxScaleARR, 0.15), 1.0);
 
         const qValues = [
             Math.round(arr * 0.15),
@@ -165,9 +166,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Dynamic Y coordinate formulation
         const y1 = 175 - (ratio * 15);
-        const y2 = 168 - (ratio * 50);
-        const y3 = 156 - (ratio * 88);
-        const y4 = 175 - (ratio * 138);
+        const y2 = 168 - (ratio * 52);
+        const y3 = 156 - (ratio * 92);
+        const y4 = 175 - (ratio * 142);
 
         const yCoords = [y1, y2, y3, y4];
 
@@ -208,33 +209,36 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Metric Calculations
+    // Metric Calculations for Cafe & Gastro-bar
     function calculateUnitEconomics() {
         if (!rangeB2C || !rangeB2B) return;
 
-        const b2cCount = parseInt(rangeB2C.value, 10) || 0;
-        const b2bCount = parseInt(rangeB2B.value, 10) || 0;
+        const dineInGuests = parseInt(rangeB2C.value, 10) || 0;
+        const toGoOrders = parseInt(rangeB2B.value, 10) || 0;
 
-        const b2cMonthly = b2cCount * 5;
-        const b2bMonthly = b2bCount * 60;
-        const mrr = b2cMonthly + b2bMonthly;
-        const arr = mrr * 12;
-        const netProfit = Math.round(arr * 0.85);
+        // Daily and Monthly revenue formulation ($8 Dine-in check, $6 To-Go check)
+        const dailyDineIn = dineInGuests * 8;
+        const dailyToGo = toGoOrders * 6;
+        const dailyTotal = dailyDineIn + dailyToGo;
 
-        if (valB2C) valB2C.textContent = `${b2cCount.toLocaleString('ru-RU')} чел.`;
-        if (valB2B) valB2B.textContent = `${b2bCount} судов`;
+        const mrr = dailyTotal * 30; // Monthly Gross Revenue
+        const arr = mrr * 12;        // Annual Gross Revenue
+        const netProfit = Math.round(arr * 0.28); // 28% hospitality net margin
+
+        if (valB2C) valB2C.textContent = `${dineInGuests.toLocaleString('ru-RU')} чел.`;
+        if (valB2B) valB2B.textContent = `${toGoOrders.toLocaleString('ru-RU')} заказов`;
 
         if (outMRR) outMRR.textContent = `$${mrr.toLocaleString('en-US')}`;
         if (outARR) outARR.textContent = `$${arr.toLocaleString('en-US')}`;
         if (outProfit) outProfit.textContent = `$${netProfit.toLocaleString('en-US')}`;
 
-        const b2cShare = mrr > 0 ? Math.round((b2cMonthly / mrr) * 100) : 50;
-        const b2bShare = 100 - b2cShare;
+        const dineInShare = dailyTotal > 0 ? Math.round((dailyDineIn / dailyTotal) * 100) : 50;
+        const toGoShare = 100 - dineInShare;
 
-        if (barB2C) barB2C.style.width = `${b2cShare}%`;
-        if (barB2B) barB2B.style.width = `${b2bShare}%`;
-        if (pctB2C) pctB2C.textContent = `B2C: ${b2cShare}%`;
-        if (pctB2B) pctB2B.textContent = `B2B: ${b2bShare}%`;
+        if (barB2C) barB2C.style.width = `${dineInShare}%`;
+        if (barB2B) barB2B.style.width = `${toGoShare}%`;
+        if (pctB2C) pctB2C.textContent = `Зал: ${dineInShare}%`;
+        if (pctB2B) pctB2B.textContent = `Навынос: ${toGoShare}%`;
 
         updateChartPath(arr);
     }
@@ -260,14 +264,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const preset = btn.getAttribute('data-preset');
             if (preset === 'mvp') {
-                rangeB2C.value = 400;
-                rangeB2B.value = 18;
+                rangeB2C.value = 70;
+                rangeB2B.value = 35;
             } else if (preset === 'growth') {
-                rangeB2C.value = 2200;
-                rangeB2B.value = 65;
+                rangeB2C.value = 180;
+                rangeB2B.value = 110;
             } else if (preset === 'leader') {
-                rangeB2C.value = 4800;
-                rangeB2B.value = 140;
+                rangeB2C.value = 320;
+                rangeB2B.value = 220;
             }
             calculateUnitEconomics();
         });
@@ -317,7 +321,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // --------------------------------------------------------------------------
-    // 8. Live Pilot Request Modal Popup
+    // 8. Instant Table Booking Modal Popup
     // --------------------------------------------------------------------------
     const pilotModal = document.getElementById('pilot-modal');
     const openModalBtns = document.querySelectorAll('[data-open-modal="pilot"]');
@@ -378,7 +382,7 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
             const randomCode = Math.floor(1000 + Math.random() * 9000);
             if (confirmationCode) {
-                confirmationCode.textContent = `#PLT-2026-${randomCode}`;
+                confirmationCode.textContent = `#BOOK-2026-${randomCode}`;
             }
             pilotForm.style.display = 'none';
             if (pilotSuccess) {

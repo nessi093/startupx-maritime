@@ -1,55 +1,73 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StartupX | Maritime Enterprise Platform 2026</title>
-    <meta name="description" content="Корпоративная операционная платформа для коммерческого флота: автоматизация судовой документации, спутниковая телеметрия, предиктивное снабжение и сквозная верификация рейсов.">
-    <meta property="og:title" content="StartupX — Maritime Enterprise Platform 2026">
-    <meta property="og:description" content="Корпоративная операционная система управления морским флотом в строгой серо-серебристой эстетике Linear и Apple Pro.">
+    <title>CHROME &amp; BEAN | Концептуальна кав'ярня &amp; Гастро-бар 2026</title>
+    <meta name="description" content="CHROME &amp; BEAN — концептуальний індустріальний лофт з матової сталі, Specialty кава 85+, авторська кухня, прибуткова підписка Coffee Pass та цифрова екосистема.">
+    <meta property="og:title" content="CHROME &amp; BEAN — Індустріальний гастро-лофт &amp; Specialty кава">
+    <meta property="og:description" content="Архітектурний лофт із шліфованої сталі AISI 304, темного дуба та скла. Прозора юніт-економіка, онлайн-замовлення та жива POS-база даних.">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <!-- 1. Корпоративная навигация -->
-    <!-- 1. Корпоративная навигация -->
+    <!-- 1. Навігація Linear / Apple Pro з перемикачем сторінок SPA -->
     <nav>
         <div class="container nav-wrapper">
-            <a href="#hero" class="nav-brand">
+            <a href="#hero" class="nav-brand" data-page-link="main">
                 <div class="nav-logo-icon">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                        <polyline points="2 17 12 22 22 17"></polyline>
-                        <polyline points="2 12 12 17 22 12"></polyline>
+                        <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                        <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                        <line x1="6" y1="1" x2="6" y2="4"></line>
+                        <line x1="10" y1="1" x2="10" y2="4"></line>
+                        <line x1="14" y1="1" x2="14" y2="4"></line>
                     </svg>
                 </div>
-                <div class="logo-text">Startup<span class="logo-accent">X</span></div>
+                <div class="logo-text">CHROME &amp; <span class="logo-accent">BEAN</span></div>
                 <div class="badge-live">
                     <span class="badge-dot"></span>
-                    <span>OS 2.6</span>
+                    <span>KYIV LOFT &bull; 2026</span>
                 </div>
             </a>
 
-            <ul class="nav-links">
-                <li><a href="#dashboard">Платформа</a></li>
-                <li><a href="#features">Продукт</a></li>
-                <li><a href="#comparison">Сравнение</a></li>
-                <li><a href="#monetization">Монетизация</a></li>
-                <li><a href="#pricing">Тарифы</a></li>
+            <!-- SPA Page Switcher (Головний перемикач) -->
+            <div class="spa-nav-switcher">
+                <button class="spa-nav-btn active" id="btn-page-main" data-target-page="main">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    <span>Концепт &amp; Бізнес-план</span>
+                </button>
+                <button class="spa-nav-btn" id="btn-page-menu" data-target-page="menu">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path></svg>
+                    <span>Повне Меню &amp; Замовлення</span>
+                    <span class="menu-pill-count">24</span>
+                </button>
+            </div>
+
+            <!-- Посилання лендінгу (для сторінки Концепт) -->
+            <ul class="nav-links" id="main-nav-links">
+                <li><a href="#dashboard">Зал &amp; Меню</a></li>
+                <li><a href="#features">Оформлення</a></li>
+                <li><a href="#comparison">Переваги</a></li>
+                <li><a href="#monetization">ROI Калькулятор</a></li>
+                <li><a href="#pricing">Coffee Pass</a></li>
+                <li><a href="#demo-db">Демо POS &amp; БД</a></li>
                 <li><a href="#faq">FAQ</a></li>
             </ul>
 
             <div class="nav-cta-group">
-                <a href="#calculator" class="nav-cta nav-cta-desktop">
-                    <span>Калькулятор ROI</span>
-                </a>
-                <button class="nav-cta nav-cta-primary nav-mobile-cta" data-open-modal="pilot">
-                    <span class="cta-text-full">Запустить пилот</span>
-                    <span class="cta-text-short">Пилот</span>
+                <button class="nav-cta nav-cart-btn" id="header-cart-toggle" aria-label="Кошик замовлення">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                    <span class="cart-label">Кошик</span>
+                    <span class="cart-badge-counter tabular-numbers" id="cart-counter">0</span>
                 </button>
-                <button class="nav-burger-btn" id="burger-btn" aria-label="Открыть мобильное меню" aria-expanded="false">
+                <button class="nav-cta nav-cta-primary nav-mobile-cta" data-open-modal="booking">
+                    <span class="cta-text-full">Забронювати стіл</span>
+                    <span class="cta-text-short">Бронь</span>
+                </button>
+                <button class="nav-burger-btn" id="burger-btn" aria-label="Відкрити меню" aria-expanded="false">
                     <span class="burger-bar"></span>
                     <span class="burger-bar"></span>
                     <span class="burger-bar"></span>
@@ -57,1058 +75,1297 @@
             </div>
         </div>
 
-        <!-- Выпадающая панель мобильного меню -->
+        <!-- Мобільна панель випадаючого меню -->
         <div id="mobile-menu" class="mobile-nav-panel">
+            <div class="mobile-page-switch">
+                <button class="mobile-switch-btn active" data-target-page="main">Концепт і Бізнес-план</button>
+                <button class="mobile-switch-btn" data-target-page="menu">Повне Меню &amp; Замовлення (24)</button>
+            </div>
             <ul class="mobile-nav-links">
-                <li><a href="#dashboard" class="mobile-nav-link">Платформа</a></li>
-                <li><a href="#features" class="mobile-nav-link">Продукт</a></li>
-                <li><a href="#comparison" class="mobile-nav-link">Сравнение</a></li>
-                <li><a href="#monetization" class="mobile-nav-link">Монетизация</a></li>
-                <li><a href="#pricing" class="mobile-nav-link">Тарифы</a></li>
+                <li><a href="#dashboard" class="mobile-nav-link">План Залу &amp; Меню</a></li>
+                <li><a href="#features" class="mobile-nav-link">План оформлення (7 кроків)</a></li>
+                <li><a href="#comparison" class="mobile-nav-link">Порівняння концепту</a></li>
+                <li><a href="#monetization" class="mobile-nav-link">ROI Калькулятор точки</a></li>
+                <li><a href="#pricing" class="mobile-nav-link">Тарифи Coffee Pass</a></li>
+                <li><a href="#demo-db" class="mobile-nav-link mobile-highlight-link">Демо-стенд: POS &amp; Жива БД</a></li>
                 <li><a href="#faq" class="mobile-nav-link">FAQ</a></li>
-                <li><a href="#calculator" class="mobile-nav-link mobile-calc-link">Калькулятор ROI</a></li>
             </ul>
             <div class="mobile-nav-footer">
-                <button class="mobile-pilot-btn" data-open-modal="pilot">
-                    <span>Запросить пилотный доступ</span>
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
+                <button class="mobile-pilot-btn" data-open-modal="booking">
+                    <span>Забронювати стіл онлайн</span>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                 </button>
             </div>
         </div>
     </nav>
 
-    <!-- 2. Главный экран (Hero Section) в монументальном масштабе -->
-    <header id="hero" class="hero-section">
-        <div class="hero-content">
-            <div class="hero-pill-badge">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
-                </svg>
-                <span>MARITIME ENTERPRISE PLATFORM &bull; RELEASE 2026</span>
-            </div>
+    <!-- ======================================================================= -->
+    <!-- СТОРІНКА 1: КОНЦЕПТ І БІЗНЕС-ПЛАН (#page-main)                           -->
+    <!-- ======================================================================= -->
+    <main id="page-main" class="spa-page active">
 
-            <h1>Интеллектуальная операционная система морского флота</h1>
-            <p>Снижение эксплуатационных простоев на 32%, сквозная автоматизация рейсовой документации и предиктивное управление снабжением судов в едином защищенном контуре.</p>
-            
-            <div class="hero-actions">
-                <button class="cta-button" data-open-modal="pilot">
-                    <span>Запросить пилотный доступ</span>
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
+        <!-- 2. Головний екран Hero -->
+        <header id="hero" class="hero-section">
+            <div class="hero-content">
+                <div class="hero-pill-badge">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
                     </svg>
-                </button>
-                <a href="#calculator" class="secondary-button">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="12" y1="1" x2="12" y2="23"></line>
-                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
-                    </svg>
-                    <span>Рассчитать экономию флота</span>
-                </a>
-            </div>
-        </div>
-
-        <!-- Превью панели управления (Live System Dashboard Preview 1240px) -->
-        <div id="dashboard" class="hero-dashboard-container">
-            <div id="hero-dashboard" class="dashboard-window">
-                <!-- Оконная панель -->
-                <div class="window-header">
-                    <div class="window-controls">
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                    </div>
-                    <div class="window-title">navis-terminal // enterprise-fleet-core v2.6.0</div>
-                    <div class="window-status">
-                        <span class="badge-dot"></span>
-                        <span>ONLINE &bull; SAT-LINK 14 ms</span>
-                    </div>
+                    <span>KYIV HOSPITALITY CONCEPT &bull; MONOCHROME LOFT &bull; 2026</span>
                 </div>
 
-                <!-- Сегментированные вкладки -->
-                <div class="dashboard-tabs-bar">
-                    <button class="tab-btn active" data-tab="fleet">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M2 21c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1 .6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>
-                            <path d="M19.38 20A11.6 11.6 0 0 0 21 14l-9-4-9 4c0 2.9.94 5.34 2.81 7.76"/>
-                            <path d="M19 13V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v6"/>
-                            <path d="M12 2v3"/>
-                        </svg>
-                        <span>Аналитика флота</span>
+                <h1>Концептуальна кав'ярня та гастро-бар «CHROME &amp; BEAN»</h1>
+                <p>Архітектурний індустріальний лофт із матової нержавіючої сталі AISI 304, натурального каменю та тонованого скла. Зерно Specialty 85+, швидкісний потік To-Go, високоприбутковий Coffee Pass і прозора юніт-економіка з маржинальністю 32%.</p>
+                
+                <div class="hero-actions">
+                    <button class="cta-button" data-open-modal="booking">
+                        <span>Забронювати столик онлайн</span>
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                     </button>
-                    <button class="tab-btn" data-tab="docs">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                            <polyline points="14 2 14 8 20 8"></polyline>
-                            <line x1="16" y1="13" x2="8" y2="13"></line>
-                            <line x1="16" y1="17" x2="8" y2="17"></line>
-                        </svg>
-                        <span>Судовая документация</span>
+                    <button class="secondary-button" data-switch-to-menu="true">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path></svg>
+                        <span>Відкрити повне меню (24 страви)</span>
                     </button>
-                    <button class="tab-btn" data-tab="logistics">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="1" y="3" width="15" height="13"></rect>
-                            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
-                            <circle cx="5.5" cy="18.5" r="2.5"></circle>
-                            <circle cx="18.5" cy="18.5" r="2.5"></circle>
-                        </svg>
-                        <span>Контроль снабжения</span>
-                    </button>
-                </div>
-
-                <!-- Ключевые показатели платформы -->
-                <div class="dashboard-metrics-strip">
-                    <div class="strip-item">
-                        <span class="strip-label">Судов на мониторинге</span>
-                        <span class="strip-value">142 / 148</span>
-                    </div>
-                    <div class="strip-item">
-                        <span class="strip-label">Отклик спутникового API</span>
-                        <span class="strip-value">14 ms</span>
-                    </div>
-                    <div class="strip-item">
-                        <span class="strip-label">Снижение издержек флота</span>
-                        <span class="strip-value">-32.4%</span>
-                    </div>
-                    <div class="strip-item">
-                        <span class="strip-label">Протокол передачи</span>
-                        <span class="strip-value">TLS 1.3 Mesh</span>
-                    </div>
-                </div>
-
-                <!-- Контент активных вкладок -->
-                <div class="dashboard-content-viewport">
-                    <!-- Панель 1: Аналитика флота -->
-                    <div id="panel-fleet" class="tab-panel active">
-                        <div class="dash-grid-2col">
-                            <div class="panel-card">
-                                <h4>
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                                    </svg>
-                                    Активная судоходная телеметрия
-                                </h4>
-                                <div class="table-scroll-container">
-                                    <table class="fleet-table">
-                                        <thead>
-                                            <tr>
-                                                <th>Судно</th>
-                                                <th class="col-hide-mobile">Тип</th>
-                                                <th>Маршрут</th>
-                                                <th class="col-hide-mobile">Скорость</th>
-                                                <th>Статус</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td style="color:#ffffff; font-weight:600;">MV Baltica Leader</td>
-                                                <td class="col-hide-mobile">Контейнеровоз</td>
-                                                <td>Роттердам &rarr; СПБ</td>
-                                                <td class="tabular-numbers col-hide-mobile">16.8 узл.</td>
-                                                <td><span class="status-pill">По графику</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="color:#ffffff; font-weight:600;">MT Nordic Pioneer</td>
-                                                <td class="col-hide-mobile">Танкер Aframax</td>
-                                                <td>Приморск &rarr; Суэц</td>
-                                                <td class="tabular-numbers col-hide-mobile">13.2 узл.</td>
-                                                <td><span class="status-pill">Оптимизирован</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="color:#ffffff; font-weight:600;">Arctic Star II</td>
-                                                <td class="col-hide-mobile">Балкер ARC-4</td>
-                                                <td>Мурманск &rarr; Циндао</td>
-                                                <td class="tabular-numbers col-hide-mobile">14.1 узл.</td>
-                                                <td><span class="status-pill">Sat-Sync OK</span></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="panel-card">
-                                <h4>
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <circle cx="12" cy="12" r="10"></circle>
-                                        <polyline points="12 6 12 12 16 14"></polyline>
-                                    </svg>
-                                    Эффективность переходов
-                                </h4>
-                                <div style="display:flex; flex-direction:column; gap:1rem; margin-top:0.5rem;">
-                                    <div>
-                                        <div class="efficiency-row" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:4px; font-size:0.84rem; color:#a1a1aa; margin-bottom:0.4rem;">
-                                            <span>Оптимизация расхода бункера</span>
-                                            <span style="color:#ffffff; font-weight:600;" class="tabular-numbers">-14.2 т/рейс</span>
-                                        </div>
-                                        <div style="height:4px; background:#27272a; border-radius:2px; overflow:hidden;">
-                                            <div style="width:84%; height:100%; background:#d4d4d8;"></div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="efficiency-row" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:4px; font-size:0.84rem; color:#a1a1aa; margin-bottom:0.4rem;">
-                                            <span>Сокращение стояночного времени в портах</span>
-                                            <span style="color:#ffffff; font-weight:600;" class="tabular-numbers">-6.8 ч/судно</span>
-                                        </div>
-                                        <div style="height:4px; background:#27272a; border-radius:2px; overflow:hidden;">
-                                            <div style="width:72%; height:100%; background:#d4d4d8;"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Панель 2: Судовая документация -->
-                    <div id="panel-docs" class="tab-panel">
-                        <div class="dash-grid-2col">
-                            <div class="panel-card">
-                                <h4>Реестр портовых манифестов & сертификатов</h4>
-                                <div class="table-scroll-container">
-                                    <table class="fleet-table">
-                                        <thead>
-                                            <tr>
-                                                <th>Документ</th>
-                                                <th class="col-hide-mobile">Судно / Флаг</th>
-                                                <th>Порт захода</th>
-                                                <th>Статус</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td style="color:#ffffff;">IMO General Declaration</td>
-                                                <td class="col-hide-mobile">Baltica Leader</td>
-                                                <td>Сингапур</td>
-                                                <td><span class="status-pill">Подтверждено</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="color:#ffffff;">Bunker Delivery Note (BDN)</td>
-                                                <td class="col-hide-mobile">Nordic Pioneer</td>
-                                                <td>Роттердам</td>
-                                                <td><span class="status-pill">ЭЦП валидна</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="color:#ffffff;">Dangerous Goods Manifest</td>
-                                                <td class="col-hide-mobile">Arctic Star II</td>
-                                                <td>Шанхай</td>
-                                                <td><span class="status-pill">На проверке</span></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="panel-card">
-                                <h4>Готовность к Port State Control (PSC)</h4>
-                                <p style="font-size:0.88rem; color:#a1a1aa; line-height:1.6; margin-bottom:1.15rem;">
-                                    Автоматический предаудит соответствия конвенциям SOLAS, MARPOL и MLC 2006 снижает риск задержания судна в иностранных портах на 94%.
-                                </p>
-                                <div style="display:inline-flex; align-items:center; gap:8px; font-size:0.84rem; color:#ffffff; background:rgba(255,255,255,0.06); padding:0.45rem 0.85rem; border-radius:6px; border:1px solid rgba(255,255,255,0.1);" class="tabular-numbers">
-                                    PSC Readiness Score: 98.6 / 100
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Панель 3: Контроль снабжения -->
-                    <div id="panel-logistics" class="tab-panel">
-                        <div class="dash-grid-2col">
-                            <div class="panel-card">
-                                <h4>Снабжение, ЗИП и бункеровочные заявки</h4>
-                                <div class="table-scroll-container">
-                                    <table class="fleet-table">
-                                        <thead>
-                                            <tr>
-                                                <th>Заявка</th>
-                                                <th class="col-hide-mobile">Борт</th>
-                                                <th>Локация поставки</th>
-                                                <th>Срок (ETA)</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td style="color:#ffffff;">Судовое топливо VLSFO (420т)</td>
-                                                <td class="col-hide-mobile">MV Baltica Leader</td>
-                                                <td>Рейд Гибралтар</td>
-                                                <td><span class="status-pill">Завтра, 06:00</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="color:#ffffff;">ЗИП ГД: Форсунки MAN B&W</td>
-                                                <td class="col-hide-mobile">MT Nordic Pioneer</td>
-                                                <td>Порт Антверпен</td>
-                                                <td><span class="status-pill">Доставлено на борт</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td style="color:#ffffff;">Навигационные карты ECDIS</td>
-                                                <td class="col-hide-mobile">Arctic Star II</td>
-                                                <td>OTA-обновление</td>
-                                                <td><span class="status-pill">Синхронизировано</span></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="panel-card">
-                                <h4>Прозрачность цепочек снабжения</h4>
-                                <p style="font-size:0.88rem; color:#a1a1aa; line-height:1.6; margin-bottom:1.15rem;">
-                                    Централизация морских закупок исключает посреднические наценки и сокращает время ожидания запчастей в портах захода с 5 дней до 18 часов.
-                                </p>
-                                <div style="display:inline-flex; align-items:center; gap:8px; font-size:0.84rem; color:#ffffff; background:rgba(255,255,255,0.06); padding:0.45rem 0.85rem; border-radius:6px; border:1px solid rgba(255,255,255,0.1);" class="tabular-numbers">
-                                    Экономия на закупках флота: $214,000 / кв.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- 3. Полоса морских стандартов и интеграций (Секция 1) -->
-    <section class="compliance-bar-section">
-        <div class="container">
-            <div class="compliance-grid">
-                <div class="compliance-item">
-                    <svg class="compliance-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                    <span>IMO FAL Convention</span>
-                </div>
-                <div class="compliance-item">
-                    <svg class="compliance-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-                    <span>SOLAS / MARPOL Compliant</span>
-                </div>
-                <div class="compliance-item">
-                    <svg class="compliance-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                    <span>ISPS Code Security</span>
-                </div>
-                <div class="compliance-item">
-                    <svg class="compliance-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20"/><path d="M20 12v8H4v-8"/><path d="m4 4 16 16"/></svg>
-                    <span>AIS & ECDIS Sync</span>
-                </div>
-                <div class="compliance-item">
-                    <svg class="compliance-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="m15 9-6 6"/></svg>
-                    <span>Starlink Maritime Ready</span>
-                </div>
-                <div class="compliance-item">
-                    <svg class="compliance-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span>ISO/IEC 27001 Certified</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. О продукте: Двухэтажная асимметричная Bento-сетка (Секция 2: 6 карточек) -->
-    <section id="features" class="section reveal">
-        <div class="container">
-            <div class="section-header">
-                <h2>О нашем продукте</h2>
-                <p class="section-subtitle">Решение фундаментальных проблем современной морской логистики и судовождения</p>
-            </div>
-            
-            <div class="bento-grid">
-                <!-- Карточка 01 -->
-                <div class="card step-card bento-span-1 reveal-item">
-                    <div class="step-number">01</div>
-                    <span class="card-tag">Проблема индустрии</span>
-                    <h3>Информационная фрагментация</h3>
-                    <p>Снабжение, журнал судовых операций и технический аудит ведутся разрозненно в десятках несовместимых Excel-файлов и бумажных актов. Это приводит к простоям у причалов и штрафам судовладельцев до $18,000 за рейс.</p>
-                    <div class="card-metric">
-                        <span class="status-dot"></span>
-                        <span class="tabular-numbers">Потери отрасли от простоев: до $18,000 / судорейс</span>
-                    </div>
-                </div>
-
-                <!-- Карточка 02 -->
-                <div class="card step-card bento-span-1 reveal-item">
-                    <div class="step-number">02</div>
-                    <span class="card-tag">Технологическое решение</span>
-                    <h3>Автономный цифровой терминал</h3>
-                    <p>Единый облачно-бортовой терминал для судоводителей и диспетчеров: мгновенная передача рейсовых сводок, предиктивный мониторинг ТО главных двигателей и автоматическая верификация документов портовых властей.</p>
-                    <div class="card-metric">
-                        <span class="status-dot"></span>
-                        <span>Внедрение без модификации судового оборудования</span>
-                    </div>
-                </div>
-
-                <!-- Карточка 03 -->
-                <div class="card step-card bento-span-1 reveal-item">
-                    <div class="step-number">03</div>
-                    <span class="card-tag">Отказоустойчивость</span>
-                    <h3>Offline-First & Satellite Mesh</h3>
-                    <p>Локальное кэширование и проведение операций даже при полном отсутствии спутникового канала в океане. Автоматическая бесшовная синхронизация данных происходит при выходе в зону покрытия порта или базовой станции.</p>
-                    <div class="card-metric">
-                        <span class="status-dot"></span>
-                        <span class="tabular-numbers">SLA надежности 99.98% при слабой спутниковой связи</span>
-                    </div>
-                </div>
-
-                <!-- Карточка 04 (Широкая на 2 колонки с логом терминала) -->
-                <div class="card step-card bento-span-2 reveal-item">
-                    <div class="step-number">04</div>
-                    <span class="card-tag">Безопасность & Аудит</span>
-                    <h3>Криптографическая верификация судовых журналов</h3>
-                    <p>Исключение возможности подделки или изменения записей задним числом при инспекциях Port State Control (PSC) и расследованиях морских инцидентов. Каждая запись подписывается цифровым сертификатом вахтенного офицера.</p>
-                    <div class="bento-embedded-block">
-                        <div class="terminal-header">
-                            <span>CRYPTOGRAPHIC AUDIT TRAIL // SHA-256 LOG</span>
-                            <span class="tabular-numbers">SYNC: VERIFIED</span>
-                        </div>
-                        <div class="terminal-line">
-                            <span>ENTRY #8412 [ENGINE_LOG]: VLSFO DENSITY CHECK</span>
-                            <span class="terminal-accent">HASH: 7f83b165...e3b0c442</span>
-                        </div>
-                        <div class="terminal-line">
-                            <span>PSC AUDIT READINESS: IMO RESOLUTION A.1155(32)</span>
-                            <span class="terminal-accent">COMPLIANT &bull; 0 DEFICIENCIES</span>
-                        </div>
-                    </div>
-                    <div class="card-metric">
-                        <span class="status-dot"></span>
-                        <span>Неизменяемый журнал транзакций с аппаратной подписью</span>
-                    </div>
-                </div>
-
-                <!-- Карточка 05 (1 колонка) -->
-                <div class="card step-card bento-span-1 reveal-item">
-                    <div class="step-number">05</div>
-                    <span class="card-tag">Предиктивное ТО</span>
-                    <h3>Аналитика бункеровки и ЗИП</h3>
-                    <p>Алгоритмический контроль остаточного ресурса критических узлов главного двигателя и прогнозирование расхода топлива с учетом погодных условий и течений.</p>
-                    <div class="bento-embedded-block">
-                        <div class="terminal-header">
-                            <span>CYLINDER #4 OVERHAUL</span>
-                            <span class="tabular-numbers">REMAINING: 420 HRS</span>
-                        </div>
-                        <div class="terminal-line">
-                            <span>BUNKER RESERVE (Gibraltar ETA)</span>
-                            <span class="terminal-accent">MARGIN: +18.4%</span>
-                        </div>
-                    </div>
-                    <div class="card-metric">
-                        <span class="status-dot"></span>
-                        <span>Снижение аварийных поломок в рейсе на 41%</span>
-                    </div>
-                </div>
-
-                <!-- Карточка 06 (Широкая на 2 колонки с API-консолью) -->
-                <div class="card step-card bento-span-2 reveal-item">
-                    <div class="step-number">06</div>
-                    <span class="card-tag">Интеграционная шина</span>
-                    <h3>Единый API-шлюз «Судно — Берег — Порт»</h3>
-                    <p>Прямой REST и WebSocket интерфейс для береговых ERP, крюинговых компаний и стивидоров. Данные о подходе судна, готовности трюмов и составе экипажа выгружаются в портовые службы за секунды.</p>
-                    <div class="bento-embedded-block">
-                        <div class="terminal-header">
-                            <span>ENDPOINT: POST /v2/port-clearance/sync</span>
-                            <span>STATUS 200 OK</span>
-                        </div>
-                        <div class="terminal-line">
-                            <span>PAYLOAD: { "imo": "9814421", "eta": "2026-10-18T06:00Z", "pre_audit": true }</span>
-                            <span class="terminal-accent">RESPONSE: 14ms</span>
-                        </div>
-                    </div>
-                    <div class="card-metric">
-                        <span class="status-dot"></span>
-                        <span>Готовые коннекторы к SAP, 1C и морским ERP-системам</span>
-                    </div>
-                </div>
-
-                <!-- Карточка 07 (1 колонка) -->
-                <div class="card step-card bento-span-1 reveal-item">
-                    <div class="step-number">07</div>
-                    <span class="card-tag">Экипаж & Onboarding</span>
-                    <h3>Интерфейс нулевого сопротивления</h3>
-                    <p>Интерфейс не требует недельного обучения. Вахтенные офицеры заполняют чек-листы быстрее бумажных журналов благодаря автоподстановке данных судовой телеметрии.</p>
-                    <div class="card-metric">
-                        <span class="status-dot"></span>
-                        <span>Обучение экипажа занимает менее 40 минут</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 5. Сравнительная таблица (Секция 3) -->
-    <!-- 5. Сравнительная таблица (Секция 3) -->
-    <section id="comparison" class="section bg-secondary reveal" style="overflow: visible !important; touch-action: pan-y !important;">
-        <div class="container" style="overflow: visible !important;">
-            <div class="section-header">
-                <h2>Сравнение подходов к управлению флотом</h2>
-                <p class="section-subtitle">Почему судоходные компании переходят с ручных таблиц на платформу StartupX</p>
-            </div>
-
-            <div class="bento-grid" style="grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.25rem; overflow: visible !important;">
-                <div class="card reveal-item" style="padding: 1.5rem; touch-action: pan-y !important;">
-                    <span class="card-tag">Критерий 01</span>
-                    <h3 style="font-size: 1.15rem; margin-bottom: 0.75rem;">Оформление прихода в порт</h3>
-                    <p style="font-size: 0.88rem; color: #71717a; margin-bottom: 0.6rem;">&bull; Устаревший подход: 4–6 часов ручного сбора деклараций экипажем</p>
-                    <p style="font-size: 0.92rem; color: #f4f4f5; font-weight: 600;">&check; StartupX OS: 12 минут — автогенерация по стандарту IMO FAL</p>
-                </div>
-
-                <div class="card reveal-item" style="padding: 1.5rem; touch-action: pan-y !important;">
-                    <span class="card-tag">Критерий 02</span>
-                    <h3 style="font-size: 1.15rem; margin-bottom: 0.75rem;">Риск задержания инспекцией PSC</h3>
-                    <p style="font-size: 0.88rem; color: #71717a; margin-bottom: 0.6rem;">&bull; Устаревший подход: Высокий — человеческий фактор, пропущенные записи</p>
-                    <p style="font-size: 0.92rem; color: #f4f4f5; font-weight: 600;">&check; StartupX OS: Снижен на 94% благодаря автоматическому предаудиту</p>
-                </div>
-
-                <div class="card reveal-item" style="padding: 1.5rem; touch-action: pan-y !important;">
-                    <span class="card-tag">Критерий 03</span>
-                    <h3 style="font-size: 1.15rem; margin-bottom: 0.75rem;">Работа в океане без спутника</h3>
-                    <p style="font-size: 0.88rem; color: #71717a; margin-bottom: 0.6rem;">&bull; Устаревший подход: Блокировка работы, риск потери несохраненных данных</p>
-                    <p style="font-size: 0.92rem; color: #f4f4f5; font-weight: 600;">&check; StartupX OS: Полный Offline-First с локальной очередью и авто-синком</p>
-                </div>
-
-                <div class="card reveal-item" style="padding: 1.5rem; touch-action: pan-y !important;">
-                    <span class="card-tag">Критерий 04</span>
-                    <h3 style="font-size: 1.15rem; margin-bottom: 0.75rem;">Закупка ЗИП и бункеровка</h3>
-                    <p style="font-size: 0.88rem; color: #71717a; margin-bottom: 0.6rem;">&bull; Устаревший подход: Переплата брокерам 15–30%, задержки до 5 дней</p>
-                    <p style="font-size: 0.92rem; color: #f4f4f5; font-weight: 600;">&check; StartupX OS: Прямой тендерный контур, поставка на борт за 18 часов</p>
-                </div>
-
-                <div class="card reveal-item" style="padding: 1.5rem; touch-action: pan-y !important;">
-                    <span class="card-tag">Критерий 05</span>
-                    <h3 style="font-size: 1.15rem; margin-bottom: 0.75rem;">Сроки и стоимость внедрения</h3>
-                    <p style="font-size: 0.88rem; color: #71717a; margin-bottom: 0.6rem;">&bull; Устаревший подход: От $15,000 за борт, кастомные серверы, простой судна</p>
-                    <p style="font-size: 0.92rem; color: #f4f4f5; font-weight: 600;">&check; StartupX OS: $60/мес за борт, старт за 24 часа без простоя судна</p>
-                </div>
-
-                <div class="card reveal-item" style="padding: 1.5rem; touch-action: pan-y !important;">
-                    <span class="card-tag">Критерий 06</span>
-                    <h3 style="font-size: 1.15rem; margin-bottom: 0.75rem;">Защита коммерческих данных</h3>
-                    <p style="font-size: 0.88rem; color: #71717a; margin-bottom: 0.6rem;">&bull; Устаревший подход: Открытые почтовые вложения и мессенджеры</p>
-                    <p style="font-size: 0.92rem; color: #f4f4f5; font-weight: 600;">&check; StartupX OS: Сквозное шифрование TLS 1.3 и разделение ролей доступа</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 6. Бизнес-модель, Интерактивный Калькулятор Unit-экономики и Точный SVG-график -->
-    <section id="monetization" class="section reveal">
-        <div class="container">
-            <div class="section-header">
-                <h2>Бизнес-модель и Монетизация</h2>
-                <p class="section-subtitle">Прогнозируемый регулярный доход (SaaS ARR) с высокой чистой маржинальностью</p>
-            </div>
-
-            <!-- 3 Карточки бизнес-модели ($1, $2, $3) -->
-            <div class="grid">
-                <!-- Карточка $1 -->
-                <div class="card step-card reveal-item">
-                    <div class="step-number">$1</div>
-                    <span class="card-tag">Органический охват</span>
-                    <h3>Freemium Onboarding</h3>
-                    <p>Бесплатный базовый доступ для курсантов морских колледжей и рядового плавсостава. Это формирует привычку к интерфейсу и обеспечивает органическое масштабирование пользовательской базы без затрат на рекламу.</p>
-                    <div class="card-metric">
-                        <span class="status-dot"></span>
-                        <span>CAC стремится к $0 благодаря комьюнити</span>
-                    </div>
-                </div>
-
-                <!-- Карточка $2 -->
-                <div class="card step-card reveal-item">
-                    <div class="step-number">$2</div>
-                    <span class="card-tag">Регулярная выручка</span>
-                    <h3>Подписка (B2C / B2B SaaS)</h3>
-                    <p>Профессиональные подписки: $5/мес для командного состава (расширенный штурманский блок) и $60/мес за борт судна для коммерческих судоходных компаний с круглосуточной техподдержкой.</p>
-                    <div class="card-metric">
-                        <span class="status-dot"></span>
-                        <span class="tabular-numbers">LTV / CAC > 5.5x при оттоке (Churn) &lt; 1.2%</span>
-                    </div>
-                </div>
-
-                <!-- Карточка $3 -->
-                <div class="card step-card reveal-item">
-                    <div class="step-number">$3</div>
-                    <span class="card-tag">Enterprise & Партнеры</span>
-                    <h3>White-label & API</h3>
-                    <p>Лицензирование терминала под бренд крупных операторов флота, интеграция с корпоративными ERP судовладельцев и комиссионные сборы с проверенных поставщиков судового снабжения.</p>
-                    <div class="card-metric">
-                        <span class="status-dot"></span>
-                        <span class="tabular-numbers">Годовые контракты от $10,000 / компания</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Интерактивный калькулятор Unit-экономики (ROI) и SVG-график -->
-            <div id="calculator" class="card calculator-card reveal-item">
-                <div class="calc-header">
-                    <div class="calc-title-box">
-                        <span class="card-tag">Интерактивная Unit-экономика</span>
-                        <h3>Калькулятор окупаемости и выручки стартапа</h3>
-                    </div>
-                    <div class="calc-badge tabular-numbers">
-                        Чистая маржинальность ~85%
-                    </div>
-                </div>
-
-                <!-- Сегментированный переключатель сценариев -->
-                <div class="calc-presets">
-                    <span class="presets-label">Сценарии:</span>
-                    <button class="preset-btn active" data-preset="mvp">MVP (Пилотный флот)</button>
-                    <button class="preset-btn" data-preset="growth">1-й год (Рост флота)</button>
-                    <button class="preset-btn" data-preset="leader">Enterprise (Масштаб)</button>
-                </div>
-
-                <!-- Сетка калькулятора -->
-                <div class="calc-grid">
-                    <!-- Ползунки параметров -->
-                    <div class="slider-group">
-                        <!-- Ползунок 1: B2C -->
-                        <div class="slider-item">
-                            <div class="slider-meta">
-                                <span class="slider-label">Подключенных специалистов (B2C по $5/мес):</span>
-                                <span id="val-b2c" class="slider-value">400 чел.</span>
-                            </div>
-                            <input type="range" id="range-b2c" min="50" max="5000" step="50" value="400">
-                            <div class="slider-bounds">
-                                <span>50 чел. ($250/мес)</span>
-                                <span>5 000 чел. ($25 000/мес)</span>
-                            </div>
-                        </div>
-
-                        <!-- Ползунок 2: B2B -->
-                        <div class="slider-item">
-                            <div class="slider-meta">
-                                <span class="slider-label">Судоходных компаний / судов (B2B по $60/мес):</span>
-                                <span id="val-b2b" class="slider-value">18 судов</span>
-                            </div>
-                            <input type="range" id="range-b2b" min="1" max="150" step="1" value="18">
-                            <div class="slider-bounds">
-                                <span>1 судно ($60/мес)</span>
-                                <span>150 судов ($9 000/мес)</span>
-                            </div>
-                        </div>
-
-                        <!-- Двухметаллическая визуализация доли выручки -->
-                        <div class="ratio-box">
-                            <div class="ratio-meta">
-                                <span id="pct-b2c">B2C: 65%</span>
-                                <span id="pct-b2b">B2B: 35%</span>
-                            </div>
-                            <div class="ratio-track">
-                                <div id="bar-b2c" class="ratio-fill-b2c" style="width: 65%;"></div>
-                                <div id="bar-b2b" class="ratio-fill-b2b" style="width: 35%;"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Карточки результатов пересчета в реальном времени -->
-                    <div class="calc-results">
-                        <div class="result-item">
-                            <div class="result-info">
-                                <span class="result-title">Выручка в месяц (MRR)</span>
-                                <span class="result-desc">Регулярный ежемесячный денежный поток</span>
-                            </div>
-                            <span id="out-mrr" class="result-val">$3,080</span>
-                        </div>
-
-                        <div class="result-item">
-                            <div class="result-info">
-                                <span class="result-title">Годовой оборот (ARR)</span>
-                                <span class="result-desc">Годовой объем контрактных поступлений</span>
-                            </div>
-                            <span id="out-arr" class="result-val val-silver">$36,960</span>
-                        </div>
-
-                        <div class="result-item highlight-net">
-                            <div class="result-info">
-                                <span class="result-title">Чистая прибыль / год</span>
-                                <span class="result-desc">После инфраструктуры и налогов (85%)</span>
-                            </div>
-                            <span id="out-profit" class="result-val val-silver">$31,416</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Высокоточный геометрический SVG-график роста выручки -->
-                <div id="chart-wrapper" class="chart-section-wrapper">
-                    <div class="chart-header-meta">
-                        <div class="chart-title">
-                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="18" y1="20" x2="18" y2="10"></line>
-                                <line x1="12" y1="20" x2="12" y2="4"></line>
-                                <line x1="6" y1="20" x2="6" y2="14"></line>
-                            </svg>
-                            <span>Динамика роста выручки по кварталам (Quarterly Projections)</span>
-                        </div>
-                        <div class="chart-legend">
-                            <div class="legend-item">
-                                <span class="legend-color c-silver"></span>
-                                <span>Прогноз ARR</span>
-                            </div>
-                            <div class="legend-item">
-                                <span class="legend-color c-titanium"></span>
-                                <span>Net Profit Margin (85%)</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="svg-chart-container">
-                        <div id="chart-tooltip" class="chart-tooltip"></div>
-                        <svg class="svg-chart" viewBox="0 0 800 220">
-                            <defs>
-                                <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.14" />
-                                    <stop offset="100%" stop-color="#ffffff" stop-opacity="0.0" />
-                                </linearGradient>
-                            </defs>
-
-                            <!-- Горизонтальные направляющие сетки -->
-                            <line x1="60" y1="40" x2="740" y2="40" class="chart-grid-line" />
-                            <line x1="60" y1="85" x2="740" y2="85" class="chart-grid-line" />
-                            <line x1="60" y1="130" x2="740" y2="130" class="chart-grid-line" />
-                            <line x1="60" y1="180" x2="740" y2="180" class="chart-grid-line" />
-
-                            <!-- Подписи осей -->
-                            <text x="100" y="204" text-anchor="middle" class="chart-axis-text">Q1 (Запуск)</text>
-                            <text x="300" y="204" text-anchor="middle" class="chart-axis-text">Q2 (Пилоты)</text>
-                            <text x="500" y="204" text-anchor="middle" class="chart-axis-text">Q3 (Флот B2B)</text>
-                            <text x="700" y="204" text-anchor="middle" class="chart-axis-text">Q4 (Scale-up)</text>
-
-                            <!-- Заполненная область и анимированная кривая линии -->
-                            <path id="chart-area" class="chart-area" d="M 100 173 L 300 162 L 500 146 L 700 158 L 700 180 L 100 180 Z" />
-                            <path id="chart-line" class="chart-line" d="M 100 173 L 300 162 L 500 146 L 700 158" />
-
-                            <!-- Круглые точки данных -->
-                            <circle class="chart-point" data-quarter="Q1" data-val="$5,544" cx="100" cy="173" r="5" />
-                            <circle class="chart-point" data-quarter="Q2" data-val="$14,044" cx="300" cy="162" r="5" />
-                            <circle class="chart-point" data-quarter="Q3" data-val="$25,132" cx="500" cy="146" r="5" />
-                            <circle class="chart-point" data-quarter="Q4" data-val="$36,960" cx="700" cy="158" r="5" />
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 7. Дорожная карта (Roadmap) и Тарифная сетка (Секция 4) -->
-    <section id="pricing" class="section bg-secondary reveal">
-        <div class="container">
-            <div class="section-header">
-                <h2>Дорожная карта внедрения и Тарифы</h2>
-                <p class="section-subtitle">Поэтапный план коммерциализации и прозрачная модель ценообразования</p>
-            </div>
-
-            <!-- Дорожная карта Q1–Q4 -->
-            <div class="timeline-stepper">
-                <div class="timeline-step">
-                    <span class="step-quarter">Q1 2026</span>
-                    <h4>Прототип & Тестирование</h4>
-                    <p>Разработка архитектурного ядра терминала, апробация на тренажерных стендах морского колледжа с курсантами и штурманами.</p>
-                </div>
-                <div class="timeline-step">
-                    <span class="step-quarter">Q2 2026</span>
-                    <h4>Пилотный флот (15 судов)</h4>
-                    <p>Запуск коммерческого пилота на 15 судах каботажного плавания и портофлота, калибровка спутниковых протоколов синхронизации.</p>
-                </div>
-                <div class="timeline-step">
-                    <span class="step-quarter">Q3 2026</span>
-                    <h4>Сертификация IMO FAL</h4>
-                    <p>Прохождение верификации портовых властей, подключение прямого API-модуля интеграции с таможенными и диспетчерскими службами.</p>
-                </div>
-                <div class="timeline-step">
-                    <span class="step-quarter">Q4 2026</span>
-                    <h4>Международный масштаб</h4>
-                    <p>Экспансия на международные контейнерные и танкерные линии, подключение свыше 150 судов с годовым оборотом $300k+ ARR.</p>
-                </div>
-            </div>
-
-            <!-- Тарифная сетка -->
-            <div class="pricing-grid">
-                <!-- Тариф 1: Cadet / Freemium -->
-                <div class="pricing-card">
-                    <div class="tier-name">Cadet & Free</div>
-                    <div class="tier-desc">Для курсантов, младшего комсостава и индивидуального тестирования функционала.</div>
-                    <div class="tier-price-box">
-                        <span class="tier-price">$0</span>
-                        <span class="tier-period">/ навсегда</span>
-                    </div>
-                    <ul class="tier-features">
-                        <li><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Базовый штурманский чек-лист</li>
-                        <li><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Офлайн-калькулятор запасов топлива</li>
-                        <li><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Учебные шаблоны портовых документов</li>
-                        <li><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Доступ с 1 личного устройства</li>
-                    </ul>
-                    <a href="#calculator" class="tier-btn">Начать бесплатно</a>
-                </div>
-
-                <!-- Тариф 2: Vessel Pro (Featured) -->
-                <div class="pricing-card featured-card">
-                    <div class="featured-ribbon">РЕКОМЕНДОВАНО ДЛЯ ФЛОТА</div>
-                    <div class="tier-name">Vessel Pro</div>
-                    <div class="tier-desc">Полноценный бортовой терминал для судовладельцев, экипажей и операторов судов.</div>
-                    <div class="tier-price-box">
-                        <span class="tier-price">$60</span>
-                        <span class="tier-period">/ месяц за судно</span>
-                    </div>
-                    <ul class="tier-features">
-                        <li><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Все функции тарифа Cadet</li>
-                        <li><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Автоматическая генерация IMO FAL манифестов</li>
-                        <li><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Offline-First локальная база с авто-репликацией</li>
-                        <li><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Предиктивный мониторинг ТО и расхода бункера</li>
-                        <li><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Круглосуточная приоритетная поддержка 24/7</li>
-                    </ul>
-                    <button class="tier-btn" data-open-modal="pilot">Подключить борт</button>
-                </div>
-
-                <!-- Тариф 3: Fleet Enterprise -->
-                <div class="pricing-card">
-                    <div class="tier-name">Fleet Enterprise</div>
-                    <div class="tier-desc">Индивидуальный контур для судоходных холдингов, крюингов и портовых агентов.</div>
-                    <div class="tier-price-box">
-                        <span class="tier-price">Custom</span>
-                        <span class="tier-period">/ годовой контракт</span>
-                    </div>
-                    <ul class="tier-features">
-                        <li><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Неограниченное число судов и пользователей</li>
-                        <li><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Выделенный контур On-Premise / Private Cloud</li>
-                        <li><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Прямая интеграция с SAP, 1C и внутренними ERP</li>
-                        <li><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Фиксированный SLA 99.99% и персональный архитектор</li>
-                    </ul>
-                    <button class="tier-btn" data-open-modal="pilot">Запросить аудит флота</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 8. Компетенции и структура команды -->
-    <section id="team" class="section reveal">
-        <div class="container">
-            <div class="section-header">
-                <h2>Ключевые компетенции и структура команды</h2>
-                <p class="section-subtitle">Сбалансированная междисциплинарная структура для разработки, развертывания и масштабирования морской платформы</p>
-            </div>
-
-            <div class="grid">
-                <!-- Направление 1: Product & Strategy -->
-                <div class="team-role-card reveal-item">
-                    <div class="role-badge-box">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                        </svg>
-                        <span>Product & Strategy</span>
-                    </div>
-                    <h3>Управление продуктом и отраслевая экспертиза</h3>
-                    <p class="team-role-desc">Анализ морского законодательства (IMO, SOLAS, MARPOL), глубинный CustDev с капитанами и судовладельцами, выстраивание Unit-экономики и стратегии B2B-продаж для судоходных линий.</p>
-                    <ul class="competencies-list">
-                        <li>
-                            <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            <span>CustDev & Отраслевые интервью с комсоставом</span>
-                        </li>
-                        <li>
-                            <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            <span>Моделирование Unit-экономики и структуры ценообразования</span>
-                        </li>
-                        <li>
-                            <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            <span>Roadmap и валидация продуктовых гипотез на рынке</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Направление 2: Backend & Infrastructure -->
-                <div class="team-role-card reveal-item">
-                    <div class="role-badge-box">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
-                            <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
-                            <line x1="6" y1="6" x2="6.01" y2="6"></line>
-                            <line x1="6" y1="18" x2="6.01" y2="18"></line>
-                        </svg>
-                        <span>Backend & Infrastructure</span>
-                    </div>
-                    <h3>Инженерия систем и спутниковая синхронизация</h3>
-                    <p class="team-role-desc">Проектирование распределенной архитектуры, протоколов сжатия телеметрии для спутниковых каналов с высокой задержкой, организация Offline-First PWA хранилищ и сквозного шифрования.</p>
-                    <ul class="competencies-list">
-                        <li>
-                            <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            <span>Low-Bandwidth Satellite Sync протоколы передачи</span>
-                        </li>
-                        <li>
-                            <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            <span>Offline-First локальная репликация данных без коллизий</span>
-                        </li>
-                        <li>
-                            <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            <span>Корпоративная безопасность и TLS 1.3 шифрование</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Направление 3: UI/UX & Analytics -->
-                <div class="team-role-card reveal-item">
-                    <div class="role-badge-box">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                            <line x1="3" y1="9" x2="21" y2="9"></line>
-                            <line x1="9" y1="21" x2="9" y2="9"></line>
-                        </svg>
-                        <span>UI/UX & Analytics</span>
-                    </div>
-                    <h3>Дизайн-система и пользовательский опыт</h3>
-                    <p class="team-role-desc">Разработка эргономичных интерфейсов высокой плотности данных (High-Density UI) в эстетике Linear и Apple Pro для работы вахтенных штурманов и береговых координаторов флота.</p>
-                    <ul class="competencies-list">
-                        <li>
-                            <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            <span>Эргономичные ночные темы для ходового мостика</span>
-                        </li>
-                        <li>
-                            <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            <span>Информационная иерархия критических судовых алертов</span>
-                        </li>
-                        <li>
-                            <svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            <span>Адаптивность под планшеты и защищенные терминалы</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 9. Интерактивный FAQ (Аккордеон для жюри) (Секция 5) -->
-    <section id="faq" class="section bg-secondary reveal">
-        <div class="container">
-            <div class="section-header">
-                <h2>Вопросы и ответы для защиты проекта</h2>
-                <p class="section-subtitle">Ключевые технические и бизнес-аспекты функционирования платформы</p>
-            </div>
-
-            <div class="faq-container">
-                <div class="faq-item active">
-                    <button class="faq-question-btn">
-                        <span>Как платформа функционирует при полном отсутствии спутниковой связи в океане?</span>
-                        <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-                    </button>
-                    <div class="faq-answer-pane">
-                        <p class="faq-answer-text">Платформа построена по принципу Offline-First. Все журналы, расчеты остойчивости и манифесты сохраняются в локальном зашифрованном IndexedDB-хранилище браузера без подключения к сети. Как только судно входит в зону действия спутникового терминала или базовой станции порта, данные автоматически синхронизируются с береговым сервером через дедуплицированную очередь транзакций.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question-btn">
-                        <span>Насколько защищены коммерческие данные судовладельца и грузовладельцев?</span>
-                        <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-                    </button>
-                    <div class="faq-answer-pane">
-                        <p class="faq-answer-text">Вся телеметрия и судовая документация шифруются по протоколу TLS 1.3 с использованием алгоритма AES-256 на стороне клиента. Доступ строго разграничен по ролевой модели (RBAC): экипаж видит только свой рейс, судовладелец управляет своим флотом, а портовые инспекторы получают доступ только к верифицированным манифестам по одноразовым защищенным токенам.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question-btn">
-                        <span>За счет чего окупается подписка $60/мес уже в первый переход судна?</span>
-                        <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-                    </button>
-                    <div class="faq-answer-pane">
-                        <p class="faq-answer-text">Один час простоя коммерческого судна у причала в ожидании портовых документов стоит от $800 до $2,500. Сокращение времени оформления судозахода с 5 часов до 12 минут окупает годовую подписку на судно уже при первой швартовке. Дополнительная экономия достигается за счет предиктивного бункеровочного аудита и устранения посреднических наценок на ЗИП.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question-btn">
-                        <span>Каковы результаты апробации проекта на базе морского колледжа?</span>
-                        <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-                    </button>
-                    <div class="faq-answer-pane">
-                        <p class="faq-answer-text">На учебных тренажерных мостиках колледжа проведено тестирование с участием 40+ курсантов и действующих штурманов. Время оформления стандартного приходного пакета документов IMO FAL сократилось в 6.8 раз по сравнению с классическими бумажными бланками, а вероятность ошибок в грузовых манифестах снизилась до нуля за счет встроенных проверок валидации.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question-btn">
-                        <span>Требуется ли установка сложного аппаратного обеспечения на борт?</span>
-                        <svg class="faq-icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-                    </button>
-                    <div class="faq-answer-pane">
-                        <p class="faq-answer-text">Нет. Платформа работает как кроссплатформенный PWA-терминал через стандартный браузер на любых существующих бортовых компьютерах, ходовых планшетах или ноутбуках штурманской рубки. Никакого вывода судна из эксплуатации или монтажа дорогостоящих серверов не требуется.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 10. Финальный баннер призыва к действию -->
-    <section class="section">
-        <div class="container">
-            <div class="cta-banner-card reveal">
-                <h2>Готовы оптимизировать операции вашего флота?</h2>
-                <p>Запустите пилотный проект на 1–3 судах за 24 часа без изменения бортовой инфраструктуры и оцените снижение простоев на реальных рейсах.</p>
-                <div class="cta-banner-actions">
-                    <button class="cta-button" data-open-modal="pilot">
-                        <span>Запросить пилотный доступ</span>
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                    </button>
-                    <a href="#calculator" class="secondary-button">
-                        <span>Открыть расчет окупаемости</span>
+                    <a href="#monetization" class="ghost-link-button">
+                        <span>Розрахувати окупність у ₴ &rarr;</span>
                     </a>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- 11. Корпоративный подвал -->
+            <!-- Інтерактивне прев'ю залу та цифрового меню (БЕЗ ЖОДНОГО ТЕГУ ТАБЛИЦІ!) -->
+            <div id="dashboard" class="hero-dashboard-container">
+                <div id="hero-dashboard" class="dashboard-window">
+                    <div class="window-header">
+                        <div class="window-controls">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                        <div class="window-title">chrome-and-bean // floor-plan &amp; pos-terminal v2.4</div>
+                        <div class="window-status">
+                            <span class="badge-dot"></span>
+                            <span>LIVE &bull; ПОСАДКА ЗАЛУ 74% &bull; МІСТО КИЇВ</span>
+                        </div>
+                    </div>
+
+                    <!-- Перемикач вкладок прев'ю -->
+                    <div class="dashboard-tabs-bar">
+                        <button class="tab-btn active" data-tab="kitchen">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path></svg>
+                            <span>Кухня &amp; Гастрономія</span>
+                        </button>
+                        <button class="tab-btn" data-tab="bar">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2h8"></path><path d="M9 2v4a3 3 0 0 0 6 0V2"></path><line x1="12" y1="9" x2="12" y2="22"></line><line x1="8" y1="22" x2="16" y2="22"></line></svg>
+                            <span>Specialty Бар &amp; Кава</span>
+                        </button>
+                        <button class="tab-btn" data-tab="hall">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                            <span>Зонування Залу &amp; Столи</span>
+                        </button>
+                    </div>
+
+                    <!-- Стрічка метрик точки -->
+                    <div class="dashboard-metrics-strip">
+                        <div class="strip-item">
+                            <span class="strip-label">Посадкових місць</span>
+                            <span class="strip-value tabular-numbers">64</span>
+                            <span class="strip-trend">4 автономні зони залу</span>
+                        </div>
+                        <div class="strip-item">
+                            <span class="strip-label">Середня видача</span>
+                            <span class="strip-value tabular-numbers">6 хв</span>
+                            <span class="strip-trend">Розділені станції Kitchen / To-Go</span>
+                        </div>
+                        <div class="strip-item">
+                            <span class="strip-label">Оцінка гостей</span>
+                            <span class="strip-value tabular-numbers">4.9 ★</span>
+                            <span class="strip-trend">96% постійних резидентів</span>
+                        </div>
+                        <div class="strip-item">
+                            <span class="strip-label">Матеріали лофту</span>
+                            <span class="strip-value">AISI 304 Steel</span>
+                            <span class="strip-trend">Шліфована сталь, бетон, дуб</span>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-content-viewport">
+                        <!-- Вкладка 1: Кухня (Карточний список) -->
+                        <div id="panel-kitchen" class="tab-panel active">
+                            <div class="dash-grid-2col">
+                                <div class="panel-card">
+                                    <div class="panel-card-header">
+                                        <span class="panel-tag">Фірмові позиції кухні</span>
+                                        <h4>Шеф-меню з точною вагою та ціною в ₴</h4>
+                                    </div>
+                                    <div class="responsive-card-list">
+                                        <div class="list-item-card">
+                                            <div class="item-card-main">
+                                                <div class="item-title-row">
+                                                    <h5>Бріош з пастрамі та трюфельним айолі</h5>
+                                                    <span class="item-price tabular-numbers">320 ₴</span>
+                                                </div>
+                                                <p class="item-desc">Яловичина 14 днів сухої витримки, домашня вершкова бріош, мікрогрін, огірки кімчі</p>
+                                                <div class="item-meta-row">
+                                                    <span class="meta-spec">290 г &bull; 580 ккал</span>
+                                                    <span class="badge-status status-good">Подача: 7 хв</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="list-item-card">
+                                            <div class="item-card-main">
+                                                <div class="item-title-row">
+                                                    <h5>Авокадо-тост на ремісничому тартині</h5>
+                                                    <span class="item-price tabular-numbers">260 ₴</span>
+                                                </div>
+                                                <p class="item-desc">Стиглий авокадо Хасс, яйце пашот, козиний сир, насіння льону та чіа, пластівці чилі</p>
+                                                <div class="item-meta-row">
+                                                    <span class="meta-spec">250 г &bull; 440 ккал</span>
+                                                    <span class="badge-status status-good">Подача: 5 хв</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="list-item-card">
+                                            <div class="item-card-main">
+                                                <div class="item-title-row">
+                                                    <h5>Слабосолоний лосось з хрустким рості</h5>
+                                                    <span class="item-price tabular-numbers">380 ₴</span>
+                                                </div>
+                                                <p class="item-desc">Філе лосося су-від, картопляний золотавий рості, вершковий мус з хроном, каперси</p>
+                                                <div class="item-meta-row">
+                                                    <span class="meta-spec">310 г &bull; 510 ккал</span>
+                                                    <span class="badge-status status-good">Подача: 8 хв</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="list-item-card">
+                                            <div class="item-card-main">
+                                                <div class="item-title-row">
+                                                    <h5>Сирники з фермерського сиру з маскарпоне</h5>
+                                                    <span class="item-price tabular-numbers">220 ₴</span>
+                                                </div>
+                                                <p class="item-desc">0% білого борошна в тісті, конфітюр з дикої чорниці, соус маскарпоне з ваніллю бурбон</p>
+                                                <div class="item-meta-row">
+                                                    <span class="meta-spec">220 г &bull; 390 ккал</span>
+                                                    <span class="badge-status status-good">Подача: 6 хв</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel-card">
+                                    <div class="panel-card-header">
+                                        <span class="panel-tag">Ергономіка цеху</span>
+                                        <h4>Стандарти шеф-станції CHROME &amp; BEAN</h4>
+                                    </div>
+                                    <div class="panel-stat-rows">
+                                        <div class="stat-row">
+                                            <div class="stat-row-label">
+                                                <span>Mise en place готовність інгредієнтів</span>
+                                                <span class="stat-row-val tabular-numbers">100% заготовка</span>
+                                            </div>
+                                            <div class="stat-bar-track"><div class="stat-bar-fill" style="width: 100%;"></div></div>
+                                        </div>
+                                        <div class="stat-row">
+                                            <div class="stat-row-label">
+                                                <span>Сертифікація безпеки НАССР</span>
+                                                <span class="stat-row-val tabular-numbers">Клас A+</span>
+                                            </div>
+                                            <div class="stat-bar-track"><div class="stat-bar-fill" style="width: 98%;"></div></div>
+                                        </div>
+                                        <div class="stat-row">
+                                            <div class="stat-row-label">
+                                                <span>Локальні фермерські продукти України</span>
+                                                <span class="stat-row-val tabular-numbers">92% постачань</span>
+                                            </div>
+                                            <div class="stat-bar-track"><div class="stat-bar-fill" style="width: 92%;"></div></div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-note-box">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                                        <p>Роздільні станції гарячого цеху та холодної видачі To-Go забезпечують рекордну швидкість: кава видається гостю за 85 секунд, гаряча страва — за 6 хвилин.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Вкладка 2: Specialty Бар (Карточний список) -->
+                        <div id="panel-bar" class="tab-panel">
+                            <div class="dash-grid-2col">
+                                <div class="panel-card">
+                                    <div class="panel-card-header">
+                                        <span class="panel-tag">Specialty Coffee</span>
+                                        <h4>Кавова карта мікролотів 85+ SCA</h4>
+                                    </div>
+                                    <div class="responsive-card-list">
+                                        <div class="list-item-card">
+                                            <div class="item-card-main">
+                                                <div class="item-title-row">
+                                                    <h5>Фільтр-кава Single Origin Batch Brew</h5>
+                                                    <span class="item-price tabular-numbers">95 ₴</span>
+                                                </div>
+                                                <p class="item-desc">Ефіопія Іргачеффе митої обробки. Ноти: білий персик, жасмин, бергамот, цитрус</p>
+                                                <div class="item-meta-row">
+                                                    <span class="meta-spec">300 мл &bull; Екстракція 93°C</span>
+                                                    <span class="badge-status status-good">У Coffee Pass</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="list-item-card">
+                                            <div class="item-card-main">
+                                                <div class="item-title-row">
+                                                    <h5>Флет Уайт на вівсяному / цільному молоці</h5>
+                                                    <span class="item-price tabular-numbers">125 ₴</span>
+                                                </div>
+                                                <p class="item-desc">Кенія Нієрі натуральної обробки. Подвійний допіо, солодкий ягідний профіль</p>
+                                                <div class="item-meta-row">
+                                                    <span class="meta-spec">220 мл &bull; Молоко без лактози</span>
+                                                    <span class="badge-status status-good">У Milk Pro Pass</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="list-item-card">
+                                            <div class="item-card-main">
+                                                <div class="item-title-row">
+                                                    <h5>Холодний Nitro Titanium Cold Brew</h5>
+                                                    <span class="item-price tabular-numbers">145 ₴</span>
+                                                </div>
+                                                <p class="item-desc">Колумбія анаеробної ферментації 18 годин. Густа оксамитова азотна пінка</p>
+                                                <div class="item-meta-row">
+                                                    <span class="meta-spec">250 мл &bull; Подача 4°C</span>
+                                                    <span class="badge-status status-good">Сезонний хіт</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="list-item-card">
+                                            <div class="item-card-main">
+                                                <div class="item-title-row">
+                                                    <h5>Церемоніальна Матча-лате (Уджі, Японія)</h5>
+                                                    <span class="item-price tabular-numbers">150 ₴</span>
+                                                </div>
+                                                <p class="item-desc">Органічна матча весняного першого збору, кокосове або мигдальне молоко, без цукру</p>
+                                                <div class="item-meta-row">
+                                                    <span class="meta-spec">250 мл &bull; Багата L-теаніном</span>
+                                                    <span class="badge-status status-good">У Milk Pro Pass</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel-card">
+                                    <div class="panel-card-header">
+                                        <span class="panel-tag">Обладнання</span>
+                                        <h4>Інженерний рівень бару</h4>
+                                    </div>
+                                    <div class="panel-stat-rows">
+                                        <div class="stat-row">
+                                            <div class="stat-row-label">
+                                                <span>Еспресо-машина Slayer Espresso Custom</span>
+                                                <span class="stat-row-val tabular-numbers">3-групова</span>
+                                            </div>
+                                            <div class="stat-bar-track"><div class="stat-bar-fill" style="width: 100%;"></div></div>
+                                        </div>
+                                        <div class="stat-row">
+                                            <div class="stat-row-label">
+                                                <span>Кавомолки Mahlkönig EK43 &amp; E65S GbW</span>
+                                                <span class="stat-row-val tabular-numbers">Точність 0.1 г</span>
+                                            </div>
+                                            <div class="stat-bar-track"><div class="stat-bar-fill" style="width: 96%;"></div></div>
+                                        </div>
+                                        <div class="stat-row">
+                                            <div class="stat-row-label">
+                                                <span>Водопідготовка зворотного осмосу BWT</span>
+                                                <span class="stat-row-val tabular-numbers">115 ppm мінерал.</span>
+                                            </div>
+                                            <div class="stat-bar-track"><div class="stat-bar-fill" style="width: 95%;"></div></div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-note-box">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                                        <p>Прямий імпорт Direct Trade з найкращих ферм Ефіопії та Колумбії. Свіжа обсмажка локальними українськими ростеріями під профіль закладу.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Вкладка 3: Зонування та Столи онлайн (Карточний список) -->
+                        <div id="panel-hall" class="tab-panel">
+                            <div class="dash-grid-2col">
+                                <div class="panel-card">
+                                    <div class="panel-card-header">
+                                        <span class="panel-tag">План простору</span>
+                                        <h4>Зони залу та онлайн-статус столів</h4>
+                                    </div>
+                                    <div class="responsive-card-list">
+                                        <div class="list-item-card">
+                                            <div class="item-card-main">
+                                                <div class="item-title-row">
+                                                    <h5>Зона біля панорамних вітринних вікон</h5>
+                                                    <span class="badge-status status-good">Вільно 3 столи</span>
+                                                </div>
+                                                <p class="item-desc">Природне денне світло, високі сталеві барні стільці, прямий вид на вулицю</p>
+                                                <div class="item-meta-row">
+                                                    <span class="meta-spec">18 місць &bull; 9 столів</span>
+                                                    <span class="meta-spec">Порти 100W USB-C у кожному місці</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="list-item-card">
+                                            <div class="item-card-main">
+                                                <div class="item-title-row">
+                                                    <h5>Тихий коворкінг з розетками</h5>
+                                                    <span class="badge-status status-warning">Залишилось 2 місця</span>
+                                                </div>
+                                                <p class="item-desc">Масив темного мореного дуба, акустичні шумопоглинаючі панелі, анатомічні крісла</p>
+                                                <div class="item-meta-row">
+                                                    <span class="meta-spec">16 місць &bull; 4 спільні столи</span>
+                                                    <span class="meta-spec">220V + 1 Gbps Wi-Fi на генераторі</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="list-item-card">
+                                            <div class="item-card-main">
+                                                <div class="item-title-row">
+                                                    <h5>Лаунж-зона з низькими диванами</h5>
+                                                    <span class="badge-status status-good">Вільна 1 група</span>
+                                                </div>
+                                                <p class="item-desc">М'яка графітова замша, низькі столики з мікроцементу, тепле акцентне світло 2400K</p>
+                                                <div class="item-meta-row">
+                                                    <span class="meta-spec">20 місць &bull; 5 диванних груп</span>
+                                                    <span class="meta-spec">Ідеально для вечірніх гастро-сетів</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="list-item-card">
+                                            <div class="item-card-main">
+                                                <div class="item-title-row">
+                                                    <h5>Цілорічна тераса з обігрівом</h5>
+                                                    <span class="badge-status status-good">Вільно 4 столи</span>
+                                                </div>
+                                                <p class="item-desc">Інфрачервоне кліматичне тепло, пледи з вовни, живі хвойні рослини, захист від вітру</p>
+                                                <div class="item-meta-row">
+                                                    <span class="meta-spec">10 місць &bull; 5 столів</span>
+                                                    <span class="meta-spec">100% Dog-Friendly зона</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel-card">
+                                    <div class="panel-card-header">
+                                        <span class="panel-tag">Smart Hall</span>
+                                        <h4>Ефективність простору та енергонезалежність</h4>
+                                    </div>
+                                    <div class="panel-stat-rows">
+                                        <div class="stat-row">
+                                            <div class="stat-row-label">
+                                                <span>Оборотність обіднього столу</span>
+                                                <span class="stat-row-val tabular-numbers">44 хв / чек</span>
+                                            </div>
+                                            <div class="stat-bar-track"><div class="stat-bar-fill" style="width: 88%;"></div></div>
+                                        </div>
+                                        <div class="stat-row">
+                                            <div class="stat-row-label">
+                                                <span>Повна енергонезалежність (генератор + Starlink)</span>
+                                                <span class="stat-row-val tabular-numbers">100% автономія</span>
+                                            </div>
+                                            <div class="stat-bar-track"><div class="stat-bar-fill" style="width: 100%;"></div></div>
+                                        </div>
+                                        <div class="stat-row">
+                                            <div class="stat-row-label">
+                                                <span>Швидкість QR-оплати Monobank / Apple Pay</span>
+                                                <span class="stat-row-val tabular-numbers">&lt; 15 сек</span>
+                                            </div>
+                                            <div class="stat-bar-track"><div class="stat-bar-fill" style="width: 95%;"></div></div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-note-box">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                                        <p>Заклад повністю обладнаний дизельним генератором 45 кВт і резервним каналом Starlink, гарантуючи безперервну роботу кави, кухні та інтернету в будь-яких умовах.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- 3. Стрічка архітектурних стандартів лофту -->
+        <section class="compliance-bar-section">
+            <div class="container">
+                <div class="compliance-grid">
+                    <div class="compliance-item">
+                        <span class="compliance-icon">&bull;</span>
+                        <span class="compliance-title">Сталь AISI 304</span>
+                        <span class="compliance-desc">Лазерне матове сатинування</span>
+                    </div>
+                    <div class="compliance-item">
+                        <span class="compliance-icon">&bull;</span>
+                        <span class="compliance-title">Зерно 85+ SCA</span>
+                        <span class="compliance-desc">Direct Trade імпорт з Ефіопії</span>
+                    </div>
+                    <div class="compliance-item">
+                        <span class="compliance-icon">&bull;</span>
+                        <span class="compliance-title">Акустика ISO 3382</span>
+                        <span class="compliance-desc">Шумопоглинаюча стеля лофту</span>
+                    </div>
+                    <div class="compliance-item">
+                        <span class="compliance-icon">&bull;</span>
+                        <span class="compliance-title">Світло CRI &gt; 95 (2700K)</span>
+                        <span class="compliance-desc">Ідеальна фотогенічність страв</span>
+                    </div>
+                    <div class="compliance-item">
+                        <span class="compliance-icon">&bull;</span>
+                        <span class="compliance-title">Оплата в 1 клік</span>
+                        <span class="compliance-desc">Monobank QR &amp; Apple Pay</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. План оформлення та концепція: Bento Grid із 7 карток (01–07) -->
+        <section id="features" class="section reveal">
+            <div class="container">
+                <div class="section-header">
+                    <h2>План оформлення та концепція простору</h2>
+                    <p class="section-subtitle">Покроковий дизайн-проект і технічні рішення індустріального гастро-лофту CHROME &amp; BEAN</p>
+                </div>
+
+                <div class="bento-grid">
+                    <!-- Картка 01 -->
+                    <div class="card reveal-item">
+                        <span class="card-tag">Крок 01 &bull; Архітектура</span>
+                        <h3>Матеріали: сталь, мікроцемент і дуб</h3>
+                        <p>Чесність матеріалів у кожній деталі: матова шліфована сталь AISI 304, архітектурний монолітний мікроцемент графітових відтінків, масив темного термодуба та загартоване тоноване скло.</p>
+                        <div class="card-metric">
+                            <span class="status-dot"></span>
+                            <span>Зносостійкість понад 10 років без втрати преміального вигляду</span>
+                        </div>
+                    </div>
+
+                    <!-- Картка 02 -->
+                    <div class="card reveal-item">
+                        <span class="card-tag">Крок 02 &bull; Логістика</span>
+                        <h3>Розділення потоків To-Go і залу</h3>
+                        <p>Окрема швидкісна лінія для гостей на винос (вхід &rarr; безконтактне замовлення &rarr; видача кави за 85 секунд). Черга за ранковою кавою взагалі не перетинається із затишними столиками залу.</p>
+                        <div class="card-metric">
+                            <span class="status-dot"></span>
+                            <span>Нуль скупчень на вході у пікові ранкові години</span>
+                        </div>
+                    </div>
+
+                    <!-- Картка 03 -->
+                    <div class="card reveal-item">
+                        <span class="card-tag">Крок 03 &bull; Світло &amp; Звук</span>
+                        <h3>Теплий акцент 2700K та акустика</h3>
+                        <p>Спрямоване світло 2700K з індексом передачі кольору CRI &gt; 95 розташоване суворо над поверхнею кожного столу. Акустичні перфоровані панелі гасять відлуння і гул.</p>
+                        <div class="card-metric">
+                            <span class="status-dot"></span>
+                            <span>Ідеальний звук для розмов навіть при 100% завантаженні</span>
+                        </div>
+                    </div>
+
+                    <!-- Картка 04 (Широка span-2) -->
+                    <div class="card span-2 reveal-item">
+                        <div class="card-content-side">
+                            <span class="card-tag">Крок 04 &bull; Серце лофту</span>
+                            <h3>8-метрова відкрита барна станція без швів</h3>
+                            <p>Монументальна безшовна стійка з лазерною обробкою кромки. Відкритий процес налаштування екстракції на Slayer Espresso та збирання фірмових тостів і бріошей перетворюється на гастрономічний перформанс для гостей за контактним баром.</p>
+                            <div class="card-metric">
+                                <span class="status-dot"></span>
+                                <span>Ергономіка робочого трикутника бариста за стандартом World Barista Championship</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Картка 05 -->
+                    <div class="card reveal-item">
+                        <span class="card-tag">Крок 05 &bull; Екологія</span>
+                        <h3>Еко-пакування та мерч</h3>
+                        <p>Біорозкладні термосклянки з бамбукового волокна без пластикових кришок, фірмові титанові термокружки CHROME &amp; BEAN, а також свіжообсмажене зерно в металізованих крафт-пакетах із дегазаційним клапаном.</p>
+                        <div class="card-metric">
+                            <span class="status-dot"></span>
+                            <span>Додатковий виторг роздрібного мерчу: до 15% до чека</span>
+                        </div>
+                    </div>
+
+                    <!-- Картка 06 (Широка span-2) -->
+                    <div class="card span-2 reveal-item">
+                        <div class="card-content-side">
+                            <span class="card-tag">Крок 06 &bull; Цифровий сервіс</span>
+                            <h3>QR-замовлення зі столика та оплата Monobank</h3>
+                            <p>Гравійовані сталеві NFC / QR-пластини на столах. Гість відкриває меню, бачить залишок чашок по своєму Coffee Pass, замовляє страву та сплачує в один дотик через Monobank або Apple Pay без очікування офіціанта з терміналом.</p>
+                            <div class="card-metric">
+                                <span class="status-dot"></span>
+                                <span>Скорочення очікування розрахунку з 12 хвилин до нуля</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Картка 07 -->
+                    <div class="card reveal-item">
+                        <span class="card-tag">Крок 07 &bull; Вхідна група</span>
+                        <h3>Фасад, панорама та зона очікування</h3>
+                        <p>6-метрове скління від підлоги до стелі, мінімалістична сталева вивіска з контражурною підсвіткою та монолітна лава з бетону з підігрівом для очікування кави на свіжому повітрі.</p>
+                        <div class="card-metric">
+                            <span class="status-dot"></span>
+                            <span>Висока органічна конверсія перехожих у постійних гостей</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Секція Порівняння: Звичайний заклад vs CHROME & BEAN (БЕЗ ТЕГІВ ТАБЛИЦІ!) -->
+        <section id="comparison" class="section bg-secondary reveal" style="overflow: visible !important; touch-action: pan-y !important;">
+            <div class="container" style="overflow: visible !important;">
+                <div class="section-header">
+                    <h2>Порівняння підходів: Звичайна кав'ярня vs CHROME &amp; BEAN</h2>
+                    <p class="section-subtitle">Чому технологічний лофт генерує на 45% вищий прибуток завдяки цифровізації та підписці</p>
+                </div>
+
+                <div class="bento-grid comparison-cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.25rem; overflow: visible !important;">
+                    <div class="card reveal-item" style="padding: 1.5rem; touch-action: pan-y !important;">
+                        <span class="card-tag">Критерій 01</span>
+                        <h3 style="font-size: 1.15rem; margin-bottom: 0.75rem;">Час очікування замовлення</h3>
+                        <p style="font-size: 0.88rem; color: #71717a; margin-bottom: 0.6rem;">&bull; Звичайний заклад: 25–40 хвилин, затримки через спільну чергу кави та їжі</p>
+                        <p style="font-size: 0.92rem; color: #f4f4f5; font-weight: 600;">&check; CHROME &amp; BEAN: 6–8 хв кухня, 85 сек кава (окремі лінії та екран KDS)</p>
+                    </div>
+
+                    <div class="card reveal-item" style="padding: 1.5rem; touch-action: pan-y !important;">
+                        <span class="card-tag">Критерій 02</span>
+                        <h3 style="font-size: 1.15rem; margin-bottom: 0.75rem;">Інтер'єр і комфорт гостей</h3>
+                        <p style="font-size: 0.88rem; color: #71717a; margin-bottom: 0.6rem;">&bull; Звичайний заклад: Найдешевший ламінат, тісні столи, шум і дефіцит розеток</p>
+                        <p style="font-size: 0.92rem; color: #f4f4f5; font-weight: 600;">&check; CHROME &amp; BEAN: Архітектурний лофт зі сталі та дуба, акустика, 100W USB-C</p>
+                    </div>
+
+                    <div class="card reveal-item" style="padding: 1.5rem; touch-action: pan-y !important;">
+                        <span class="card-tag">Критерій 03</span>
+                        <h3 style="font-size: 1.15rem; margin-bottom: 0.75rem;">Якість зерна та інгредієнтів</h3>
+                        <p style="font-size: 0.88rem; color: #71717a; margin-bottom: 0.6rem;">&bull; Звичайний заклад: Комерційна робуста темного обсмаження, заморожені напівфабрикати</p>
+                        <p style="font-size: 0.92rem; color: #f4f4f5; font-weight: 600;">&check; CHROME &amp; BEAN: 100% Specialty Арабіка 85+, фермерські локальні продукти</p>
+                    </div>
+
+                    <div class="card reveal-item" style="padding: 1.5rem; touch-action: pan-y !important;">
+                        <span class="card-tag">Критерій 04</span>
+                        <h3 style="font-size: 1.15rem; margin-bottom: 0.75rem;">Програма лояльності</h3>
+                        <p style="font-size: 0.88rem; color: #71717a; margin-bottom: 0.6rem;">&bull; Звичайний заклад: Паперові штамп-карти, які губляться, або знижка 3%</p>
+                        <p style="font-size: 0.92rem; color: #f4f4f5; font-weight: 600;">&check; CHROME &amp; BEAN: Прибутковий Coffee Pass у Apple Wallet + кешбек у додатку</p>
+                    </div>
+
+                    <div class="card reveal-item" style="padding: 1.5rem; touch-action: pan-y !important;">
+                        <span class="card-tag">Критерій 05</span>
+                        <h3 style="font-size: 1.15rem; margin-bottom: 0.75rem;">Швидкість розрахунку</h3>
+                        <p style="font-size: 0.88rem; color: #71717a; margin-bottom: 0.6rem;">&bull; Звичайний заклад: «Принесіть рахунок», очікування офіціанта 10–15 хвилин</p>
+                        <p style="font-size: 0.92rem; color: #f4f4f5; font-weight: 600;">&check; CHROME &amp; BEAN: Миттєвий Monobank QR на столі — оплата та чайові за 10 сек</p>
+                    </div>
+
+                    <div class="card reveal-item" style="padding: 1.5rem; touch-action: pan-y !important;">
+                        <span class="card-tag">Критерій 06</span>
+                        <h3 style="font-size: 1.15rem; margin-bottom: 0.75rem;">Економіка та середній чек</h3>
+                        <p style="font-size: 0.88rem; color: #71717a; margin-bottom: 0.6rem;">&bull; Звичайний заклад: Чек 110 ₴, простий столів з одним еспресо, висока плинність</p>
+                        <p style="font-size: 0.92rem; color: #f4f4f5; font-weight: 600;">&check; CHROME &amp; BEAN: Чек 220 ₴, стабільний MRR від підписок і маржа точки 32%</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Бізнес-модель, ROI Калькулятор у гривнях (₴) та SVG-графік -->
+        <section id="monetization" class="section reveal">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Бізнес-модель та Фінансовий калькулятор точки</h2>
+                    <p class="section-subtitle">Прозорий розрахунок окупності кав'ярні-бару в гривнях (₴) при реалістичній маржинальності 32%</p>
+                </div>
+
+                <!-- 3 Карточки монетизації -->
+                <div class="grid">
+                    <div class="card step-card reveal-item">
+                        <div class="step-number">₴1</div>
+                        <span class="card-tag">Посадка в залі</span>
+                        <h3>Dine-in Гастрономія</h3>
+                        <p>Сніданки весь день, бізнес-ланчі та вечірнє барне меню. Середній чек 220–350 ₴ при комфортному часі перебування 40–50 хвилин і швидкому замовленні через QR.</p>
+                        <div class="card-metric">
+                            <span class="status-dot"></span>
+                            <span>Food Cost кухні суворо нижче 28%</span>
+                        </div>
+                    </div>
+
+                    <div class="card step-card reveal-item">
+                        <div class="step-number">₴2</div>
+                        <span class="card-tag">Швидкісний To-Go</span>
+                        <h3>Навинос &amp; Доставка</h3>
+                        <p>Ранковий трафік мешканців та працівників бізнес-кварталу. Середній чек 160 ₴ при мінімальних витратах часу бариста та собівартості чашки кави 18–26 ₴.</p>
+                        <div class="card-metric">
+                            <span class="status-dot"></span>
+                            <span>Маржинальність напоїв To-Go становить 76%</span>
+                        </div>
+                    </div>
+
+                    <div class="card step-card reveal-item">
+                        <div class="step-number">₴3</div>
+                        <span class="card-tag">Регулярна підписка</span>
+                        <h3>Coffee Pass Модель</h3>
+                        <p>Щомісячний гарантований дохід від підписок (790 ₴ та 1 190 ₴/міс), який повністю покриває оренду та комунальні послуги ще до відкриття дверей закладу.</p>
+                        <div class="card-metric">
+                            <span class="status-dot"></span>
+                            <span>Передбачуваний MRR без сезонних спадів</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Інтерактивний калькулятор окупності в гривнях -->
+                <div id="calculator" class="calc-container reveal-item">
+                    <div class="calc-header">
+                        <div>
+                            <span class="calc-tag">Інвестиційна модель точки (Київ)</span>
+                            <h3>Калькулятор виторгу та чистого прибутку закладу</h3>
+                            <p class="calc-sub">Налаштуйте щоденний потік гостей у залі та кількість активних підписників Coffee Pass для розрахунку річного прибутку.</p>
+                        </div>
+                        <div class="calc-presets">
+                            <span class="presets-label">Сценарії:</span>
+                            <button class="preset-btn" data-preset="mvp">Камерний старт</button>
+                            <button class="preset-btn active" data-preset="growth">Стабільний потік</button>
+                            <button class="preset-btn" data-preset="leader">Флагманський хаб</button>
+                        </div>
+                    </div>
+
+                    <div class="calc-grid">
+                        <div class="calc-controls">
+                            <!-- Повзунок 1: Гості в залі -->
+                            <div class="calc-slider-box">
+                                <div class="slider-meta">
+                                    <label for="range-b2c">Гостей у залі на день (середній чек 220 ₴):</label>
+                                    <span id="val-b2c" class="slider-value tabular-numbers">160 осіб</span>
+                                </div>
+                                <input type="range" id="range-b2c" min="30" max="350" step="5" value="160">
+                                <div class="slider-bounds">
+                                    <span>30 гостей</span>
+                                    <span>350 гостей/день</span>
+                                </div>
+                            </div>
+
+                            <!-- Повзунок 2: Підписники Coffee Pass -->
+                            <div class="calc-slider-box">
+                                <div class="slider-meta">
+                                    <label for="range-b2b">Активних підписників Coffee Pass (сер. чек 950 ₴/міс):</label>
+                                    <span id="val-b2b" class="slider-value tabular-numbers">180 підписок</span>
+                                </div>
+                                <input type="range" id="range-b2b" min="20" max="500" step="5" value="180">
+                                <div class="slider-bounds">
+                                    <span>20 підписників</span>
+                                    <span>500 підписок/міс</span>
+                                </div>
+                            </div>
+
+                            <div class="revenue-split-box">
+                                <div class="split-labels">
+                                    <span id="pct-b2c">Зал: 86%</span>
+                                    <span id="pct-b2b">Coffee Pass: 14%</span>
+                                </div>
+                                <div class="split-bar-track">
+                                    <div id="bar-b2c" class="split-bar-fill-b2c" style="width: 86%;"></div>
+                                    <div id="bar-b2b" class="split-bar-fill-b2b" style="width: 14%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Результати розрахунку -->
+                        <div class="calc-results-panel">
+                            <div class="result-item">
+                                <span class="result-label">Виторг на місяць (MRR):</span>
+                                <span id="out-mrr" class="result-val tabular-numbers">1 227 000 ₴</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Річний оборот закладу (ARR):</span>
+                                <span id="out-arr" class="result-val highlight-val tabular-numbers">14 724 000 ₴</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Чистий прибуток точки / рік (32% маржа):</span>
+                                <span id="out-profit" class="result-val profit-val tabular-numbers">4 711 680 ₴</span>
+                            </div>
+                            <div class="calc-note">
+                                <span class="status-dot"></span>
+                                <span>Повна окупність інвестицій відкриття: 12–14 місяців</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SVG-графік динаміки виторгу по кварталах -->
+                    <div id="chart-wrapper" class="chart-wrapper">
+                        <div class="chart-header-meta">
+                            <span class="chart-title">Прогноз зростання виторгу точки за кварталами (Q1 &ndash; Q4)</span>
+                            <span class="chart-badge">Валюта розрахунку: Гривня (₴)</span>
+                        </div>
+
+                        <div class="svg-chart-container">
+                            <svg class="svg-chart" viewBox="0 0 800 220" preserveAspectRatio="none">
+                                <defs>
+                                    <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.25"/>
+                                        <stop offset="100%" stop-color="#ffffff" stop-opacity="0.0"/>
+                                    </linearGradient>
+                                </defs>
+                                <line x1="50" y1="35" x2="750" y2="35" class="chart-grid-line" />
+                                <line x1="50" y1="80" x2="750" y2="80" class="chart-grid-line" />
+                                <line x1="50" y1="125" x2="750" y2="125" class="chart-grid-line" />
+                                <line x1="50" y1="170" x2="750" y2="170" class="chart-grid-line" />
+
+                                <text x="50" y="205" class="chart-axis-text">Q1 Запуск &amp; Тест</text>
+                                <text x="260" y="205" class="chart-axis-text">Q2 Літня тераса</text>
+                                <text x="470" y="205" class="chart-axis-text">Q3 Масштабування Pass</text>
+                                <text x="680" y="205" class="chart-axis-text">Q4 Піковий сезон</text>
+
+                                <path id="chart-area" class="chart-area" d="" fill="url(#chartGradient)"></path>
+                                <path id="chart-line" class="chart-line" d=""></path>
+
+                                <circle class="chart-point" cx="100" cy="165" r="5" data-quarter="Q1" data-val="2 208 600 ₴"></circle>
+                                <circle class="chart-point" cx="300" cy="135" r="5" data-quarter="Q2" data-val="5 595 120 ₴"></circle>
+                                <circle class="chart-point" cx="500" cy="98" r="5" data-quarter="Q3" data-val="10 012 320 ₴"></circle>
+                                <circle class="chart-point" cx="700" cy="45" r="5" data-quarter="Q4" data-val="14 724 000 ₴"></circle>
+                            </svg>
+                            <div id="chart-tooltip" class="chart-tooltip"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Прибуткова економіка підписки Coffee Pass (#pricing) -->
+        <section id="pricing" class="section bg-secondary reveal">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Продумана економіка підписки «Coffee Pass»</h2>
+                    <p class="section-subtitle">Жодного збиткового «безліміту»: математично вивірені тарифи з гарантованою чистою маржею для кав'ярні</p>
+                </div>
+
+                <!-- 3 Прибуткові тарифи -->
+                <div class="pricing-grid">
+                    <!-- Тариф 1: Free -->
+                    <div class="pricing-card reveal-item">
+                        <span class="pricing-badge">Старт</span>
+                        <h3>Guest Free</h3>
+                        <div class="price">
+                            <span class="price-currency">₴</span>
+                            <span class="price-val tabular-numbers">0</span>
+                            <span class="price-period">/ назавжди</span>
+                        </div>
+                        <p class="pricing-desc">Цифрова карта гостя в Apple Wallet для знайомства з лофтом.</p>
+                        <ul class="pricing-features">
+                            <li><span>&check;</span> 5% кешбеку бонусами на наступні візити</li>
+                            <li><span>&check;</span> Онлайн-предзамовлення To-Go без черги</li>
+                            <li><span>&check;</span> Бронювання столів у залі за 1 хвилину</li>
+                            <li><span>&check;</span> Доступ до гостьового Wi-Fi Starlink</li>
+                        </ul>
+                        <div class="tier-margin-callout">
+                            <span>Залучення гостя з CAC &approx; 0 ₴</span>
+                        </div>
+                        <button class="pricing-cta" data-action="demo-free">Отримати карту гостя</button>
+                    </div>
+
+                    <!-- Тариф 2: Smart Pass (ХІТ) -->
+                    <div class="pricing-card pricing-card-featured reveal-item">
+                        <div class="featured-ribbon">ХІТ ПРОДАЖІВ &bull; ТОП МАРЖА</div>
+                        <span class="pricing-badge">Основний вибір</span>
+                        <h3>Smart Coffee Pass</h3>
+                        <div class="price">
+                            <span class="price-currency">₴</span>
+                            <span class="price-val tabular-numbers">790</span>
+                            <span class="price-period">/ на місяць</span>
+                        </div>
+                        <p class="pricing-desc">15 чашок класичної кави + постійна знижка 15% на всю кухню.</p>
+                        <ul class="pricing-features">
+                            <li><span>&check;</span> <strong>15 чашок кави</strong> (фільтр Batch Brew, еспресо, американо)</li>
+                            <li><span>&check;</span> <strong>Знижка 15%</strong> на всі сніданки, боули та десерти</li>
+                            <li><span>&check;</span> Пріоритетне посадкове місце у зоні коворкінгу</li>
+                            <li><span>&check;</span> Цифрова картка з QR-кодом для списання чашок</li>
+                        </ul>
+                        <div class="tier-margin-callout tier-margin-positive">
+                            <strong>Собівартість кави: 270 ₴</strong> (18 ₴/чашка)<br>
+                            &rarr; <strong>Чиста маржа точки: 520 ₴ (66%)</strong> + допродажі їжі
+                        </div>
+                        <button class="pricing-cta pricing-cta-primary" data-action="demo-subscribe" data-plan-id="smart">Активувати Smart Pass</button>
+                    </div>
+
+                    <!-- Тариф 3: Milk & Barista Pro -->
+                    <div class="pricing-card reveal-item">
+                        <span class="pricing-badge">Преміум</span>
+                        <h3>Milk &amp; Barista Pro</h3>
+                        <div class="price">
+                            <span class="price-currency">₴</span>
+                            <span class="price-val tabular-numbers">1 190</span>
+                            <span class="price-period">/ на місяць</span>
+                        </div>
+                        <p class="pricing-desc">20 молочних і авторських напоїв + знижка 20% на все меню кухні.</p>
+                        <ul class="pricing-features">
+                            <li><span>&check;</span> <strong>20 преміальних напоїв</strong> (капучино, лате, флет уайт, матча)</li>
+                            <li><span>&check;</span> Безкоштовне рослинне молоко (вівсяне/кокосове) та сиропи</li>
+                            <li><span>&check;</span> <strong>Знижка 20%</strong> на все меню кухні та гастро-сети</li>
+                            <li><span>&check;</span> Запрошення на закриті щомісячні каппінги мікролотів</li>
+                        </ul>
+                        <div class="tier-margin-callout tier-margin-positive">
+                            <strong>Собівартість: 560 ₴</strong> (28 ₴/напій)<br>
+                            &rarr; <strong>Чиста маржа точки: 630 ₴</strong> + візити зростають у 3.2 рази
+                        </div>
+                        <button class="pricing-cta" data-action="demo-subscribe" data-plan-id="milk">Активувати Milk Pro</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. ДЕМО-СТЕНД: Активація підписки & Жива База Даних CafeDB (#demo-db) -->
+        <section id="demo-db" class="section reveal">
+            <div class="container">
+                <div class="section-header">
+                    <div class="demo-tag-top">ДЛЯ ДЕМОНСТРАЦІЇ ЖУРІ ХАКАТОНУ</div>
+                    <h2>Демо-стенд: Активація підписки &amp; Жива База Даних POS</h2>
+                    <p class="section-subtitle">Спробуйте активувати картку Coffee Pass, списати чашку кави на касі бариста та подивіться, як миттєво оновлюється клієнтська база у localStorage</p>
+                </div>
+
+                <div class="demo-grid-layout">
+                    <!-- Ліва частина: Інтерактивне демо активації картки -->
+                    <div class="demo-card-box">
+                        <div class="demo-box-header">
+                            <span class="card-tag">Термінал гостя</span>
+                            <h3>1. Оформлення та Тест Каси</h3>
+                        </div>
+
+                        <form id="subscription-demo-form" class="demo-inner-form">
+                            <div class="form-group">
+                                <label for="sub-name">Ім'я гостя:</label>
+                                <input type="text" id="sub-name" placeholder="Богдан Мельник" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="sub-phone">Номер телефону (Україна):</label>
+                                <input type="tel" id="sub-phone" placeholder="+380 (67) 123-45-67" required pattern="^\+380\s?\(?\d{2}\)?\s?\d{3}[-\s]?\d{2}[-\s]?\d{2}$">
+                            </div>
+                            <div class="form-group">
+                                <label for="sub-tier">Обраний тариф підписки:</label>
+                                <select id="sub-tier">
+                                    <option value="smart">Smart Coffee Pass — 790 ₴ (15 чашок)</option>
+                                    <option value="milk">Milk &amp; Barista Pro — 1 190 ₴ (20 напоїв)</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="cta-button demo-submit-btn">
+                                <span>Демо-оплата Monobank / Apple Pay &rarr;</span>
+                            </button>
+                        </form>
+
+                        <!-- Згенерована цифрова картка підписника -->
+                        <div id="active-pass-display" class="digital-pass-card">
+                            <div class="pass-card-top">
+                                <div class="pass-brand">
+                                    <span class="pass-logo-text">CHROME &amp; BEAN</span>
+                                    <span class="pass-tier-badge" id="pass-plan-name">Smart Pass</span>
+                                </div>
+                                <span class="pass-id-tag tabular-numbers" id="pass-card-id">#PASS-UA-8419</span>
+                            </div>
+
+                            <div class="pass-user-info">
+                                <div class="pass-user-name" id="pass-user-name">Олександр Коваленко</div>
+                                <div class="pass-user-phone" id="pass-user-phone">+380 (67) 482-19-04</div>
+                            </div>
+
+                            <!-- Прогрес-бар залишку чашок -->
+                            <div class="pass-cups-block">
+                                <div class="cups-metric-row">
+                                    <span class="cups-label">Баланс чашок кави:</span>
+                                    <span class="cups-count tabular-numbers" id="pass-cups-count">15 із 15</span>
+                                </div>
+                                <div class="cups-bar-track">
+                                    <div class="cups-bar-fill" id="pass-cups-bar" style="width: 100%;"></div>
+                                </div>
+                                <div class="pass-discount-note" id="pass-discount-note">Включено: знижка 15% на всю кухню та десерти</div>
+                            </div>
+
+                            <div class="pass-card-footer">
+                                <div class="pass-qr-box">
+                                    <!-- Чистий векторний SVG QR-код -->
+                                    <svg width="68" height="68" viewBox="0 0 100 100" fill="#ffffff">
+                                        <rect x="0" y="0" width="30" height="30" fill="none" stroke="#ffffff" stroke-width="6"/>
+                                        <rect x="8" y="8" width="14" height="14"/>
+                                        <rect x="70" y="0" width="30" height="30" fill="none" stroke="#ffffff" stroke-width="6"/>
+                                        <rect x="78" y="8" width="14" height="14"/>
+                                        <rect x="0" y="70" width="30" height="30" fill="none" stroke="#ffffff" stroke-width="6"/>
+                                        <rect x="8" y="78" width="14" height="14"/>
+                                        <rect x="42" y="10" width="16" height="8"/>
+                                        <rect x="42" y="28" width="8" height="16"/>
+                                        <rect x="10" y="42" width="16" height="8"/>
+                                        <rect x="36" y="42" width="28" height="16"/>
+                                        <rect x="74" y="42" width="16" height="16"/>
+                                        <rect x="42" y="70" width="16" height="20"/>
+                                        <rect x="68" y="70" width="22" height="10"/>
+                                        <rect x="70" y="86" width="20" height="8"/>
+                                    </svg>
+                                </div>
+                                <div class="pass-action-box">
+                                    <button class="pass-deduct-btn" id="btn-deduct-cup">
+                                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path></svg>
+                                        <span>Тест каси: Списати 1 чашку (-1)</span>
+                                    </button>
+                                    <span class="pass-subtext">Імітація зчитування сканером бариста</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Права частина: Жива База Даних CafeDB у localStorage -->
+                    <div class="demo-db-box">
+                        <div class="db-box-header">
+                            <div>
+                                <span class="card-tag">POS &bull; LocalStorage Database</span>
+                                <h3>2. Жива База Даних CafeDB</h3>
+                            </div>
+                            <button class="db-reset-btn" id="btn-reset-db" title="Скинути до початкових демо-записів">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+                                <span>Скинути БД</span>
+                            </button>
+                        </div>
+
+                        <!-- Перемикач сутностей БД -->
+                        <div class="db-entity-tabs">
+                            <button class="db-tab-btn active" data-db-tab="subscribers">
+                                <span>Підписники Pass</span>
+                                <span class="db-counter-badge tabular-numbers" id="db-count-subscribers">3</span>
+                            </button>
+                            <button class="db-tab-btn" data-db-tab="orders">
+                                <span>Замовлення з меню</span>
+                                <span class="db-counter-badge tabular-numbers" id="db-count-orders">2</span>
+                            </button>
+                            <button class="db-tab-btn" data-db-tab="bookings">
+                                <span>Броні столів</span>
+                                <span class="db-counter-badge tabular-numbers" id="db-count-bookings">2</span>
+                            </button>
+                        </div>
+
+                        <!-- Пошук по базі даних -->
+                        <div class="db-search-bar">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <input type="text" id="db-search-input" placeholder="Швидкий пошук за ім'ям або телефоном +380...">
+                        </div>
+
+                        <!-- Контейнер списку записів БД (БЕЗ ТЕГІВ ТАБЛИЦІ) -->
+                        <div class="db-records-viewport" id="db-records-container">
+                            <!-- Рендериться динамічно в js/app.js -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. FAQ Accordion -->
+        <section id="faq" class="section reveal">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Часті запитання про CHROME &amp; BEAN</h2>
+                    <p class="section-subtitle">Усе про каву, умови підписки Coffee Pass, онлайн-замовлення та автономність точки</p>
+                </div>
+
+                <div class="faq-list">
+                    <div class="faq-item reveal-item">
+                        <button class="faq-question-btn">
+                            <span>Чи працює кав'ярня під час відключень електроенергії?</span>
+                            <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Так! Лофт обладнаний автоматичним дизельним генератором на 45 кВт, який живить тригрупову еспресо-машину, пароконвектомат кухні та систему припливної вентиляції. Для безперебійного інтернету встановлено термінал Starlink Business.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item reveal-item">
+                        <button class="faq-question-btn">
+                            <span>Як списуються чашки в підписці Coffee Pass?</span>
+                            <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>При візиті ви показуєте бариста цифрову картку Apple Wallet або QR-код у телефоні. Сканер бариста списує 1 чашку за 2 секунди, а залишок балансу миттєво оновлюється на вашому смартфоні. Усі невикористані чашки активні протягом 30 днів.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item reveal-item">
+                        <button class="faq-question-btn">
+                            <span>Чи можна брати каву з собою (To-Go) за абонементом?</span>
+                            <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Безумовно. Coffee Pass діє як у залі, так і на лінії швидкісної видачі To-Go. Ба більше, ви можете оформити попереднє замовлення на сайті до точного часу — кава чекатиме вас без жодної черги.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item reveal-item">
+                        <button class="faq-question-btn">
+                            <span>Які способи оплати підтримуються?</span>
+                            <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Ми підтримуємо всі зручні українські платіжні методи: Monobank QR-еквайринг на столах, Apple Pay, Google Pay, Privat24, а також стандартні банківські картки VISA/Mastercard.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item reveal-item">
+                        <button class="faq-question-btn">
+                            <span>Чи можна перебувати у закладі з домашніми улюбленцями?</span>
+                            <svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>CHROME &amp; BEAN — на 100% Dog-Friendly простір. Ми раді котам і собакам будь-яких порід. У нас є сталеві миски з фільтрованою водою та спеціальні смаколики.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. Фінальний заклик CTA -->
+        <section class="section cta-banner-section">
+            <div class="container">
+                <div class="cta-banner-card reveal">
+                    <h2>Відкрийте для себе новий рівень кавової культури</h2>
+                    <p>Забронюйте стіл в індустріальному лофті або активуйте клубну підписку Coffee Pass для щоденної економії та пріоритетного сервісу.</p>
+                    <div class="cta-banner-actions">
+                        <button class="cta-button" data-open-modal="booking">
+                            <span>Забронювати стіл онлайн</span>
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </button>
+                        <button class="secondary-button" data-switch-to-menu="true">
+                            <span>Переглянути повне меню страв</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ======================================================================= -->
+    <!-- СТОРІНКА 2: ПОВНЕ МЕНЮ & ОНЛАЙН-ЗАМОВЛЕННЯ (#page-menu)                 -->
+    <!-- ======================================================================= -->
+    <main id="page-menu" class="spa-page">
+        <section class="menu-page-hero">
+            <div class="container">
+                <div class="menu-hero-header">
+                    <span class="hero-pill-badge">ONLINE ORDER &bull; KYIV KITCHEN &bull; SPECIALTY BAR</span>
+                    <h2>Повне меню та онлайн-замовлення</h2>
+                    <p class="menu-hero-sub">Обирайте улюблені страви та напої. При наявності активного Coffee Pass знижка 15–20% застосовується автоматично!</p>
+                </div>
+
+                <!-- Фільтр категорій меню -->
+                <div class="menu-filter-bar">
+                    <button class="menu-filter-btn active" data-category="all">Всі позиції (24)</button>
+                    <button class="menu-filter-btn" data-category="coffee">Specialty Кава</button>
+                    <button class="menu-filter-btn" data-category="drinks">Авторські напої</button>
+                    <button class="menu-filter-btn" data-category="breakfast">Сніданки весь день</button>
+                    <button class="menu-filter-btn" data-category="mains">Боули &amp; Сендвічі</button>
+                    <button class="menu-filter-btn" data-category="desserts">Десерти без цукру</button>
+                </div>
+
+                <!-- Основний макет меню з кошиком -->
+                <div class="menu-page-grid">
+                    <!-- Каталог карток страв і напоїв -->
+                    <div class="menu-catalog-column">
+                        <div class="menu-cards-grid" id="menu-items-grid">
+                            <!-- Рендериться динамічно в js/app.js (16-24 позиції) -->
+                        </div>
+                    </div>
+
+                    <!-- Бічна плаваюча панель замовлення (Кошик) -->
+                    <aside class="menu-cart-sidebar" id="menu-cart-sidebar">
+                        <div class="cart-sticky-card">
+                            <div class="cart-card-header">
+                                <div class="cart-title-wrap">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                                    <h4>Ваше замовлення</h4>
+                                </div>
+                                <button class="cart-clear-btn" id="btn-clear-cart" title="Очистити кошик">Очистити</button>
+                            </div>
+
+                            <!-- Сповіщення про підписку Coffee Pass -->
+                            <div class="cart-pass-status" id="cart-pass-status">
+                                <span class="pass-status-icon">&check;</span>
+                                <div class="pass-status-text">
+                                    <strong id="cart-pass-title">Coffee Pass не активний</strong>
+                                    <span id="cart-pass-desc">Оформіть підписку для знижки 15–20%</span>
+                                </div>
+                            </div>
+
+                            <!-- Список товарів у кошику -->
+                            <div class="cart-items-list" id="cart-items-list">
+                                <div class="cart-empty-message">Кошик порожній. Оберіть страви з меню ліворуч.</div>
+                            </div>
+
+                            <!-- Форма оформлення замовлення -->
+                            <form id="cart-checkout-form" class="cart-form-wrap">
+                                <div class="form-group">
+                                    <label>Тип отримання:</label>
+                                    <div class="cart-order-types">
+                                        <label class="radio-chip">
+                                            <input type="radio" name="orderType" value="hall" checked>
+                                            <span>У залі (за столик)</span>
+                                        </label>
+                                        <label class="radio-chip">
+                                            <input type="radio" name="orderType" value="togo">
+                                            <span>З собою (To-Go)</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group" id="hall-table-field">
+                                    <label for="cart-table-num">Номер столика або зона:</label>
+                                    <input type="text" id="cart-table-num" placeholder="Наприклад: Стіл 5 біля вікна">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="cart-name">Ваше ім'я:</label>
+                                    <input type="text" id="cart-name" placeholder="Дарина Шевчук" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="cart-phone">Телефон (+380...):</label>
+                                    <input type="tel" id="cart-phone" placeholder="+380 (67) 500-11-22" required pattern="^\+380\s?\(?\d{2}\)?\s?\d{3}[-\s]?\d{2}[-\s]?\d{2}$">
+                                </div>
+
+                                <!-- Фінансовий підсумок -->
+                                <div class="cart-totals-box">
+                                    <div class="cart-total-row">
+                                        <span>Сума позицій:</span>
+                                        <span id="cart-subtotal" class="tabular-numbers">0 ₴</span>
+                                    </div>
+                                    <div class="cart-total-row cart-discount-row" id="cart-discount-row">
+                                        <span>Знижка Coffee Pass:</span>
+                                        <span id="cart-discount-val" class="tabular-numbers">-0 ₴</span>
+                                    </div>
+                                    <div class="cart-total-row cart-final-row">
+                                        <strong>До сплати:</strong>
+                                        <strong id="cart-total-final" class="tabular-numbers">0 ₴</strong>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="cta-button cart-submit-btn" id="btn-submit-order">
+                                    <span>Оплатити через Monobank / Apple Pay &rarr;</span>
+                                </button>
+                            </form>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 11. Футер закладу -->
     <footer>
         <div class="container footer-content">
             <div class="footer-brand">
-                Startup<span class="logo-accent">X</span> &bull; Maritime Enterprise OS
+                <div class="logo-text">CHROME &amp; <span class="logo-accent">BEAN</span></div>
+                <p>Концептуальна кав'ярня &amp; гастро-бар. Індустріальний лофт із матової сталі AISI 304, бетону та скла. Specialty Coffee 85+ &bull; Автономне живлення 100% &bull; 2026</p>
+                <p class="footer-subtext">Адреса: м. Київ, вул. Архітектора Городецького, 14 &bull; Щодня 08:00 &ndash; 22:30</p>
             </div>
-            <p>&copy; 2026 StartupX Inc. Проект разработан для Морского Техно-Хакатона. Все права защищены.</p>
-            <div class="footer-system-status">
-                <span class="badge-dot"></span>
-                <span>All Systems Operational &bull; v2.6.0 Stable</span>
+            <div class="footer-meta">
+                <div class="footer-links">
+                    <button class="footer-link-btn" data-target-page="main">Концепт</button>
+                    <button class="footer-link-btn" data-target-page="menu">Повне Меню</button>
+                    <a href="#monetization">ROI Калькулятор</a>
+                    <a href="#pricing">Coffee Pass</a>
+                    <a href="#demo-db">Жива БД POS</a>
+                </div>
+                <div class="copyright">&copy; 2026 CHROME &amp; BEAN Hospitality Concept. Усі права захищено.</div>
             </div>
         </div>
     </footer>
 
-    <!-- 12. Интерактивное модальное окно подачи заявки на пилот (Live Pilot Modal) -->
-    <div id="pilot-modal" class="modal-overlay">
+    <!-- 12. Модальне вікно бронювання столика -->
+    <div id="booking-modal" class="modal-overlay" aria-hidden="true">
         <div class="modal-box">
+            <button class="modal-close-btn" data-close-modal aria-label="Закрити вікно">&times;</button>
             <div class="modal-header">
-                <div>
-                    <h3>Заявка на пилотное тестирование</h3>
-                    <p style="font-size:0.84rem; color:#a1a1aa; margin-top:0.25rem;">Бесплатное развертывание на 1–3 судах в течение 24 часов</p>
-                </div>
-                <button class="modal-close-btn" data-close-modal aria-label="Закрыть">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                </button>
+                <span class="modal-tag">Онлайн-бронь столика &bull; Київ 2026</span>
+                <h3>Забронювати стіл у CHROME &amp; BEAN</h3>
+                <p class="modal-sub">Оберіть зручний час, кількість гостей і бажану зону залу. Ми закріпимо за вами найкраще місце.</p>
             </div>
 
-            <form id="pilot-form" class="modal-form">
+            <form id="booking-form" class="modal-form">
                 <div class="form-group">
-                    <label class="form-label" for="pilot-company">Судоходная компания / Флот</label>
-                    <input class="form-input" type="text" id="pilot-company" placeholder="Например: Балтийские Линии" required>
+                    <label for="book-name">Ваше ім'я:</label>
+                    <input type="text" id="book-name" placeholder="Ярослав Грищук" required>
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="pilot-name">Контактное лицо / Должность</label>
-                    <input class="form-input" type="text" id="pilot-name" placeholder="Капитан-наставник / Технический директор" required>
+                    <label for="book-phone">Номер телефону (Україна):</label>
+                    <input type="tel" id="book-phone" placeholder="+380 (67) 482-19-04" required pattern="^\+380\s?\(?\d{2}\)?\s?\d{3}[-\s]?\d{2}[-\s]?\d{2}$">
+                </div>
+                <div class="form-row-2col">
+                    <div class="form-group">
+                        <label for="book-date">Дата та час візиту:</label>
+                        <input type="datetime-local" id="book-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="book-guests">Кількість гостей:</label>
+                        <select id="book-guests">
+                            <option value="1 гость">1 гість</option>
+                            <option value="2 гостя" selected>2 гостя</option>
+                            <option value="3-4 гостя">3–4 гостя</option>
+                            <option value="5+ гостей">5+ гостей (VIP-лаунж)</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="pilot-vessels">Количество судов под управлением</label>
-                    <input class="form-input" type="number" id="pilot-vessels" placeholder="15" min="1" max="500" required>
+                    <label for="book-zone">Бажана зона залу:</label>
+                    <select id="book-zone">
+                        <option value="У панорамних вітринних вікон">Зона біля панорамних вікон</option>
+                        <option value="Лаунж-дивани з низькою посадкою" selected>Лаунж-дивани з низькою посадкою</option>
+                        <option value="Тихий коворкінг із розетками">Тихий коворкінг із розетками (Wi-Fi Starlink)</option>
+                        <option value="Цілорічна тераса з обігрівом">Цілорічна тераса з обігрівом (Dog-Friendly)</option>
+                    </select>
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="pilot-email">Корпоративный E-mail</label>
-                    <input class="form-input" type="email" id="pilot-email" placeholder="operations@shipping.com" required>
+                    <label for="book-comment">Побажання до броні (опціонально):</label>
+                    <textarea id="book-comment" rows="2" placeholder="Наприклад: тихий куточок для ділової зустрічі або миска з водою для песика"></textarea>
                 </div>
-                <button type="submit" class="modal-submit-btn">Зарегистрировать тестовый доступ</button>
+                <button type="submit" class="cta-button modal-submit-btn">
+                    <span>Підтвердити онлайн-бронь</span>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </button>
             </form>
 
-            <div id="pilot-success" class="modal-success-state">
-                <div style="width:48px; height:48px; border-radius:50%; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.2); display:flex; align-items:center; justify-content:center; margin:0 auto 1rem; color:#ffffff;">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <div id="booking-success" class="modal-success">
+                <div class="success-icon">&check;</div>
+                <h4>Столик успішно заброньовано!</h4>
+                <p>Деталі візиту збережено в базі закладу та надіслано в SMS-повідомленні.</p>
+                <div class="confirmation-box">
+                    <span class="code-label">Код вашого бронювання:</span>
+                    <span id="booking-confirmation-code" class="code-badge tabular-numbers">#BOOK-UA-7281</span>
                 </div>
-                <h4 style="font-size:1.2rem; color:#ffffff; margin-bottom:0.4rem;">Заявка на пилот зарегистрирована</h4>
-                <p style="font-size:0.88rem; color:#a1a1aa; line-height:1.5; margin-bottom:1.25rem;">Идентификатор тестового контура: <strong id="confirmation-code" class="tabular-numbers" style="color:#ffffff;">#PLT-2026-8491</strong>. Доступ и временные ключи отправлены на указанный e-mail.</p>
-                <button class="modal-submit-btn" data-close-modal style="width:100%;">Вернуться к презентации</button>
+                <button class="secondary-button" data-close-modal style="width: 100%; margin-top: 1.25rem;">Закрити вікно</button>
             </div>
         </div>
     </div>
 
-    <!-- Основной скрипт платформы -->
+    <!-- 13. Модальне вікно успішного замовлення з меню -->
+    <div id="order-success-modal" class="modal-overlay" aria-hidden="true">
+        <div class="modal-box">
+            <button class="modal-close-btn" data-close-modal aria-label="Закрити вікно">&times;</button>
+            <div class="modal-success active">
+                <div class="success-icon">&check;</div>
+                <h4>Замовлення успішно сплачено!</h4>
+                <p>Оплата через <strong id="success-payment-provider">Monobank</strong> пройшла успішно. Чек надіслано на кухню.</p>
+                <div class="confirmation-box">
+                    <span class="code-label">Номер замовлення в системі:</span>
+                    <span id="order-confirmation-code" class="code-badge tabular-numbers">#ORD-UA-9182</span>
+                </div>
+                <p class="order-est-time">Орієнтовний час готовності: <strong>6–8 хвилин</strong></p>
+                <button class="secondary-button" data-close-modal style="width: 100%; margin-top: 1.25rem;">Зрозуміло, дякую!</button>
+            </div>
+        </div>
+    </div>
+
     <script src="js/app.js"></script>
 </body>
 </html>
