@@ -33,24 +33,28 @@
                 </div>
             </a>
 
-            <!-- SPA Page Switcher (Головний перемикач 4 екранів) -->
+            <!-- SPA Page Switcher (Головний перемикач екранів) -->
             <div class="spa-nav-switcher">
                 <button class="spa-nav-btn active" id="btn-page-main" data-target-page="main">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                    <span>Бізнес-план &amp; ROI</span>
+                    <span>Бізнес-план</span>
                 </button>
                 <button class="spa-nav-btn nav-btn-blueprint" id="btn-page-blueprint" data-target-page="blueprint">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line><circle cx="15" cy="15" r="3"></circle></svg>
-                    <span>Blue Plan (Оформлення)</span>
+                    <span>Blue Plan</span>
                 </button>
                 <button class="spa-nav-btn" id="btn-page-menu" data-target-page="menu">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path></svg>
-                    <span>Повне Меню</span>
+                    <span>Меню</span>
                     <span class="menu-pill-count">24</span>
                 </button>
-                <button class="spa-nav-btn nav-btn-demo" id="btn-page-demo" data-target-page="demo">
+                <button class="spa-nav-btn nav-btn-client" id="btn-page-demo-client" data-target-page="demo-client">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    <span>Демо: Клієнт</span>
+                </button>
+                <button class="spa-nav-btn nav-btn-demo nav-btn-staff" id="btn-page-demo-staff" data-target-page="demo-staff">
                     <span class="live-dot-pulse"></span>
-                    <span>Демо-стенд (POS)</span>
+                    <span>Демо: Персонал (POS)</span>
                 </button>
             </div>
 
@@ -85,13 +89,11 @@
         <!-- Мобільна панель випадаючого меню -->
         <div id="mobile-menu" class="mobile-nav-panel">
             <div class="mobile-page-switch">
-                <button class="mobile-switch-btn active" data-target-page="main">Бізнес-план &amp; ROI</button>
-                <button class="mobile-switch-btn" data-target-page="blueprint">Blue Plan (Оформлення)</button>
-                <button class="mobile-switch-btn" data-target-page="menu">Повне Меню (24)</button>
-                <button class="mobile-switch-btn mobile-switch-demo" data-target-page="demo">
-                    <span class="live-dot-pulse"></span>
-                    <span>Демо-стенд (POS)</span>
-                </button>
+                <button class="mobile-switch-btn active" data-target-page="main">Бізнес-план</button>
+                <button class="mobile-switch-btn" data-target-page="blueprint">Blue Plan</button>
+                <button class="mobile-switch-btn" data-target-page="menu">Меню</button>
+                <button class="mobile-switch-btn mobile-switch-client" data-target-page="demo-client">📱 Демо: Клієнт</button>
+                <button class="mobile-switch-btn mobile-switch-demo" data-target-page="demo-staff">🖥️ Демо: Персонал</button>
             </div>
             <ul class="mobile-nav-links">
                 <li><a href="#dashboard" class="mobile-nav-link">План Залу &amp; Меню</a></li>
@@ -99,7 +101,8 @@
                 <li><a href="#comparison" class="mobile-nav-link">Порівняння концепту</a></li>
                 <li><a href="#monetization" class="mobile-nav-link">ROI Калькулятор точки</a></li>
                 <li><a href="#pricing" class="mobile-nav-link">Тарифи Coffee Pass</a></li>
-                <li><a href="#" class="mobile-nav-link mobile-highlight-link" data-target-page="demo">Демо-стенд: POS &amp; Симулятор</a></li>
+                <li><a href="#" class="mobile-nav-link mobile-highlight-link" data-target-page="demo-client">📱 Демо для Клієнта (Guest App)</a></li>
+                <li><a href="#" class="mobile-nav-link mobile-highlight-link" data-target-page="demo-staff">🖥️ Демо для Персоналу (POS &amp; KDS)</a></li>
                 <li><a href="#faq" class="mobile-nav-link">FAQ</a></li>
             </ul>
             <div class="mobile-nav-footer">
@@ -956,10 +959,16 @@
                         </div>
                     </div>
                     <div class="sim-cta-right">
-                        <button type="button" class="btn-open-simulator" data-target-page="demo">
-                            <span class="live-dot-pulse"></span>
-                            <span>Запустити Демо-стенд &rarr;</span>
-                        </button>
+                        <div class="sim-cta-dual-buttons">
+                            <button type="button" class="btn-open-simulator btn-sim-client" data-target-page="demo-client">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                <span>Демо для Клієнта (Guest App) &rarr;</span>
+                            </button>
+                            <button type="button" class="btn-open-simulator btn-sim-staff" data-target-page="demo-staff">
+                                <span class="live-dot-pulse"></span>
+                                <span>Демо для Персоналу (POS &amp; KDS) &rarr;</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1802,11 +1811,43 @@
                         <span>LIVE POS &bull; KDS &bull; WALLET &bull; FLOOR PLAN SIMULATOR 2026</span>
                     </div>
                     <h2>Демо-стенд: Інтерактивний Симулятор Закладу</h2>
-                    <p class="demo-hero-sub">Повна екосистема взаємодії гостя та бариста в реальному часі. Оформлюйте швидкі замовлення в 1 клік, бронюйте столики на мапі залу, тестуйте списання чашок сканером та керуйте KDS-чергою приготування.</p>
+                    <p class="demo-hero-sub">Повна екосистема взаємодії гостя та бариста в реальному часі. Оберіть окреме робоче місце для клієнта (Guest App) чи для персоналу (POS &amp; KDS), або увімкніть Спліт-режим для перегляду обох екранів одночасно.</p>
+                </div>
+
+                <!-- 0. Селектор робочого простору: Клієнт / Персонал / Спліт -->
+                <div class="demo-role-selector-bar">
+                    <div class="demo-role-tabs-wrap">
+                        <button type="button" class="demo-role-tab-btn active" id="btn-role-client" data-demo-role="client">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                            <span class="role-btn-title">Демо для Клієнта (Guest App)</span>
+                            <span class="role-chip chip-client">Гостьовий екран</span>
+                        </button>
+                        <button type="button" class="demo-role-tab-btn" id="btn-role-staff" data-demo-role="staff">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path></svg>
+                            <span class="role-btn-title">Демо для Персоналу (POS &amp; KDS)</span>
+                            <span class="role-chip chip-staff">Каса &amp; Кухня</span>
+                        </button>
+                        <button type="button" class="demo-role-tab-btn" id="btn-role-split" data-demo-role="split">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="12" y1="3" x2="12" y2="21"></line></svg>
+                            <span class="role-btn-title">Спліт-режим (Обидва екрани)</span>
+                            <span class="role-chip chip-split">2 в 1</span>
+                        </button>
+                    </div>
+
+                    <!-- Інфо-банер поточної ролі -->
+                    <div class="demo-role-banner" id="demo-role-banner">
+                        <div class="role-banner-icon" id="role-banner-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        </div>
+                        <div class="role-banner-content">
+                            <div class="role-banner-title" id="role-banner-title">Інтерфейс Клієнта (Guest Mobile Wallet &amp; Зал)</div>
+                            <div class="role-banner-desc" id="role-banner-desc">Оформлюйте швидкі замовлення в 1 клік, бронюйте столики на мапі залу, тестуйте баланс чашок у Apple Wallet та реєструйте новий Coffee Pass. Усі ваші дії синхронізуються з терміналом бариста.</div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- 1. Верхня панель телеметрії зміни (Shift Live Bar) -->
-                <div class="shift-live-bar">
+                <div class="shift-live-bar" id="shift-live-bar">
                     <div class="shift-bar-header">
                         <div class="shift-status-pill">
                             <span class="live-dot-pulse"></span>
@@ -1850,8 +1891,8 @@
                     </div>
                 </div>
 
-                <!-- 2. Основна сітка симулятора: 2 повноцінні колонки (Desktop: 2col, Mobile: 1col) -->
-                <div class="sim-main-grid">
+                <!-- 2. Основна сітка симулятора (Клієнт / Персонал / Спліт) -->
+                <div class="sim-main-grid" id="sim-main-grid" data-demo-role="client">
 
                     <!-- ЛІВА КОЛОНКА: Інтерфейс Гостя (Mobile Wallet & Зал) -->
                     <div class="sim-guest-column">
@@ -2035,6 +2076,19 @@
                                 <!-- Рендериться динамічно в js/app.js (8 столиків) -->
                             </div>
                         </div>
+
+                        <!-- Швидкий перехід до робочого місця персоналу -->
+                        <div class="role-switch-cta-card">
+                            <div class="role-switch-cta-text">
+                                <span class="role-cta-tag">СИНХРОНІЗАЦІЯ В РЕАЛЬНОМУ ЧАСІ</span>
+                                <h4>Бажаєте побачити це замовлення на терміналі бариста?</h4>
+                                <p>Перейдіть до робочого місця персоналу, щоб перевірити KDS-чергу кухні, відсканувати карту сканером та побачити оновлення в CafeDB.</p>
+                            </div>
+                            <button type="button" class="btn-role-switch-cta" data-switch-role="staff">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path></svg>
+                                <span>Відкрити Демо Персоналу (POS &amp; KDS) &rarr;</span>
+                            </button>
+                        </div>
                     </div>
 
                     <!-- ПРАВА КОЛОНКА: POS-термінал Бариста, KDS та База CafeDB -->
@@ -2125,6 +2179,19 @@
                                 <!-- Рендериться динамічно в js/app.js -->
                             </div>
                         </div>
+
+                        <!-- Швидкий перехід до інтерфейсу клієнта -->
+                        <div class="role-switch-cta-card">
+                            <div class="role-switch-cta-text">
+                                <span class="role-cta-tag">СИНХРОНІЗАЦІЯ В РЕАЛЬНОМУ ЧАСІ</span>
+                                <h4>Потрібно створити тестове замовлення або новий Pass?</h4>
+                                <p>Перейдіть до інтерфейсу гостя, щоб вибрати страви в меню, оформити швидке замовлення чи зареєструвати Coffee Pass.</p>
+                            </div>
+                            <button type="button" class="btn-role-switch-cta" data-switch-role="client">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                <span>Відкрити Демо Клієнта (Guest App) &rarr;</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2142,10 +2209,10 @@
             <div class="footer-meta">
                 <div class="footer-links">
                     <button class="footer-link-btn" data-target-page="main">Концепт</button>
+                    <button class="footer-link-btn" data-target-page="blueprint">Blue Plan</button>
                     <button class="footer-link-btn" data-target-page="menu">Повне Меню</button>
-                    <a href="#monetization">ROI Калькулятор</a>
-                    <a href="#pricing">Coffee Pass</a>
-                    <a href="#demo-db">Жива БД POS</a>
+                    <button class="footer-link-btn" data-target-page="demo-client">Демо: Клієнт</button>
+                    <button class="footer-link-btn" data-target-page="demo-staff">Демо: Персонал</button>
                 </div>
                 <div class="copyright">&copy; 2026 CHROME &amp; BEAN Hospitality Concept. Усі права захищено.</div>
             </div>

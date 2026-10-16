@@ -22,7 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnPageMain = document.getElementById('btn-page-main');
     const btnPageBlueprint = document.getElementById('btn-page-blueprint');
     const btnPageMenu = document.getElementById('btn-page-menu');
-    const btnPageDemo = document.getElementById('btn-page-demo');
+    const btnPageDemoClient = document.getElementById('btn-page-demo-client');
+    const btnPageDemoStaff = document.getElementById('btn-page-demo-staff');
     const headerCartToggle = document.getElementById('header-cart-toggle');
 
     function switchPage(target) {
@@ -35,21 +36,33 @@ document.addEventListener("DOMContentLoaded", () => {
             if (typeof initBlueprintModule === 'function') initBlueprintModule();
         } else if (target === 'menu' && pageMenu) {
             pageMenu.classList.add('active');
-        } else if (target === 'demo' && pageDemo) {
+        } else if ((target === 'demo-client' || target === 'demo-staff' || target === 'demo') && pageDemo) {
             pageDemo.classList.add('active');
-            if (typeof updateShiftTelemetry === 'function') updateShiftTelemetry();
-            if (typeof renderFloorPlan === 'function') renderFloorPlan();
-            if (typeof renderLiveKds === 'function') renderLiveKds();
-            if (typeof renderScannerLogs === 'function') renderScannerLogs();
+            const role = target === 'demo-staff' ? 'staff' : (target === 'demo-client' ? 'client' : (typeof currentDemoRole !== 'undefined' ? currentDemoRole : 'client'));
+            if (typeof switchDemoRole === 'function') {
+                switchDemoRole(role);
+            } else {
+                if (typeof updateShiftTelemetry === 'function') updateShiftTelemetry();
+                if (typeof renderFloorPlan === 'function') renderFloorPlan();
+                if (typeof renderLiveKds === 'function') renderLiveKds();
+                if (typeof renderScannerLogs === 'function') renderScannerLogs();
+            }
         } else if (pageMain) {
             pageMain.classList.add('active');
         }
 
-        [btnPageMain, btnPageBlueprint, btnPageMenu, btnPageDemo].forEach(btn => {
+        [btnPageMain, btnPageBlueprint, btnPageMenu, btnPageDemoClient, btnPageDemoStaff].forEach(btn => {
             if (btn) {
                 const page = btn.getAttribute('data-target-page');
-                if (page === target) btn.classList.add('active');
-                else btn.classList.remove('active');
+                if (page === target) {
+                    btn.classList.add('active');
+                } else if (target === 'demo-client' && page === 'demo') {
+                    btn.classList.add('active');
+                } else if (target === 'demo-staff' && page === 'demo') {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
             }
         });
 
@@ -75,8 +88,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (btnPageMenu) {
         btnPageMenu.addEventListener('click', () => switchPage('menu'));
     }
-    if (btnPageDemo) {
-        btnPageDemo.addEventListener('click', () => switchPage('demo'));
+    if (btnPageDemoClient) {
+        btnPageDemoClient.addEventListener('click', () => switchPage('demo-client'));
+    }
+    if (btnPageDemoStaff) {
+        btnPageDemoStaff.addEventListener('click', () => switchPage('demo-staff'));
     }
 
     document.querySelectorAll('[data-target-page]').forEach(btn => {
@@ -1064,6 +1080,92 @@ document.addEventListener("DOMContentLoaded", () => {
         `).join('');
     }
 
+    // ==========================================================================
+    // 6.2 DEMO ROLE SWITCHER (Client vs Staff vs Split)
+    // ==========================================================================
+    let currentDemoRole = 'client';
+    const simMainGrid = document.getElementById('sim-main-grid');
+    const roleBannerIcon = document.getElementById('role-banner-icon');
+    const roleBannerTitle = document.getElementById('role-banner-title');
+    const roleBannerDesc = document.getElementById('role-banner-desc');
+
+    const ROLE_METADATA = {
+        client: {
+            title: "Інтерфейс Клієнта (Guest Mobile Wallet & Зал)",
+            desc: "Оформлюйте швидкі замовлення в 1 клік, бронюйте столики на мапі залу, тестуйте баланс чашок у Apple Wallet та реєструйте новий Coffee Pass. Усі ваші дії синхронізуються з терміналом бариста.",
+            icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>`
+        },
+        staff: {
+            title: "Термінал Персоналу (POS-каса, KDS-кухня & CafeDB)",
+            desc: "Робоче місце бариста та адміністратора. Приймайте замовлення в KDS, перемикайте статуси (Готується → Видано), списуйте чашки сканером каси та керуйте базою підписників CafeDB.",
+            icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path></svg>`
+        },
+        split: {
+            title: "Спліт-режим (Синхронний двоекранний симулятор)",
+            desc: "Одночасне відображення обох інтерфейсів для демонстрації синхронізації: будь-яке замовлення чи бронювання гостя миттєво з'являється у черзі KDS та в базі персоналу.",
+            icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="12" y1="3" x2="12" y2="21"></line></svg>`
+        }
+    };
+
+    function switchDemoRole(role) {
+        if (!['client', 'staff', 'split'].includes(role)) role = 'client';
+        currentDemoRole = role;
+
+        if (simMainGrid) {
+            simMainGrid.setAttribute('data-demo-role', role);
+        }
+        if (pageDemo) {
+            pageDemo.setAttribute('data-active-role', role);
+        }
+
+        // Update role buttons active state
+        document.querySelectorAll('[data-demo-role]').forEach(btn => {
+            const btnRole = btn.getAttribute('data-demo-role');
+            if (btnRole === role) {
+                btn.classList.add('active');
+                btn.setAttribute('aria-selected', 'true');
+            } else {
+                btn.classList.remove('active');
+                btn.setAttribute('aria-selected', 'false');
+            }
+        });
+
+        // Update banner text and icon
+        const meta = ROLE_METADATA[role] || ROLE_METADATA.client;
+        if (roleBannerTitle) roleBannerTitle.textContent = meta.title;
+        if (roleBannerDesc) roleBannerDesc.textContent = meta.desc;
+        if (roleBannerIcon) roleBannerIcon.innerHTML = meta.icon;
+
+        // Render appropriate data
+        if (typeof updateShiftTelemetry === 'function') updateShiftTelemetry();
+        if (typeof renderFloorPlan === 'function') renderFloorPlan();
+        if (typeof renderLiveKds === 'function') renderLiveKds();
+        if (typeof renderScannerLogs === 'function') renderScannerLogs();
+        if (typeof renderDbRecords === 'function') renderDbRecords();
+        if (typeof updateActivePassDisplay === 'function') updateActivePassDisplay();
+    }
+
+    // Role switcher tab clicks
+    document.querySelectorAll('[data-demo-role]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const role = btn.getAttribute('data-demo-role');
+            if (role) switchDemoRole(role);
+        });
+    });
+
+    // Cross-role switch CTA buttons clicks
+    document.querySelectorAll('[data-switch-role]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const role = btn.getAttribute('data-switch-role');
+            if (role) {
+                switchDemoRole(role);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+    });
+
     // Initial render of DB and Pass card, Floor plan, KDS and Telemetry
     updateActivePassDisplay();
     renderDbRecords();
@@ -1071,6 +1173,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderLiveKds();
     renderScannerLogs();
     updateShiftTelemetry();
+    switchDemoRole('client');
 
     // ==========================================================================
     // 7. ONLINE MENU & SHOPPING CART
@@ -1845,9 +1948,30 @@ document.addEventListener("DOMContentLoaded", () => {
         switchPage('blueprint');
     } else if (window.location.hash.startsWith('#menu') || window.location.hash === '#page-menu') {
         switchPage('menu');
+    } else if (window.location.hash === '#demo-staff') {
+        switchPage('demo-staff');
+    } else if (window.location.hash === '#demo-client') {
+        switchPage('demo-client');
     } else if (window.location.hash.startsWith('#demo') || window.location.hash === '#page-demo') {
         switchPage('demo');
     }
+
+    window.addEventListener('hashchange', () => {
+        const hash = window.location.hash;
+        if (hash === '#demo-staff') {
+            switchPage('demo-staff');
+        } else if (hash === '#demo-client') {
+            switchPage('demo-client');
+        } else if (hash.startsWith('#blueprint') || hash === '#page-blueprint') {
+            switchPage('blueprint');
+        } else if (hash.startsWith('#menu') || hash === '#page-menu') {
+            switchPage('menu');
+        } else if (hash.startsWith('#demo') || hash === '#page-demo') {
+            switchPage('demo');
+        } else if (hash === '#main' || hash === '#page-main') {
+            switchPage('main');
+        }
+    });
 
     const revealOptions = {
         threshold: 0.08,
