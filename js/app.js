@@ -13,22 +13,27 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ==========================================================================
-    // 1. SPA PAGE SWITCHER (Page 1: Concept & Model <-> Page 2: Online Menu)
+    // 1. SPA PAGE SWITCHER (4 Pages: Main, Blueprint, Menu, Demo)
     // ==========================================================================
     const pageMain = document.getElementById('page-main');
+    const pageBlueprint = document.getElementById('page-blueprint');
     const pageMenu = document.getElementById('page-menu');
     const pageDemo = document.getElementById('page-demo');
     const btnPageMain = document.getElementById('btn-page-main');
+    const btnPageBlueprint = document.getElementById('btn-page-blueprint');
     const btnPageMenu = document.getElementById('btn-page-menu');
     const btnPageDemo = document.getElementById('btn-page-demo');
     const headerCartToggle = document.getElementById('header-cart-toggle');
 
     function switchPage(target) {
-        [pageMain, pageMenu, pageDemo].forEach(p => {
+        [pageMain, pageBlueprint, pageMenu, pageDemo].forEach(p => {
             if (p) p.classList.remove('active');
         });
 
-        if (target === 'menu' && pageMenu) {
+        if (target === 'blueprint' && pageBlueprint) {
+            pageBlueprint.classList.add('active');
+            if (typeof initBlueprintModule === 'function') initBlueprintModule();
+        } else if (target === 'menu' && pageMenu) {
             pageMenu.classList.add('active');
         } else if (target === 'demo' && pageDemo) {
             pageDemo.classList.add('active');
@@ -40,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
             pageMain.classList.add('active');
         }
 
-        [btnPageMain, btnPageMenu, btnPageDemo].forEach(btn => {
+        [btnPageMain, btnPageBlueprint, btnPageMenu, btnPageDemo].forEach(btn => {
             if (btn) {
                 const page = btn.getAttribute('data-target-page');
                 if (page === target) btn.classList.add('active');
@@ -63,6 +68,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (btnPageMain) {
         btnPageMain.addEventListener('click', () => switchPage('main'));
+    }
+    if (btnPageBlueprint) {
+        btnPageBlueprint.addEventListener('click', () => switchPage('blueprint'));
     }
     if (btnPageMenu) {
         btnPageMenu.addEventListener('click', () => switchPage('menu'));
@@ -363,14 +371,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==========================================================================
     // 6. CAFEDB (LOCALSTORAGE DATABASE & DEMO STAND)
     // ==========================================================================
-    const DB_STORAGE_KEY = 'chrome_bean_db_v1';
+    const DB_STORAGE_KEY = 'chrome_bean_db_v3';
 
     const INITIAL_CAFEDB = {
         subscribers: [
             {
                 id: 'PASS-UA-8419',
                 name: 'Олександр Коваленко',
-                phone: '+380 (67) 482-19-04',
+                phone: '+380 (96) 999-99-99',
                 tier: 'smart',
                 tierName: 'Smart Coffee Pass',
                 price: 790,
@@ -383,7 +391,7 @@ document.addEventListener("DOMContentLoaded", () => {
             {
                 id: 'PASS-UA-9201',
                 name: 'Марія Бондаренко',
-                phone: '+380 (50) 319-84-12',
+                phone: '+380 (96) 999-99-01',
                 tier: 'milk',
                 tierName: 'Milk & Barista Pro',
                 price: 1190,
@@ -396,7 +404,7 @@ document.addEventListener("DOMContentLoaded", () => {
             {
                 id: 'PASS-UA-4177',
                 name: 'Дмитро Ткаченко',
-                phone: '+380 (93) 741-09-55',
+                phone: '+380 (96) 999-99-02',
                 tier: 'smart',
                 tierName: 'Smart Coffee Pass',
                 price: 790,
@@ -411,7 +419,7 @@ document.addEventListener("DOMContentLoaded", () => {
             {
                 id: 'ORD-UA-1042',
                 customer: 'Олена Грищенко',
-                phone: '+380 (67) 500-11-22',
+                phone: '+380 (96) 999-99-99',
                 items: 'Флет Уайт на вівсяному (95 ₴) + Авокадо-тост із лососем (260 ₴)',
                 total: 355,
                 payment: 'Monobank QR',
@@ -422,7 +430,7 @@ document.addEventListener("DOMContentLoaded", () => {
             {
                 id: 'ORD-UA-1043',
                 customer: 'Артем Василенко',
-                phone: '+380 (98) 234-56-78',
+                phone: '+380 (96) 999-99-01',
                 items: 'Фільтр-кава Ефіопія (75 ₴) + Круасан з матча-кремом (110 ₴)',
                 total: 185,
                 payment: 'Apple Pay',
@@ -435,7 +443,7 @@ document.addEventListener("DOMContentLoaded", () => {
             {
                 id: 'BOOK-UA-4821',
                 name: 'Ярослав Кравчук',
-                phone: '+380 (50) 612-34-56',
+                phone: '+380 (96) 999-99-99',
                 guests: '2 гостя',
                 zone: 'Головний зал (Loft Steel)',
                 dateTime: '16.10.2026, 19:30',
@@ -445,7 +453,7 @@ document.addEventListener("DOMContentLoaded", () => {
             {
                 id: 'BOOK-UA-4822',
                 name: 'Ірина Соловей',
-                phone: '+380 (63) 890-12-34',
+                phone: '+380 (96) 999-99-02',
                 guests: '4 гостя',
                 zone: 'Винний лаунж & Бар',
                 dateTime: '16.10.2026, 20:00',
@@ -889,7 +897,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const newOrder = {
                 id: orderId,
                 customer: sub ? sub.name : 'Гість залу',
-                phone: sub ? sub.phone : '+380 (50) ...',
+                phone: sub ? sub.phone : '+380 (96) 999-99-99',
                 items: `${itemName} (${selectedQuickTime})`,
                 total: finalPrice,
                 payment: 'Monobank QR',
@@ -950,7 +958,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     cafeDB.bookings.unshift({
                         id: `BOOK-UA-${randomCode}`,
                         name: table.bookedBy,
-                        phone: sub ? sub.phone : '+380 (67) 000-00-00',
+                        phone: sub ? sub.phone : '+380 (96) 999-99-99',
                         guests: `${table.seats} гостя`,
                         zone: `${table.name} (${table.zone})`,
                         dateTime: 'Зараз (Live)',
@@ -1307,7 +1315,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const selectedType = document.querySelector('input[name="orderType"]:checked');
 
             const customerName = nameInput ? nameInput.value.trim() : 'Гість';
-            const customerPhone = phoneInput ? phoneInput.value.trim() : '+380...';
+            const customerPhone = phoneInput ? phoneInput.value.trim() : '+380 (96) 999-99-99';
             const orderTypeVal = selectedType && selectedType.value === 'togo' ? 'З собою (To-Go)' : `У залі (${tableInput && tableInput.value ? tableInput.value.trim() : 'Стіл'})`;
 
             const sub = getActiveSubscriber();
@@ -1442,7 +1450,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const commentInput = document.getElementById('book-comment');
 
             const name = nameInput ? nameInput.value.trim() : 'Гість';
-            const phone = phoneInput ? phoneInput.value.trim() : '+380...';
+            const phone = phoneInput ? phoneInput.value.trim() : '+380 (96) 999-99-99';
             const dateVal = dateInput && dateInput.value ? dateInput.value.replace('T', ' ') : 'Сьогодні, 19:30';
             const guests = guestsSelect ? guestsSelect.value : '2 гостя';
             const zone = zoneSelect ? zoneSelect.value : 'Головний зал';
@@ -1507,12 +1515,302 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // ==========================================================================
-    // 10. SMOOTH ANCHOR NAVIGATION & SCROLL REVEAL
+    // 10. BLUEPRINT (BLUE PLAN) INTERACTIVE ARCHITECTURAL MODULE
+    // ==========================================================================
+    const BLUEPRINT_ZONES = {
+        a: {
+            badge: 'ЗОНА A • ВХІД & ТОЧКА ВИДАЧІ',
+            title: 'Вхідна група & Fast Track',
+            cost: '160 000 ₴',
+            area: '18 м²',
+            seats: '6 місць очікування',
+            desc: 'Експрес-вікно видачі замовлень To-Go за 3 хвилини та NFC-термінал самообслуговування, щоб ранковий потік не створював чергу в залі.',
+            materials: [
+                'Листова сталь AISI 304 Scotch-Brite (1.5 мм)',
+                'Шліфований бетон M400 з гідрофобізацією',
+                'Загартоване триплекс-скло 10 мм',
+                'Матовий чорний алюмінієвий профіль'
+            ],
+            equipment: [
+                'Сенсорний кіоск самозамовлення Fast Order 21.5"',
+                'NFC / Apple Pay рідер безконтактної оплати',
+                'Теплова завіса вхідної групи 6.0 кВт',
+                'Дисплей електронної черги готових замовлень To-Go'
+            ],
+            lighting: 'Трекові світильники 4000K з вузьким кутом розсіювання 24° над лінією видачі (1200 люкс), контурна LED-лінія в плінтусі.'
+        },
+        b: {
+            badge: 'ЗОНА B • СЕРЦЕ КАВ\'ЯРНІ',
+            title: 'Острівна барна станція 360°',
+            cost: '520 000 ₴',
+            area: '24 м²',
+            seats: '8 контактних місць',
+            desc: 'Відкритий контактний бар із матової нержавіючої сталі AISI 304, кастомна кавомашина La Marzocco, вбудовані рінзери та скляна вітрина авторських десертів без цукру.',
+            materials: [
+                'Нержавіюча сталь AISI 304 (товщина 1.5 мм, Scotch-Brite)',
+                'Цілісний стіл бариста з врізними рінзерами',
+                'Тоноване скло Triplex 10 мм вітрини десертів',
+                'Підніжки з чорненої сталі для барних стільців'
+            ],
+            equipment: [
+                'Кавомашина La Marzocco Linea PB 2-group Custom Brushed',
+                'Гріндери Mahlkönig E65S GbW + EK43S для фільтру',
+                'Вбудовані швидкісні рінзери бокалів та пітчерів',
+                'Вітрина холодна кондитерська +2...+6°C з LED підсвіткою'
+            ],
+            lighting: 'Спрямовані споти 3500K над робочою зоною бариста (1500 люкс), приховане нижнє підсвічування цоколю бару.'
+        },
+        c: {
+            badge: 'ЗОНА C • SMART WORKSPACE',
+            title: 'Smart Coworking біля панорамних вікон',
+            cost: '280 000 ₴',
+            area: '38 м²',
+            seats: '24 місця для роботи',
+            desc: 'Довгий комунальний стіл із бездротовими зарядками Qi2, Type-C 100W у кожному посадковому місці та ергономічні крісла біля панорамного фасадного скління.',
+            materials: [
+                'Масив мореного дуба під матовим масловоском',
+                'Сталеві підстілля AISI 304 з кабель-менеджментом',
+                'Акустичний перфорований алюміній стелі (NRC 0.85)',
+                'Тоноване скло 10 мм у перегородках зони'
+            ],
+            equipment: [
+                '12 вбудованих швидких зарядок Qi2 15W + Type-C 100W Power Delivery',
+                'Точки доступу Wi-Fi 6 Ubiquiti UniFi U6-Pro (до 1 Гбіт/с)',
+                'Ергономічні крісла з поперековою підтримкою (24 шт.)',
+                'Шумопоглинальні перегородки між столами'
+            ],
+            lighting: 'Лінійні матові світильники розсіяного світла 3500K над комунальним столом (500 люкс) з антивідблисковим захистом.'
+        },
+        d: {
+            badge: 'ЗОНА D • АЛЬТЕРНАТИВА & ЛАУНЖ',
+            title: 'Lounge & Tasting Capsule',
+            cost: '260 000 ₴',
+            area: '32 м²',
+            seats: '18 місць у лаунжі',
+            desc: 'М\'яка низька посадка для дегустацій альтернативної кави (V60, Chemex, Aeropress), акустичні стінові панелі та приглушене тепле світло для вечірнього відпочинку.',
+            materials: [
+                'Акустичні стінові панелі з переробленого фетру',
+                'Зносостійкий графітовий велюр диванів (100k циклів)',
+                'Низькі столики зі шліфованого сланцю та сталі',
+                'Масив термоясеня в обробці порталів'
+            ],
+            equipment: [
+                'Каппінг-станція та столики для ручного заварювання (V60, Chemex, Aeropress)',
+                'Чайники з термоконтролем Fellow Stagg EKG',
+                'Преміальна акустика Genelec із зонованим керуванням',
+                'Вбудовані столики з бездротовою підзарядкою смартфонів'
+            ],
+            lighting: 'Атмосферне вечірнє світло 2700K з можливістю димування до 10%, бра відбитого світла та свічкові акценти.'
+        },
+        e: {
+            badge: 'ЗОНА E • ROASTING & BACK-OFFICE',
+            title: 'Технічний блок & Roasting Lab',
+            cost: '200 000 ₴',
+            area: '33 м²',
+            seats: '8 робочих/гостьових позицій',
+            desc: 'Цех зберігання зеленого зерна з клімат-контролем (18-20°C, 60% вологість), ростер для мікролотів і санвузли для гостей із безконтактною автоматикою.',
+            materials: [
+                'Гігієнічна нержавіюча сталь AISI 304 для харчових зон',
+                'Гідроізольований мікроцемент з антиковзким покриттям R11',
+                'Акустичні двері зі звукоізоляцією 42 дБ',
+                'Скляна герметична перегородка з оглядовим вікном'
+            ],
+            equipment: [
+                'Ростер для мікролотів (профільне обсмажування зерна)',
+                'Кліматична камера для зеленого зерна (18–20°C, 60% RH)',
+                'Багатоступеневий зворотний осмос BWT bestmax PREMIUM',
+                'Гостьові санвузли з безконтактними змішувачами та сушарками Dyson'
+            ],
+            lighting: 'Технічне нейтральне освітлення 4000K високої передачі кольору (CRI>95) для оцінки якості обсмажування кави.'
+        }
+    };
+
+    const LIGHTING_CONFIG = {
+        morning: {
+            kelvin: '4000K (Нейтральний білий)',
+            dimming: '100% яскравість (Бадьорий режим)',
+            audio: '95 BPM (Deep Tech & Lo-Fi Focus)',
+            focus: 'Зона A (Fast Track) & Зона B (Бар)'
+        },
+        day: {
+            kelvin: '3500K (М\'який робочий фокус)',
+            dimming: '80% яскравість (Компенсація сонця)',
+            audio: '85 BPM (Warm Acoustic & Chill Hop)',
+            focus: 'Зона C (Smart Coworking біля вікон)'
+        },
+        evening: {
+            kelvin: '2700K (Теплий затишний Dim)',
+            dimming: '40% яскравість (Вечірній релакс)',
+            audio: '70 BPM (Slow Jazz, Ambient & Neo-Soul)',
+            focus: 'Зона D (Lounge & Tasting Capsule)'
+        }
+    };
+
+    let activeBlueprintZone = 'a';
+
+    function setBlueprintZone(zoneKey) {
+        if (!BLUEPRINT_ZONES[zoneKey]) return;
+        activeBlueprintZone = zoneKey;
+        const data = BLUEPRINT_ZONES[zoneKey];
+
+        // Update tabs
+        document.querySelectorAll('.bp-zone-btn').forEach(btn => {
+            const z = btn.getAttribute('data-bp-zone');
+            if (z === zoneKey) btn.classList.add('active');
+            else btn.classList.remove('active');
+        });
+
+        // Update SVG zones
+        document.querySelectorAll('.bp-svg-zone').forEach(group => {
+            const z = group.getAttribute('data-bp-zone');
+            if (z === zoneKey) group.classList.add('active-zone');
+            else group.classList.remove('active-zone');
+        });
+
+        // Update Explication Card
+        const badgeEl = document.getElementById('bp-spec-badge');
+        const titleEl = document.getElementById('bp-spec-title');
+        const costEl = document.getElementById('bp-spec-cost');
+        const descEl = document.getElementById('bp-spec-desc');
+        const areaEl = document.getElementById('bp-spec-area');
+        const seatsEl = document.getElementById('bp-spec-seats');
+        const matContainer = document.getElementById('bp-spec-materials');
+        const eqContainer = document.getElementById('bp-spec-equipment');
+        const lightEl = document.getElementById('bp-spec-lighting');
+
+        if (badgeEl) badgeEl.textContent = data.badge;
+        if (titleEl) titleEl.textContent = data.title;
+        if (costEl) costEl.textContent = data.cost;
+        if (descEl) descEl.textContent = data.desc;
+        if (areaEl) areaEl.textContent = data.area;
+        if (seatsEl) seatsEl.textContent = data.seats;
+        if (lightEl) lightEl.textContent = data.lighting;
+
+        if (matContainer) {
+            matContainer.innerHTML = data.materials
+                .map(m => `<span class="bp-spec-pill">${m}</span>`)
+                .join('');
+        }
+
+        if (eqContainer) {
+            eqContainer.innerHTML = data.equipment
+                .map(item => `<li><span>&bull;</span> ${item}</li>`)
+                .join('');
+        }
+    }
+
+    function initBlueprintModule() {
+        // Zone tab clicks
+        document.querySelectorAll('.bp-zone-btn').forEach(btn => {
+            btn.onclick = () => {
+                const z = btn.getAttribute('data-bp-zone');
+                if (z) setBlueprintZone(z);
+            };
+        });
+
+        // SVG Zone clicks
+        document.querySelectorAll('.bp-svg-zone').forEach(group => {
+            group.onclick = () => {
+                const z = group.getAttribute('data-bp-zone');
+                if (z) setBlueprintZone(z);
+            };
+        });
+
+        // Lighting simulator buttons
+        const renderWrapper = document.getElementById('blueprint-render-wrapper');
+        const kelvinEl = document.getElementById('bp-light-kelvin');
+        const dimmingEl = document.getElementById('bp-light-dimming');
+        const audioEl = document.getElementById('bp-light-audio');
+        const focusEl = document.getElementById('bp-light-focus');
+
+        document.querySelectorAll('.light-mode-btn').forEach(btn => {
+            btn.onclick = () => {
+                const mode = btn.getAttribute('data-light-mode');
+                if (!mode || !LIGHTING_CONFIG[mode]) return;
+
+                document.querySelectorAll('.light-mode-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                if (renderWrapper) {
+                    renderWrapper.classList.remove('light-morning', 'light-day', 'light-evening');
+                    renderWrapper.classList.add(`light-${mode}`);
+                }
+
+                const cfg = LIGHTING_CONFIG[mode];
+                if (kelvinEl) kelvinEl.textContent = cfg.kelvin;
+                if (dimmingEl) dimmingEl.textContent = cfg.dimming;
+                if (audioEl) audioEl.textContent = cfg.audio;
+                if (focusEl) focusEl.textContent = cfg.focus;
+            };
+        });
+
+        // Finishes Interactive Calculator
+        const sliderArea = document.getElementById('finishes-area-slider');
+        const valArea = document.getElementById('finishes-area-val');
+        const selectMat = document.getElementById('finishes-material-package');
+        const selectLight = document.getElementById('finishes-light-package');
+        const checkAcoustic = document.getElementById('finishes-acoustic-check');
+        const totalSumEl = document.getElementById('finishes-total-price');
+        const m2PriceEl = document.getElementById('finishes-m2-price');
+        const weeksEl = document.getElementById('finishes-weeks-val');
+        const shareEl = document.getElementById('finishes-capex-share');
+        const statusEl = document.getElementById('finishes-budget-status');
+
+        function recalculateFinishes() {
+            if (!sliderArea) return;
+            const area = parseInt(sliderArea.value, 10) || 145;
+            if (valArea) valArea.textContent = `${area} м²`;
+
+            const materialRate = selectMat ? parseInt(selectMat.value, 10) : 3300;
+            const lightCost = selectLight ? parseInt(selectLight.value, 10) : 135000;
+            const acousticCost = checkAcoustic && checkAcoustic.checked ? 115000 : 0;
+
+            const materialCost = area * (materialRate * 0.48);
+            const total = Math.round(materialCost + lightCost + acousticCost);
+            const m2Price = Math.round(total / area);
+            const weeks = (2.5 + (area / 145) * 3).toFixed(1);
+            const share = ((total / 1420000) * 100).toFixed(1);
+
+            if (totalSumEl) totalSumEl.textContent = `${total.toLocaleString('uk-UA')} ₴`;
+            if (m2PriceEl) m2PriceEl.textContent = `${m2Price.toLocaleString('uk-UA')} ₴/м²`;
+            if (weeksEl) weeksEl.textContent = `${weeks} тижнів`;
+            if (shareEl) shareEl.textContent = `${share}%`;
+
+            if (statusEl) {
+                if (total <= 500000) {
+                    statusEl.className = 'finishes-budget-badge budget-ok';
+                    statusEl.innerHTML = '&check; В межах запланованого бюджету оздоблення (до 480 000 ₴)';
+                } else {
+                    statusEl.className = 'finishes-budget-badge budget-warn';
+                    statusEl.innerHTML = '&bull; Преміальна комплектація оздоблення (понад 480 000 ₴)';
+                }
+            }
+        }
+
+        if (sliderArea) sliderArea.oninput = recalculateFinishes;
+        if (selectMat) selectMat.onchange = recalculateFinishes;
+        if (selectLight) selectLight.onchange = recalculateFinishes;
+        if (checkAcoustic) checkAcoustic.onchange = recalculateFinishes;
+
+        recalculateFinishes();
+    }
+
+    // Initialize Blueprint module if page exists
+    if (pageBlueprint) {
+        initBlueprintModule();
+    }
+
+    // ==========================================================================
+    // 11. SMOOTH ANCHOR NAVIGATION & SCROLL REVEAL
     // ==========================================================================
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href');
             if (targetId && targetId !== '#') {
+                if (targetId.startsWith('#blueprint') || targetId === '#page-blueprint') {
+                    switchPage('blueprint');
+                    return;
+                }
                 if (targetId.startsWith('#menu') || targetId === '#page-menu') {
                     switchPage('menu');
                     return;
@@ -1535,7 +1833,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Check initial hash on load
-    if (window.location.hash.startsWith('#menu') || window.location.hash === '#page-menu') {
+    if (window.location.hash.startsWith('#blueprint') || window.location.hash === '#page-blueprint') {
+        switchPage('blueprint');
+    } else if (window.location.hash.startsWith('#menu') || window.location.hash === '#page-menu') {
         switchPage('menu');
     } else if (window.location.hash.startsWith('#demo') || window.location.hash === '#page-demo') {
         switchPage('demo');

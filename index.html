@@ -33,11 +33,15 @@
                 </div>
             </a>
 
-            <!-- SPA Page Switcher (Головний перемикач 3 екранів) -->
+            <!-- SPA Page Switcher (Головний перемикач 4 екранів) -->
             <div class="spa-nav-switcher">
                 <button class="spa-nav-btn active" id="btn-page-main" data-target-page="main">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                    <span>Концепт і Бізнес-план</span>
+                    <span>Бізнес-план &amp; ROI</span>
+                </button>
+                <button class="spa-nav-btn nav-btn-blueprint" id="btn-page-blueprint" data-target-page="blueprint">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line><circle cx="15" cy="15" r="3"></circle></svg>
+                    <span>Blue Plan (Оформлення)</span>
                 </button>
                 <button class="spa-nav-btn" id="btn-page-menu" data-target-page="menu">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path></svg>
@@ -46,7 +50,7 @@
                 </button>
                 <button class="spa-nav-btn nav-btn-demo" id="btn-page-demo" data-target-page="demo">
                     <span class="live-dot-pulse"></span>
-                    <span>Демо-стенд (POS &amp; Guest)</span>
+                    <span>Демо-стенд (POS)</span>
                 </button>
             </div>
 
@@ -81,11 +85,12 @@
         <!-- Мобільна панель випадаючого меню -->
         <div id="mobile-menu" class="mobile-nav-panel">
             <div class="mobile-page-switch">
-                <button class="mobile-switch-btn active" data-target-page="main">Концепт і Бізнес-план</button>
+                <button class="mobile-switch-btn active" data-target-page="main">Бізнес-план &amp; ROI</button>
+                <button class="mobile-switch-btn" data-target-page="blueprint">Blue Plan (Оформлення)</button>
                 <button class="mobile-switch-btn" data-target-page="menu">Повне Меню (24)</button>
                 <button class="mobile-switch-btn mobile-switch-demo" data-target-page="demo">
                     <span class="live-dot-pulse"></span>
-                    <span>Демо-стенд (Live Simulator)</span>
+                    <span>Демо-стенд (POS)</span>
                 </button>
             </div>
             <ul class="mobile-nav-links">
@@ -1043,7 +1048,636 @@
     </main>
 
     <!-- ======================================================================= -->
-    <!-- СТОРІНКА 2: ПОВНЕ МЕНЮ & ОНЛАЙН-ЗАМОВЛЕННЯ (#page-menu)                 -->
+    <!-- СТОРІНКА 2: BLUE PLAN — АРХІТЕКТУРНИЙ ПРОЕКТ & ДИЗАЙН (#page-blueprint) -->
+    <!-- ======================================================================= -->
+    <main id="page-blueprint" class="spa-page">
+        <section class="blueprint-hero">
+            <div class="container">
+                <div class="blueprint-header-row">
+                    <div class="blueprint-title-wrap">
+                        <div class="bp-passport-badge">
+                            <span class="live-dot-pulse"></span>
+                            <span>BLUEPRINT ARCHITECTURAL PASSPORT &bull; KYIV 2026</span>
+                        </div>
+                        <h2>Blue Plan: Архітектурний проект &amp; Дизайн Залу</h2>
+                        <p class="blueprint-subtitle">Технічний паспорт об'єкта 145 м², зонування контактного острівного бару 360°, коворкінгу біля вікон, дегустаційного лаунжу та обсмажувальної лабораторії. Інтерактивне креслення, симулятор світла за часом доби, калькулятор оздоблення та інженерна сітка.</p>
+                    </div>
+                </div>
+
+                <!-- 1. Шапка архітектурного паспорта об'єкта (Venue Specs Bar) -->
+                <div class="venue-specs-bar">
+                    <div class="venue-specs-grid">
+                        <div class="venue-spec-card">
+                            <div class="spec-card-label">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3z"></path><path d="M9 3v18"></path><path d="M15 3v18"></path><path d="M3 9h18"></path><path d="M3 15h18"></path></svg>
+                                <span>Загальна площа</span>
+                            </div>
+                            <div class="spec-card-val tabular-numbers" id="bp-venue-area">145 м²</div>
+                            <span class="spec-card-sub">Корисний простір точки</span>
+                        </div>
+
+                        <div class="venue-spec-card">
+                            <div class="spec-card-label">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                                <span>Посадка залу</span>
+                            </div>
+                            <div class="spec-card-val tabular-numbers" id="bp-venue-seats">64 місця (5 зон)</div>
+                            <span class="spec-card-sub">Баланс To-Go та залу</span>
+                        </div>
+
+                        <div class="venue-spec-card">
+                            <div class="spec-card-label">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                                <span>Концептуальний стиль</span>
+                            </div>
+                            <div class="spec-card-val" id="bp-venue-style" style="font-size: 1rem; line-height: 1.3;">Industrial Brushed Steel &amp; Concrete</div>
+                            <span class="spec-card-sub">AISI 304 &bull; Бетон M400</span>
+                        </div>
+
+                        <div class="venue-spec-card">
+                            <div class="spec-card-label">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path><line x1="12" y1="6" x2="12" y2="8"></line><line x1="12" y1="16" x2="12" y2="18"></line></svg>
+                                <span>Бюджет оформлення (CAPEX)</span>
+                            </div>
+                            <div class="spec-card-val tabular-numbers" id="bp-venue-capex">1 420 000 ₴</div>
+                            <span class="spec-card-sub">Окупність: 14 місяців</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Симулятор освітлення та атмосфери залу (3 режими часу доби) -->
+                <div class="lighting-simulator-panel">
+                    <div class="lighting-sim-header">
+                        <div class="lighting-sim-title">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                            <span>Симулятор світла та атмосфери залу за часом доби:</span>
+                        </div>
+                        <div class="lighting-mode-btns" id="bp-lighting-modes">
+                            <button type="button" class="light-mode-btn active" data-light-mode="morning">
+                                <span>08:00–12:00 | Ранковий потік</span>
+                                <span class="light-sub-badge">4000K Neutral</span>
+                            </button>
+                            <button type="button" class="light-mode-btn" data-light-mode="day">
+                                <span>12:00–18:00 | Коворкінг &amp; Ланч</span>
+                                <span class="light-sub-badge">3500K Focus</span>
+                            </button>
+                            <button type="button" class="light-mode-btn" data-light-mode="evening">
+                                <span>18:00–23:00 | Вечірній лаунж</span>
+                                <span class="light-sub-badge">2700K Warm Dim</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Телеметрія світлового режиму -->
+                    <div class="lighting-telemetry-row">
+                        <div class="light-telemetry-item">
+                            <span class="telemetry-lbl">Колірна температура:</span>
+                            <strong id="bp-light-kelvin" class="telemetry-val">4000K (Нейтральний білий)</strong>
+                        </div>
+                        <div class="light-telemetry-item">
+                            <span class="telemetry-lbl">Рівень димування:</span>
+                            <strong id="bp-light-dimming" class="telemetry-val">100% яскравість (Бадьорий режим)</strong>
+                        </div>
+                        <div class="light-telemetry-item">
+                            <span class="telemetry-lbl">Музичний темп:</span>
+                            <strong id="bp-light-audio" class="telemetry-val">95 BPM (Deep Tech &amp; Lo-Fi Focus)</strong>
+                        </div>
+                        <div class="light-telemetry-item">
+                            <span class="telemetry-lbl">Пріоритет зони:</span>
+                            <strong id="bp-light-focus" class="telemetry-val">Зона A (Fast Track) &amp; Зона B (Бар)</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Основний блок креслення та специфікацій (Інтерактивне креслення) -->
+                <div class="blueprint-interactive-grid">
+                    <!-- Ліва частина: Інтерактивне креслення приміщення (SVG Floor Plan) -->
+                    <div class="blueprint-canvas-box" id="blueprint-canvas-container">
+                        <div class="blueprint-box-header">
+                            <div class="blueprint-box-title">
+                                <span class="card-tag">CAD Blueprint &bull; Масштаб 1:100</span>
+                                <h4>Архітектурне креслення поверху (145 м²)</h4>
+                            </div>
+                            <span class="bp-hint-text">Клікніть на зону на кресленні або на кнопки</span>
+                        </div>
+
+                        <!-- Перемикач зон кнопками -->
+                        <div class="bp-zone-tabs" id="bp-zone-tabs">
+                            <button type="button" class="bp-zone-btn active" data-bp-zone="a">
+                                <span class="zone-letter">A</span>
+                                <span>Вхід &amp; Fast Track (18 м²)</span>
+                            </button>
+                            <button type="button" class="bp-zone-btn" data-bp-zone="b">
+                                <span class="zone-letter">B</span>
+                                <span>Острівний Бар 360° (24 м²)</span>
+                            </button>
+                            <button type="button" class="bp-zone-btn" data-bp-zone="c">
+                                <span class="zone-letter">C</span>
+                                <span>Smart Coworking (38 м²)</span>
+                            </button>
+                            <button type="button" class="bp-zone-btn" data-bp-zone="d">
+                                <span class="zone-letter">D</span>
+                                <span>Lounge &amp; Tasting (32 м²)</span>
+                            </button>
+                            <button type="button" class="bp-zone-btn" data-bp-zone="e">
+                                <span class="zone-letter">E</span>
+                                <span>Roasting Lab &amp; Блок (33 м²)</span>
+                            </button>
+                        </div>
+
+                        <!-- Візуальне креслення з підсвіткою -->
+                        <div class="blueprint-render-wrapper light-morning" id="blueprint-render-wrapper">
+                            <!-- Світловий фільтр часу доби -->
+                            <div class="blueprint-light-tint" id="blueprint-lighting-overlay"></div>
+
+                            <svg class="blueprint-svg-map" id="blueprint-map-svg" viewBox="0 0 920 540" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <!-- Технічна міліметрова сітка креслення -->
+                                    <pattern id="bp-grid" width="30" height="30" patternUnits="userSpaceOnUse">
+                                        <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(255, 255, 255, 0.05)" stroke-width="0.8"/>
+                                    </pattern>
+                                    <pattern id="bp-major-grid" width="150" height="150" patternUnits="userSpaceOnUse">
+                                        <path d="M 150 0 L 0 0 0 150" fill="none" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1.2"/>
+                                    </pattern>
+                                </defs>
+
+                                <!-- Фонові сітки креслення -->
+                                <rect width="100%" height="100%" fill="#0a0a0d"/>
+                                <rect width="100%" height="100%" fill="url(#bp-grid)"/>
+                                <rect width="100%" height="100%" fill="url(#bp-major-grid)"/>
+
+                                <!-- Габаритний периметр приміщення (145 м²) -->
+                                <rect x="30" y="30" width="860" height="480" rx="8" fill="rgba(18, 18, 22, 0.75)" stroke="#52525b" stroke-width="3"/>
+                                <!-- Осі координат -->
+                                <text x="40" y="24" fill="#71717a" font-size="11" font-family="monospace">0.00 м</text>
+                                <text x="830" y="24" fill="#71717a" font-size="11" font-family="monospace">18.50 м</text>
+                                <text x="6" y="45" fill="#71717a" font-size="11" font-family="monospace">0.00 м</text>
+                                <text x="6" y="505" fill="#71717a" font-size="11" font-family="monospace">7.80 м</text>
+
+                                <!-- Панорамні вікна фасаду (верхній край) -->
+                                <line x1="30" y1="30" x2="620" y2="30" stroke="#38bdf8" stroke-width="5" stroke-dasharray="12 4"/>
+                                <text x="240" y="22" fill="#38bdf8" font-size="10" font-family="sans-serif" font-weight="600">&uarr; ПАНОРАМНЕ ФАСАДНЕ СКЛІННЯ (ВУЛ. ГОРОДЕЦЬКОГО)</text>
+
+                                <!-- ЗОНА A: Вхідна група & Fast Track (18 м²) -->
+                                <g class="bp-svg-zone active-zone" id="svg-zone-a" data-bp-zone="a" cursor="pointer">
+                                    <rect x="50" y="50" width="180" height="150" rx="6" class="zone-rect" fill="rgba(255, 255, 255, 0.04)" stroke="rgba(255, 255, 255, 0.3)" stroke-width="1.8"/>
+                                    <!-- Дверний портал -->
+                                    <path d="M 50 120 A 40 40 0 0 1 90 160" fill="none" stroke="#22c55e" stroke-width="2" stroke-dasharray="3 3"/>
+                                    <line x1="50" y1="120" x2="50" y2="160" stroke="#22c55e" stroke-width="3"/>
+                                    <!-- Стійка самообслуговування NFC -->
+                                    <rect x="140" y="70" width="60" height="40" rx="3" fill="#27272a" stroke="#ffffff" stroke-width="1"/>
+                                    <text x="148" y="94" fill="#ffffff" font-size="10" font-weight="600">NFC POS</text>
+                                    <!-- Текст зони -->
+                                    <circle cx="75" cy="75" r="14" fill="#ffffff" opacity="0.9"/>
+                                    <text x="71" y="80" fill="#09090b" font-weight="800" font-size="13">A</text>
+                                    <text x="96" y="78" fill="#ffffff" font-size="12" font-weight="700">Вхідна група &amp; Fast Track</text>
+                                    <text x="96" y="93" fill="#a1a1aa" font-size="10">18 м² &bull; To-Go вихід за 3 хв</text>
+                                </g>
+
+                                <!-- ЗОНА B: Острівна барна станція 360° (24 м²) -->
+                                <g class="bp-svg-zone" id="svg-zone-b" data-bp-zone="b" cursor="pointer">
+                                    <rect x="260" y="50" width="340" height="180" rx="8" class="zone-rect" fill="rgba(255, 255, 255, 0.04)" stroke="rgba(255, 255, 255, 0.3)" stroke-width="1.8"/>
+                                    <!-- Острівний сталевий бар 360 -->
+                                    <rect x="290" y="80" width="280" height="120" rx="6" fill="#18181b" stroke="#ffffff" stroke-width="2"/>
+                                    <!-- La Marzocco та кофемолки -->
+                                    <rect x="330" y="95" width="90" height="40" rx="3" fill="#27272a" stroke="#e4e4e7" stroke-width="1.5"/>
+                                    <text x="337" y="119" fill="#ffffff" font-size="9" font-weight="700">LA MARZOCCO</text>
+                                    <!-- Вітрина десертів -->
+                                    <rect x="440" y="95" width="90" height="35" rx="3" fill="rgba(56, 189, 248, 0.15)" stroke="#38bdf8" stroke-width="1"/>
+                                    <text x="452" y="117" fill="#38bdf8" font-size="9" font-weight="600">ВІТРИНА</text>
+                                    <!-- Рінзери -->
+                                    <circle cx="310" cy="115" r="8" fill="#27272a" stroke="#a1a1aa" stroke-width="1"/>
+                                    <!-- Барні стільці по периметру -->
+                                    <circle cx="330" cy="65" r="6" fill="#71717a"/>
+                                    <circle cx="380" cy="65" r="6" fill="#71717a"/>
+                                    <circle cx="430" cy="65" r="6" fill="#71717a"/>
+                                    <circle cx="480" cy="65" r="6" fill="#71717a"/>
+                                    <!-- Текст зони -->
+                                    <circle cx="280" cy="70" r="14" fill="#ffffff" opacity="0.9"/>
+                                    <text x="276" y="75" fill="#09090b" font-weight="800" font-size="13">B</text>
+                                    <text x="300" y="170" fill="#ffffff" font-size="12" font-weight="700">Острівний Бар 360° AISI 304</text>
+                                    <text x="300" y="186" fill="#a1a1aa" font-size="10">24 м² &bull; 8 контактних місць &bull; Еспресо станція</text>
+                                </g>
+
+                                <!-- ЗОНА C: Smart Coworking біля вікон (38 м²) -->
+                                <g class="bp-svg-zone" id="svg-zone-c" data-bp-zone="c" cursor="pointer">
+                                    <rect x="630" y="50" width="240" height="300" rx="8" class="zone-rect" fill="rgba(255, 255, 255, 0.04)" stroke="rgba(255, 255, 255, 0.3)" stroke-width="1.8"/>
+                                    <!-- Великий комунальний стіл -->
+                                    <rect x="660" y="80" width="180" height="70" rx="4" fill="#18181b" stroke="#ffffff" stroke-width="1.5"/>
+                                    <text x="690" y="120" fill="#ffffff" font-size="11" font-weight="600">Комунальний Стіл (12 осіб)</text>
+                                    <!-- Точки зарядки 220V + Type-C 100W + Qi2 -->
+                                    <circle cx="690" cy="88" r="4" fill="#38bdf8"/>
+                                    <circle cx="750" cy="88" r="4" fill="#38bdf8"/>
+                                    <circle cx="810" cy="88" r="4" fill="#38bdf8"/>
+                                    <circle cx="690" cy="142" r="4" fill="#38bdf8"/>
+                                    <circle cx="750" cy="142" r="4" fill="#38bdf8"/>
+                                    <circle cx="810" cy="142" r="4" fill="#38bdf8"/>
+                                    <!-- 4 індивідуальні столи біля вікна -->
+                                    <rect x="660" y="180" width="70" height="50" rx="3" fill="#18181b" stroke="#71717a" stroke-width="1"/>
+                                    <rect x="760" y="180" width="70" height="50" rx="3" fill="#18181b" stroke="#71717a" stroke-width="1"/>
+                                    <rect x="660" y="250" width="70" height="50" rx="3" fill="#18181b" stroke="#71717a" stroke-width="1"/>
+                                    <rect x="760" y="250" width="70" height="50" rx="3" fill="#18181b" stroke="#71717a" stroke-width="1"/>
+                                    <!-- Текст зони -->
+                                    <circle cx="650" cy="70" r="14" fill="#ffffff" opacity="0.9"/>
+                                    <text x="645" y="75" fill="#09090b" font-weight="800" font-size="13">C</text>
+                                    <text x="670" y="70" fill="#ffffff" font-size="12" font-weight="700">Smart Coworking Zone</text>
+                                    <text x="660" y="325" fill="#a1a1aa" font-size="10">38 м² &bull; 24 місця &bull; Type-C 100W &bull; Wi-Fi 6</text>
+                                </g>
+
+                                <!-- ЗОНА D: Lounge & Tasting Capsule (32 м²) -->
+                                <g class="bp-svg-zone" id="svg-zone-d" data-bp-zone="d" cursor="pointer">
+                                    <rect x="50" y="250" width="550" height="240" rx="8" class="zone-rect" fill="rgba(255, 255, 255, 0.04)" stroke="rgba(255, 255, 255, 0.3)" stroke-width="1.8"/>
+                                    <!-- Модульні дивани графіт -->
+                                    <rect x="80" y="280" width="200" height="80" rx="10" fill="#18181b" stroke="#52525b" stroke-width="2"/>
+                                    <rect x="100" y="300" width="160" height="40" rx="6" fill="#27272a"/>
+                                    <text x="120" y="325" fill="#ffffff" font-size="11" font-weight="600">Модульний Диван #1</text>
+                                    <!-- Модульний диван #2 -->
+                                    <rect x="320" y="280" width="240" height="80" rx="10" fill="#18181b" stroke="#52525b" stroke-width="2"/>
+                                    <rect x="340" y="300" width="200" height="40" rx="6" fill="#27272a"/>
+                                    <text x="375" y="325" fill="#ffffff" font-size="11" font-weight="600">Модульний Диван #2</text>
+                                    <!-- Низькі столики для дегустацій альтернативи -->
+                                    <circle cx="180" cy="410" r="28" fill="#18181b" stroke="#ffffff" stroke-width="1.5"/>
+                                    <circle cx="300" cy="410" r="28" fill="#18181b" stroke="#ffffff" stroke-width="1.5"/>
+                                    <circle cx="420" cy="410" r="28" fill="#18181b" stroke="#ffffff" stroke-width="1.5"/>
+                                    <text x="156" y="415" fill="#a1a1aa" font-size="10">V60 / Chemex</text>
+                                    <text x="276" y="415" fill="#a1a1aa" font-size="10">Aeropress</text>
+                                    <text x="396" y="415" fill="#a1a1aa" font-size="10">Cupping</text>
+                                    <!-- Текст зони -->
+                                    <circle cx="75" cy="270" r="14" fill="#ffffff" opacity="0.9"/>
+                                    <text x="70" y="275" fill="#09090b" font-weight="800" font-size="13">D</text>
+                                    <text x="96" y="272" fill="#ffffff" font-size="12" font-weight="700">Lounge &amp; Tasting Capsule</text>
+                                    <text x="96" y="465" fill="#a1a1aa" font-size="10">32 м² &bull; 18 місць &bull; Акустичні панелі &bull; Приглушене тепле світло</text>
+                                </g>
+
+                                <!-- ЗОНА E: Технічний блок & Roasting Lab (33 м²) -->
+                                <g class="bp-svg-zone" id="svg-zone-e" data-bp-zone="e" cursor="pointer">
+                                    <rect x="630" y="370" width="240" height="120" rx="8" class="zone-rect" fill="rgba(255, 255, 255, 0.04)" stroke="rgba(255, 255, 255, 0.3)" stroke-width="1.8"/>
+                                    <!-- Ростер для мікролотів -->
+                                    <rect x="650" y="390" width="80" height="40" rx="3" fill="#27272a" stroke="#e4e4e7" stroke-width="1"/>
+                                    <text x="656" y="414" fill="#ffffff" font-size="9" font-weight="700">ROASTER LAB</text>
+                                    <!-- Кліматична камера для зеленого зерна -->
+                                    <rect x="745" y="390" width="85" height="40" rx="3" fill="rgba(56, 189, 248, 0.15)" stroke="#38bdf8" stroke-width="1"/>
+                                    <text x="750" y="414" fill="#7dd3fc" font-size="8.5" font-weight="600">GREEN BEAN 18°C</text>
+                                    <!-- Санвузли для гостей з безконтактною автоматикою -->
+                                    <rect x="650" y="445" width="180" height="30" rx="3" fill="#18181b" stroke="#71717a" stroke-width="1"/>
+                                    <text x="668" y="464" fill="#a1a1aa" font-size="9">Санвузли гостей &bull; Клімат 18-20°C</text>
+                                    <!-- Текст зони -->
+                                    <circle cx="650" cy="380" r="14" fill="#ffffff" opacity="0.9"/>
+                                    <text x="646" y="385" fill="#09090b" font-weight="800" font-size="13">E</text>
+                                    <text x="670" y="382" fill="#ffffff" font-size="12" font-weight="700">Технічний блок &amp; Roasting Lab</text>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Права частина: Детальна специфікація зони (Dynamic Card) -->
+                    <div class="bp-spec-column">
+                        <div class="bp-spec-card" id="bp-zone-spec-card">
+                            <div class="bp-spec-header">
+                                <div>
+                                    <span class="card-tag" id="bp-spec-badge">ЗОНА A &bull; ВХІД &amp; ТОЧКА ВИДАЧІ</span>
+                                    <h3 id="bp-spec-title">Вхідна група &amp; Fast Track</h3>
+                                </div>
+                                <div class="bp-spec-cost tabular-numbers" id="bp-spec-cost">160 000 ₴</div>
+                            </div>
+
+                            <p class="bp-spec-desc" id="bp-spec-desc">
+                                Експрес-вікно видачі замовлень To-Go за 3 хвилини та NFC-термінал самообслуговування, щоб ранковий потік не створював чергу в залі.
+                            </p>
+
+                            <!-- Ключові параметри зони -->
+                            <div class="bp-spec-metrics-grid">
+                                <div class="bp-spec-metric">
+                                    <span class="bp-sm-label">Площа зони:</span>
+                                    <strong class="bp-sm-val tabular-numbers" id="bp-spec-area">18 м²</strong>
+                                </div>
+                                <div class="bp-spec-metric">
+                                    <span class="bp-sm-label">Посадка:</span>
+                                    <strong class="bp-sm-val" id="bp-spec-seats">6 місць очікування</strong>
+                                </div>
+                            </div>
+
+                            <!-- Специфікація матеріалів -->
+                            <div class="bp-spec-block">
+                                <span class="bp-block-title">Використовувані матеріали:</span>
+                                <div class="bp-tag-list" id="bp-spec-materials">
+                                    <span class="bp-spec-pill">Листова сталь AISI 304 Scotch-Brite (1.5 мм)</span>
+                                    <span class="bp-spec-pill">Шліфований бетон M400 з гідрофобізацією</span>
+                                    <span class="bp-spec-pill">Загартоване триплекс-скло 10 мм</span>
+                                    <span class="bp-spec-pill">Матовий чорний алюмінієвий профіль</span>
+                                </div>
+                            </div>
+
+                            <!-- Специфікація обладнання -->
+                            <div class="bp-spec-block">
+                                <span class="bp-block-title">Встановлене обладнання:</span>
+                                <ul class="bp-spec-items" id="bp-spec-equipment">
+                                    <li><span>&bull;</span> Сенсорний кіоск самозамовлення Fast Order 21.5"</li>
+                                    <li><span>&bull;</span> NFC / Apple Pay рідер безконтактної оплати</li>
+                                    <li><span>&bull;</span> Теплова завіса вхідної групи 6.0 кВт</li>
+                                    <li><span>&bull;</span> Дисплей електронної черги готових замовлень To-Go</li>
+                                </ul>
+                            </div>
+
+                            <!-- Специфікація освітлення -->
+                            <div class="bp-spec-block">
+                                <span class="bp-block-title">Сценарій освітлення:</span>
+                                <p class="bp-lighting-text" id="bp-spec-lighting">
+                                    Трекові світильники 4000K з вузьким кутом розсіювання 24° над лінією видачі (1200 люкс), контурна LED-лінія в плінтусі.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Специфікація оздоблювальних матеріалів (Material & Tech Specs) -->
+                <div class="bp-materials-section">
+                    <div class="section-header" style="text-align: left; margin-bottom: 1.5rem;">
+                        <span class="card-tag">Material &amp; Tech Specs</span>
+                        <h3>Специфікація оздоблювальних матеріалів</h3>
+                        <p class="section-subtitle" style="margin: 0;">Чотири ключові матеріали преміального індустріального стилю Industrial Brushed Steel &amp; Concrete</p>
+                    </div>
+
+                    <div class="bp-materials-grid">
+                        <div class="bp-material-card">
+                            <div class="material-swatch swatch-steel">
+                                <span class="swatch-label">AISI 304</span>
+                            </div>
+                            <div class="material-card-body">
+                                <h4>Листова нержавіюча сталь AISI 304</h4>
+                                <span class="material-tech-name">Товщина 1.5 мм &bull; Шліфовка Scotch-Brite</span>
+                                <p>Острівна барна станція 360°, робочі столи бариста, стійки обладнання та декоративні фасадні панелі. Гігієнічність, стійкість до кислот кави та характерний сатиновий відблиск.</p>
+                            </div>
+                        </div>
+
+                        <div class="bp-material-card">
+                            <div class="material-swatch swatch-concrete">
+                                <span class="swatch-label">CONCRETE M400</span>
+                            </div>
+                            <div class="material-card-body">
+                                <h4>Мікроцемент &amp; Бетон M400</h4>
+                                <span class="material-tech-name">Шліфований бетон з полімерною гідрофобізацією</span>
+                                <p>Безшовне покриття підлоги та акцентні архітектурні стіни. Клас міцності M400 з полімерним захисним лаком: нуль пилу, легке прибирання та зносостійкість 15+ років.</p>
+                            </div>
+                        </div>
+
+                        <div class="bp-material-card">
+                            <div class="material-swatch swatch-alu">
+                                <span class="swatch-label">ALU NRC 0.85</span>
+                            </div>
+                            <div class="material-card-body">
+                                <h4>Акустичний перфорований алюміній</h4>
+                                <span class="material-tech-name">Шумопоглинання класу A &bull; NRC 0.85</span>
+                                <p>Підвісні перфоровані стельові панелі графітового кольору з акустичним вкладишем. Поглинають шум кавомолок та відлуння залу, забезпечуючи тишу для роботи та переговорів.</p>
+                            </div>
+                        </div>
+
+                        <div class="bp-material-card">
+                            <div class="material-swatch swatch-glass">
+                                <span class="swatch-label">TRIPLEX 10MM</span>
+                            </div>
+                            <div class="material-card-body">
+                                <h4>Тоноване графітове скло Triplex</h4>
+                                <span class="material-tech-name">Товщина 10 мм &bull; Захист від відблисків</span>
+                                <p>Безпечне скло Triplex для вітрин кондитерських виробів, перегородок коворкінгу та дегустаційної капсули. Антивідблискове напилення без спотворення природних кольорів.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Інтерактивний калькулятор оздоблювальних робіт -->
+                <div class="bp-calc-section">
+                    <div class="section-header" style="text-align: left; margin-bottom: 1.5rem;">
+                        <span class="card-tag">Interactive Estimate &bull; Live CAPEX Tool</span>
+                        <h3>Інтерактивний калькулятор оздоблювальних робіт</h3>
+                        <p class="section-subtitle" style="margin: 0;">Миттєвий перерахунок вартості матеріалів, освітлення та термінів реалізації відповідно до площі приміщення</p>
+                    </div>
+
+                    <div class="finishes-calc-grid">
+                        <div class="finishes-controls-card">
+                            <div class="calc-control-group">
+                                <div class="calc-label-row">
+                                    <label for="finishes-area-slider">Площа оздоблення (м²):</label>
+                                    <span class="calc-slider-val" id="finishes-area-val">145 м²</span>
+                                </div>
+                                <input type="range" id="finishes-area-slider" min="60" max="250" step="5" value="145" class="finishes-slider">
+                                <div class="slider-marks">
+                                    <span>60 м² (Експрес)</span>
+                                    <span>145 м² (Еталон)</span>
+                                    <span>250 м² (Флагман)</span>
+                                </div>
+                            </div>
+
+                            <div class="calc-control-group">
+                                <label for="finishes-material-package">Пакет оздоблювальних матеріалів:</label>
+                                <select id="finishes-material-package" class="calc-select">
+                                    <option value="2200">Base Industrial (Бетон M400 + Сталь 1.2 мм) — 2 200 ₴/м²</option>
+                                    <option value="3300" selected>Titanium Brushed Pro (AISI 304 Scotch-Brite + Мікроцемент) — 3 300 ₴/м²</option>
+                                    <option value="4500">Bespoke Architectural (Нержавійка + Термоясень + Графітовий триплекс) — 4 500 ₴/м²</option>
+                                </select>
+                            </div>
+
+                            <div class="calc-control-group">
+                                <label for="finishes-light-package">Сценарій освітлення &amp; Автоматизація:</label>
+                                <select id="finishes-light-package" class="calc-select">
+                                    <option value="45000">Базовий комерційний LED 4000K (фіксований) — 45 000 ₴</option>
+                                    <option value="135000" selected>DALI Smart Циркадна система (2700K–4000K + Датчики) — 135 000 ₴</option>
+                                </select>
+                            </div>
+
+                            <div class="calc-control-group">
+                                <label class="calc-checkbox-label">
+                                    <input type="checkbox" id="finishes-acoustic-check" checked>
+                                    <span>Акустична підвісна стеля NRC 0.85 (шумопоглинання) — 115 000 ₴</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="finishes-result-card">
+                            <span class="card-tag">Кошторис оздоблення</span>
+                            <div class="finishes-total-sum tabular-numbers" id="finishes-total-price">480 000 ₴</div>
+                            <div class="finishes-sub-metrics">
+                                <div class="fin-metric-item">
+                                    <span class="fin-lbl">Ціна за 1 м²:</span>
+                                    <strong class="fin-val tabular-numbers" id="finishes-m2-price">3 310 ₴/м²</strong>
+                                </div>
+                                <div class="fin-metric-item">
+                                    <span class="fin-lbl">Термін монтажу:</span>
+                                    <strong class="fin-val" id="finishes-weeks-val">5.5 тижнів</strong>
+                                </div>
+                                <div class="fin-metric-item">
+                                    <span class="fin-lbl">Частка від загального CAPEX:</span>
+                                    <strong class="fin-val" id="finishes-capex-share">33.8%</strong>
+                                </div>
+                            </div>
+                            <div class="finishes-budget-badge budget-ok" id="finishes-budget-status">
+                                &check; В межах запланованого бюджету оздоблення (до 480 000 ₴)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Інженерні системи та ергономіка (Engineering Grid) -->
+                <div class="bp-engineering-section">
+                    <div class="section-header" style="text-align: left; margin-bottom: 1.5rem;">
+                        <span class="card-tag">Engineering &bull; MEP &bull; Ergonomics</span>
+                        <h3>Інженерні системи та ергономіка (Engineering Grid)</h3>
+                        <p class="section-subtitle" style="margin: 0;">Технологічні стандарти мікроклімату, чистоти води, акустики та біодинамічного світла</p>
+                    </div>
+
+                    <div class="engineering-grid">
+                        <div class="eng-card">
+                            <div class="eng-card-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg>
+                            </div>
+                            <div class="eng-card-content">
+                                <span class="eng-tag">HVAC &bull; SYSTEMAIR</span>
+                                <h4>Вентиляція та кондиціонування</h4>
+                                <p>Припливно-витяжна система з рекуперацією тепла Systemair. 4-кратний повітрообмін за годину (3200 м³/год), датчики CO₂ та плавне регулювання для свіжості повітря при завантаженні 64 гостей.</p>
+                                <div class="eng-spec-detail">
+                                    <span>Повітрообмін: <strong>4.0x / год</strong></span>
+                                    <span>Фільтрація: <strong>HEPA H11 + F7</strong></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="eng-card">
+                            <div class="eng-card-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+                            </div>
+                            <div class="eng-card-content">
+                                <span class="eng-tag">WATER &bull; BWT BESTMAX</span>
+                                <h4>Водопідготовка для кави</h4>
+                                <p>Багатоступеневий зворотний осмос <strong>BWT bestmax PREMIUM</strong> із ремінералізацією магнієм Mg²⁺. Ідеальна екстракція кави при 120–150 ppm (TDS) та pH 7.0 для повного розкриття смакового букету спешелті.</p>
+                                <div class="eng-spec-detail">
+                                    <span>TDS Мінералізація: <strong>120–150 ppm</strong></span>
+                                    <span>Регулювання: <strong>Mg²⁺ Boost</strong></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="eng-card">
+                            <div class="eng-card-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+                            </div>
+                            <div class="eng-card-content">
+                                <span class="eng-tag">ACOUSTICS &bull; NRC 0.85</span>
+                                <h4>Акустичний дизайн</h4>
+                                <p>Зонований Hi-Fi звук із безшовним покриттям 360°, звукоізоляція зони бариста та кавомолок Mahlkönig. Перфорований алюміній стелі (NRC 0.85) нівелює реверберацію для комфортної розмови та дзвінків.</p>
+                                <div class="eng-spec-detail">
+                                    <span>Поглинання: <strong>NRC 0.85</strong></span>
+                                    <span>Фоновий шум: <strong>&lt; 48 дБ</strong></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="eng-card">
+                            <div class="eng-card-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                            </div>
+                            <div class="eng-card-content">
+                                <span class="eng-tag">LIGHTING &bull; DALI SMART</span>
+                                <h4>Освітлення та циркадні ритми</h4>
+                                <p>Адаптивне біодинамічне підсвічування 2700K–4000K з плавним димуванням за датчиками природного світла від панорамних вікон. Зберігає енергію гостей удень та створює затишок увечері.</p>
+                                <div class="eng-spec-detail">
+                                    <span>Діапазон CCT: <strong>2700K – 4000K</strong></span>
+                                    <span>CRI Індекс: <strong>&gt; 95 Ra</strong></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. Кошторис оформлення та запуску точки (CAPEX Breakdown у ₴) -->
+                <div class="bp-capex-section">
+                    <div class="capex-header-box">
+                        <div>
+                            <span class="card-tag">CAPEX Budget Breakdown</span>
+                            <h3>Кошторис архітектурного оформлення та запуску точки</h3>
+                            <p class="section-subtitle" style="margin: 0;">Повний інвестиційний бюджет реалізації проекту CHROME &amp; BEAN на площі 145 м²</p>
+                        </div>
+                        <div class="capex-total-pill">
+                            <span class="capex-total-lbl">ЗАГАЛЬНИЙ БЮДЖЕТ:</span>
+                            <span class="capex-total-val tabular-numbers">1 420 000 ₴</span>
+                        </div>
+                    </div>
+
+                    <div class="bp-capex-grid">
+                        <div class="bp-capex-card">
+                            <div class="capex-card-top">
+                                <h4>Оздоблення, мікроцемент &amp; світло</h4>
+                                <span class="capex-sum tabular-numbers">480 000 ₴</span>
+                            </div>
+                            <div class="capex-progress-track">
+                                <div class="capex-progress-fill" style="width: 34%;"></div>
+                            </div>
+                            <div class="capex-share">34% від загального бюджету</div>
+                            <ul class="capex-items-list">
+                                <li><span>Безшовний мікроцемент підлоги 145 м²:</span> <strong>170 000 ₴</strong></li>
+                                <li><span>Акустичні стельові панелі та шумопоглинання:</span> <strong>115 000 ₴</strong></li>
+                                <li><span>Трекова світлова система DALI (3 режими доби):</span> <strong>135 000 ₴</strong></li>
+                                <li><span>Санвузол, інженерні мережі та сантехніка:</span> <strong>60 000 ₴</strong></li>
+                            </ul>
+                        </div>
+
+                        <div class="bp-capex-card">
+                            <div class="capex-card-top">
+                                <h4>Кавове та кухонне обладнання</h4>
+                                <span class="capex-sum tabular-numbers">540 000 ₴</span>
+                            </div>
+                            <div class="capex-progress-track">
+                                <div class="capex-progress-fill" style="width: 38%;"></div>
+                            </div>
+                            <div class="capex-share">38% від загального бюджету (ядро якості)</div>
+                            <ul class="capex-items-list">
+                                <li><span>La Marzocco Linea PB 2-group custom:</span> <strong>290 000 ₴</strong></li>
+                                <li><span>Гріндери Mahlkönig E65S GbW + EK43S:</span> <strong>130 000 ₴</strong></li>
+                                <li><span>Фільтрація води (зворотний осмос BWT bestmax):</span> <strong>55 000 ₴</strong></li>
+                                <li><span>Печі Unox Bakerlux + холодильники:</span> <strong>65 000 ₴</strong></li>
+                            </ul>
+                        </div>
+
+                        <div class="bp-capex-card">
+                            <div class="capex-card-top">
+                                <h4>Кастомні меблі зі сталі та дерева</h4>
+                                <span class="capex-sum tabular-numbers">290 000 ₴</span>
+                            </div>
+                            <div class="capex-progress-track">
+                                <div class="capex-progress-fill" style="width: 20%;"></div>
+                            </div>
+                            <div class="capex-share">20% від загального бюджету (64 місця)</div>
+                            <ul class="capex-items-list">
+                                <li><span>Острівна барна станція зі сталі AISI 304:</span> <strong>120 000 ₴</strong></li>
+                                <li><span>Комунальний коворкінг-стіл із масиву дуба:</span> <strong>55 000 ₴</strong></li>
+                                <li><span>Модульні акустичні дивани лаунж-зони:</span> <strong>75 000 ₴</strong></li>
+                                <li><span>Барні стільці та крісла (64 одиниці):</span> <strong>40 000 ₴</strong></li>
+                            </ul>
+                        </div>
+
+                        <div class="bp-capex-card">
+                            <div class="capex-card-top">
+                                <h4>Цифрова інфраструктура &amp; POS</h4>
+                                <span class="capex-sum tabular-numbers">110 000 ₴</span>
+                            </div>
+                            <div class="capex-progress-track">
+                                <div class="capex-progress-fill" style="width: 8%;"></div>
+                            </div>
+                            <div class="capex-share">8% від загального бюджету (Smart Venue)</div>
+                            <ul class="capex-items-list">
+                                <li><span>POS-термінали бариста та KDS-екрани кухні:</span> <strong>48 000 ₴</strong></li>
+                                <li><span>Гігабітна мережа Wi-Fi 6 Ubiquiti Unifi:</span> <strong>32 000 ₴</strong></li>
+                                <li><span>NFC-чипи столів, сканери QR Coffee Pass:</span> <strong>15 000 ₴</strong></li>
+                                <li><span>Відеонагляд з аналітикою трафіку гостей:</span> <strong>15 000 ₴</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ======================================================================= -->
+    <!-- СТОРІНКА 3: ПОВНЕ МЕНЮ & ОНЛАЙН-ЗАМОВЛЕННЯ (#page-menu)                 -->
     <!-- ======================================================================= -->
     <main id="page-menu" class="spa-page">
         <section class="menu-page-hero">
@@ -1126,7 +1760,7 @@
 
                                 <div class="form-group">
                                     <label for="cart-phone">Телефон (+380...):</label>
-                                    <input type="tel" id="cart-phone" placeholder="+380 (67) 500-11-22" required pattern="^\+380\s?\(?\d{2}\)?\s?\d{3}[-\s]?\d{2}[-\s]?\d{2}$">
+                                    <input type="tel" id="cart-phone" placeholder="+380 (96) 999-99-99" required pattern="^\+380\s?\(?\d{2}\)?\s?\d{3}[-\s]?\d{2}[-\s]?\d{2}$">
                                 </div>
 
                                 <!-- Фінансовий підсумок -->
@@ -1247,7 +1881,7 @@
 
                                 <div class="pass-user-info">
                                     <div class="pass-user-name" id="pass-user-name">Олександр Коваленко</div>
-                                    <div class="pass-user-phone" id="pass-user-phone">+380 (67) 482-19-04</div>
+                                    <div class="pass-user-phone" id="pass-user-phone">+380 (96) 999-99-99</div>
                                 </div>
 
                                 <!-- Прогрес-бар залишку чашок -->
@@ -1304,7 +1938,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="sub-phone">Номер телефону (+380):</label>
-                                        <input type="tel" id="sub-phone" placeholder="+380 (67) 123-45-67" required pattern="^\+380\s?\(?\d{2}\)?\s?\d{3}[-\s]?\d{2}[-\s]?\d{2}$">
+                                        <input type="tel" id="sub-phone" placeholder="+380 (96) 999-99-99" required pattern="^\+380\s?\(?\d{2}\)?\s?\d{3}[-\s]?\d{2}[-\s]?\d{2}$">
                                     </div>
                                     <div class="form-group">
                                         <label for="sub-tier">Тариф підписки:</label>
@@ -1535,7 +2169,7 @@
                 </div>
                 <div class="form-group">
                     <label for="book-phone">Номер телефону (Україна):</label>
-                    <input type="tel" id="book-phone" placeholder="+380 (67) 482-19-04" required pattern="^\+380\s?\(?\d{2}\)?\s?\d{3}[-\s]?\d{2}[-\s]?\d{2}$">
+                    <input type="tel" id="book-phone" placeholder="+380 (96) 999-99-99" required pattern="^\+380\s?\(?\d{2}\)?\s?\d{3}[-\s]?\d{2}[-\s]?\d{2}$">
                 </div>
                 <div class="form-row-2col">
                     <div class="form-group">

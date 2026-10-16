@@ -3139,28 +3139,998 @@ footer {
         grid-template-columns: 1fr 1fr;
     }
     .floor-tables-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* ==========================================================================
+   19. BLUEPRINT (BLUE PLAN) ARCHITECTURAL & INTERIOR STYLES
+   ========================================================================== */
+
+.nav-btn-blueprint {
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.06);
+}
+
+.nav-btn-blueprint:hover {
+    border-color: rgba(255, 255, 255, 0.45);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-btn-blueprint.active {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border-color: #ffffff !important;
+    box-shadow: 0 0 16px rgba(255, 255, 255, 0.35);
+}
+
+.blueprint-hero {
+    padding: 2.5rem 0 5rem;
+}
+
+.blueprint-header-row {
+    margin-bottom: 2rem;
+}
+
+.bp-passport-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.35rem 0.85rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 9999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #e4e4e7;
+    margin-bottom: 0.85rem;
+    text-transform: uppercase;
+}
+
+.blueprint-subtitle {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #a1a1aa;
+    max-width: 920px;
+    margin-top: 0.5rem;
+}
+
+/* Venue Specs Bar */
+.venue-specs-bar {
+    margin-bottom: 2rem;
+}
+
+.venue-specs-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.venue-spec-card {
+    background: linear-gradient(135deg, rgba(24, 24, 27, 0.7) 0%, rgba(9, 9, 11, 0.85) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    padding: 1.15rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(12px);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.venue-spec-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.28);
+}
+
+.spec-card-label {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #a1a1aa;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+}
+
+.spec-card-label svg {
+    color: #e4e4e7;
+}
+
+.spec-card-val {
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.3rem;
+}
+
+.spec-card-sub {
+    font-size: 0.75rem;
+    color: #71717a;
+}
+
+/* Lighting Simulator Panel */
+.lighting-simulator-panel {
+    background: rgba(18, 18, 22, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+    backdrop-filter: blur(14px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.lighting-sim-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.85rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.lighting-sim-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.86rem;
+    font-weight: 700;
+    color: #e4e4e7;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.lighting-mode-btns {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.light-mode-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 0.85rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 6px;
+    color: #a1a1aa;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.light-mode-btn:hover {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.light-mode-btn.active {
+    background: #ffffff;
+    color: #09090b;
+    border-color: #ffffff;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+}
+
+.light-sub-badge {
+    padding: 0.15rem 0.35rem;
+    border-radius: 4px;
+    font-size: 0.68rem;
+    font-family: monospace;
+    background: rgba(0, 0, 0, 0.2);
+    color: inherit;
+}
+
+.light-mode-btn.active .light-sub-badge {
+    background: rgba(0, 0, 0, 0.12);
+    color: #09090b;
+}
+
+.lighting-telemetry-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.85rem;
+}
+
+.light-telemetry-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.telemetry-lbl {
+    font-size: 0.72rem;
+    color: #71717a;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.telemetry-val {
+    font-size: 0.84rem;
+    color: #e4e4e7;
+    font-weight: 600;
+}
+
+/* Blueprint Interactive Grid */
+.blueprint-interactive-grid {
+    display: grid;
+    grid-template-columns: 1.55fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
+    align-items: start;
+}
+
+.blueprint-canvas-box {
+    background: #09090c;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 14px;
+    padding: 1.25rem;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.blueprint-box-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.blueprint-box-title h4 {
+    margin: 0.25rem 0 0;
+    font-size: 1.15rem;
+    color: #ffffff;
+}
+
+.bp-hint-text {
+    font-size: 0.74rem;
+    color: #71717a;
+}
+
+.bp-zone-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+}
+
+.bp-zone-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.75rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 6px;
+    color: #a1a1aa;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.bp-zone-btn:hover {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.bp-zone-btn.active {
+    background: #ffffff;
+    color: #09090b;
+    border-color: #ffffff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.zone-letter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.12);
+    color: inherit;
+    font-size: 0.72rem;
+    font-weight: 800;
+}
+
+.bp-zone-btn.active .zone-letter {
+    background: #09090b;
+    color: #ffffff;
+}
+
+/* Visual Blueprint Map Wrapper */
+.blueprint-render-wrapper {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #070709;
+}
+
+.blueprint-light-tint {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    transition: background-color 0.4s ease, opacity 0.4s ease;
+    z-index: 2;
+}
+
+.blueprint-render-wrapper.light-morning .blueprint-light-tint {
+    background: rgba(210, 235, 255, 0.03);
+}
+
+.blueprint-render-wrapper.light-day .blueprint-light-tint {
+    background: transparent;
+}
+
+.blueprint-render-wrapper.light-evening .blueprint-light-tint {
+    background: rgba(255, 175, 80, 0.07);
+    mix-blend-mode: color-dodge;
+}
+
+.blueprint-svg-map {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 920 / 540;
+}
+
+.bp-svg-zone {
+    transition: all 0.25s ease;
+}
+
+.bp-svg-zone .zone-rect {
+    transition: fill 0.25s ease, stroke 0.25s ease, stroke-width 0.25s ease;
+}
+
+.bp-svg-zone:hover .zone-rect {
+    fill: rgba(255, 255, 255, 0.1);
+    stroke: rgba(255, 255, 255, 0.6);
+}
+
+.bp-svg-zone.active-zone .zone-rect {
+    fill: rgba(255, 255, 255, 0.16) !important;
+    stroke: #ffffff !important;
+    stroke-width: 2.5 !important;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.45));
+}
+
+/* Detail Explication Card */
+.bp-spec-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.bp-spec-card {
+    background: linear-gradient(145deg, rgba(20, 20, 24, 0.85) 0%, rgba(12, 12, 15, 0.95) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 14px;
+    padding: 1.5rem;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(14px);
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+}
+
+.bp-spec-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 0.85rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.bp-spec-header h3 {
+    margin: 0.35rem 0 0;
+    font-size: 1.25rem;
+    color: #ffffff;
+}
+
+.bp-spec-cost {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #ffffff;
+    white-space: nowrap;
+}
+
+.bp-spec-desc {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: #d4d4d8;
+    margin: 0;
+}
+
+.bp-spec-metrics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+}
+
+.bp-spec-metric {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.bp-sm-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: #71717a;
+    letter-spacing: 0.04em;
+}
+
+.bp-sm-val {
+    font-size: 0.95rem;
+    color: #ffffff;
+}
+
+.bp-spec-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.bp-block-title {
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #a1a1aa;
+    font-weight: 700;
+}
+
+.bp-tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.bp-spec-pill {
+    padding: 0.25rem 0.6rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 4px;
+    font-size: 0.76rem;
+    color: #e4e4e7;
+}
+
+.bp-spec-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.bp-spec-items li {
+    font-size: 0.82rem;
+    color: #d4d4d8;
+    line-height: 1.4;
+    display: flex;
+    gap: 0.4rem;
+}
+
+.bp-spec-items li span {
+    color: #a1a1aa;
+}
+
+.bp-lighting-text {
+    font-size: 0.82rem;
+    color: #a1a1aa;
+    line-height: 1.5;
+    margin: 0;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 0.6rem 0.75rem;
+    border-radius: 6px;
+}
+
+/* Material & Tech Specs Grid */
+.bp-materials-section {
+    margin-bottom: 3.5rem;
+}
+
+.bp-materials-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+}
+
+.bp-material-card {
+    background: linear-gradient(145deg, rgba(20, 20, 24, 0.7) 0%, rgba(10, 10, 13, 0.85) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.bp-material-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, 0.28);
+}
+
+.material-swatch {
+    height: 72px;
+    display: flex;
+    align-items: flex-end;
+    padding: 0.65rem 0.85rem;
+    position: relative;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.swatch-steel {
+    background: linear-gradient(135deg, #27272a 0%, #52525b 50%, #a1a1aa 75%, #3f3f46 100%);
+}
+
+.swatch-concrete {
+    background: linear-gradient(135deg, #18181b 0%, #27272a 60%, #3f3f46 100%);
+}
+
+.swatch-alu {
+    background: radial-gradient(circle at 50% 50%, #3f3f46 0%, #1c1917 80%);
+}
+
+.swatch-glass {
+    background: linear-gradient(135deg, #09090b 0%, #1e293b 50%, #334155 100%);
+}
+
+.swatch-label {
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    background: rgba(0, 0, 0, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.2rem 0.45rem;
+    border-radius: 4px;
+    color: #ffffff;
+    font-family: monospace;
+}
+
+.material-card-body {
+    padding: 1.15rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.material-card-body h4 {
+    margin: 0;
+    font-size: 0.98rem;
+    color: #ffffff;
+}
+
+.material-tech-name {
+    font-size: 0.74rem;
+    color: #a1a1aa;
+    font-family: monospace;
+    margin-bottom: 0.4rem;
+}
+
+.material-card-body p {
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: #a1a1aa;
+    margin: 0;
+}
+
+/* Interactive Finishes Calculator */
+.bp-calc-section {
+    margin-bottom: 3.5rem;
+}
+
+.finishes-calc-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 1.5rem;
+    align-items: stretch;
+}
+
+.finishes-controls-card {
+    background: rgba(18, 18, 22, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 14px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.calc-control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.calc-control-group label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #e4e4e7;
+}
+
+.calc-label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.calc-slider-val {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #ffffff;
+    font-family: monospace;
+}
+
+.finishes-slider {
+    width: 100%;
+    accent-color: #ffffff;
+    cursor: pointer;
+}
+
+.slider-marks {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    color: #71717a;
+}
+
+.calc-select {
+    background: #09090b;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 8px;
+    padding: 0.65rem 0.85rem;
+    color: #ffffff;
+    font-size: 0.86rem;
+    font-family: inherit;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.calc-select:focus {
+    border-color: rgba(255, 255, 255, 0.45);
+}
+
+.calc-checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.84rem;
+    color: #d4d4d8;
+    cursor: pointer;
+}
+
+.calc-checkbox-label input[type="checkbox"] {
+    accent-color: #ffffff;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.finishes-result-card {
+    background: linear-gradient(145deg, rgba(24, 24, 28, 0.85) 0%, rgba(12, 12, 16, 0.95) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 14px;
+    padding: 1.75rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
+}
+
+.finishes-total-sum {
+    font-size: 2.25rem;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: -0.03em;
+    margin: 0.5rem 0 1rem;
+}
+
+.finishes-sub-metrics {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    padding: 1rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.fin-metric-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.84rem;
+}
+
+.fin-lbl {
+    color: #a1a1aa;
+}
+
+.fin-val {
+    color: #ffffff;
+}
+
+.finishes-budget-badge {
+    padding: 0.65rem 0.85rem;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.finishes-budget-badge.budget-ok {
+    background: rgba(34, 197, 94, 0.12);
+    border: 1px solid rgba(34, 197, 94, 0.35);
+    color: #86efac;
+}
+
+.finishes-budget-badge.budget-warn {
+    background: rgba(234, 179, 8, 0.12);
+    border: 1px solid rgba(234, 179, 8, 0.35);
+    color: #fde047;
+}
+
+/* Engineering Grid */
+.bp-engineering-section {
+    margin-bottom: 3.5rem;
+}
+
+.engineering-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+}
+
+.eng-card {
+    background: rgba(18, 18, 22, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.eng-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, 0.28);
+}
+
+.eng-card-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+}
+
+.eng-tag {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #a1a1aa;
+    font-family: monospace;
+    text-transform: uppercase;
+}
+
+.eng-card-content h4 {
+    margin: 0.25rem 0 0.4rem;
+    font-size: 0.98rem;
+    color: #ffffff;
+}
+
+.eng-card-content p {
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: #a1a1aa;
+    margin: 0 0 0.85rem;
+}
+
+.eng-spec-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.75rem;
+    color: #71717a;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 6px;
+    padding: 0.45rem 0.65rem;
+}
+
+.eng-spec-detail strong {
+    color: #e4e4e7;
+}
+
+/* CAPEX Breakdown Section */
+.bp-capex-section {
+    margin-bottom: 2rem;
+}
+
+.capex-header-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.capex-total-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.65rem 1.15rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 9999px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.08);
+}
+
+.capex-total-lbl {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #a1a1aa;
+}
+
+.capex-total-val {
+    font-size: 1.35rem;
+    font-weight: 900;
+    color: #ffffff;
+}
+
+.bp-capex-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+}
+
+.bp-capex-card {
+    background: linear-gradient(145deg, rgba(20, 20, 24, 0.75) 0%, rgba(10, 10, 13, 0.9) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.capex-card-top {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.capex-card-top h4 {
+    margin: 0;
+    font-size: 0.92rem;
+    color: #ffffff;
+}
+
+.capex-sum {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.capex-progress-track {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 9999px;
+    overflow: hidden;
+}
+
+.capex-progress-fill {
+    height: 100%;
+    background: #ffffff;
+    border-radius: 9999px;
+}
+
+.capex-share {
+    font-size: 0.72rem;
+    color: #a1a1aa;
+}
+
+.capex-items-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.4rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    font-size: 0.78rem;
+    color: #a1a1aa;
+}
+
+.capex-items-list li {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    padding-top: 0.35rem;
+}
+
+.capex-items-list li strong {
+    color: #ffffff;
+    white-space: nowrap;
+}
+
+/* Responsive Styles for Blueprint */
+@media (max-width: 1100px) {
+    .venue-specs-grid,
+    .lighting-telemetry-row,
+    .bp-materials-grid,
+    .engineering-grid,
+    .bp-capex-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    .simulator-cta-card {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 1.6rem;
+    .blueprint-interactive-grid {
+        grid-template-columns: 1fr;
     }
-    .btn-open-simulator {
-        width: 100%;
-        justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .finishes-calc-grid {
+        grid-template-columns: 1fr;
     }
 }
 
 @media (max-width: 580px) {
-    .shift-metrics-grid {
+    .venue-specs-grid,
+    .lighting-telemetry-row,
+    .bp-materials-grid,
+    .engineering-grid,
+    .bp-capex-grid {
         grid-template-columns: 1fr;
     }
-    .quick-items-grid {
-        grid-template-columns: 1fr;
+    .lighting-sim-header {
+        flex-direction: column;
+        align-items: flex-start;
     }
-    .floor-tables-grid {
-        grid-template-columns: 1fr 1fr;
+    .light-mode-btn {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .bp-zone-tabs {
+        flex-direction: column;
+    }
+    .bp-zone-btn {
+        width: 100%;
     }
 }
+
 
