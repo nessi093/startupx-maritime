@@ -1511,7 +1511,19 @@ input[type="range"]::-webkit-slider-thumb {
 
 .demo-submit-btn {
     width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
     margin-top: 0.25rem;
+    padding: 0.85rem 1rem !important;
+    justify-content: center;
+    text-align: center;
+    white-space: normal !important;
+    word-break: break-word;
+}
+
+.demo-submit-btn span {
+    text-align: center;
+    line-height: 1.35;
 }
 
 /* Digital Pass Card (Silver Titanium Gradient) */
@@ -1642,7 +1654,7 @@ input[type="range"]::-webkit-slider-thumb {
     align-items: center;
     justify-content: center;
     gap: 6px;
-    padding: 0.7rem 1rem;
+    padding: 0.7rem 0.85rem;
     border-radius: 6px;
     border: 1px solid rgba(255, 255, 255, 0.25);
     background: #ffffff;
@@ -1651,6 +1663,16 @@ input[type="range"]::-webkit-slider-thumb {
     font-weight: 700;
     cursor: pointer;
     transition: background 0.2s ease, transform 0.15s ease;
+    max-width: 100%;
+    box-sizing: border-box;
+    white-space: normal;
+    text-align: center;
+    word-break: break-word;
+}
+
+.pass-deduct-btn span {
+    text-align: center;
+    line-height: 1.25;
 }
 
 .pass-deduct-btn:hover { background: #e4e4e7; transform: translateY(-1px); }
@@ -1658,21 +1680,25 @@ input[type="range"]::-webkit-slider-thumb {
 .pass-deduct-btn:disabled { background: #27272a; color: #71717a; border-color: #3f3f46; cursor: not-allowed; }
 .pass-subtext { font-size: 0.72rem; color: var(--text-muted); }
 
-@media (max-width: 640px) {
+@media (max-width: 960px) {
     .pass-card-footer {
         flex-direction: column;
         align-items: stretch;
-        gap: 1rem;
+        gap: 0.9rem;
+        width: 100%;
     }
     .pass-qr-box {
         align-self: center;
     }
     .pass-action-box {
         width: 100%;
+        min-width: 0;
     }
     .pass-deduct-btn {
         width: 100%;
+        max-width: 100%;
         justify-content: center;
+        text-align: center;
     }
 }
 
@@ -2443,6 +2469,7 @@ footer {
 /* 18. Mobile-First Responsive Breakpoints */
 @media (max-width: 1024px) {
     #main-nav-links { display: none !important; }
+    .spa-nav-switcher { display: none !important; }
     .nav-burger-btn { display: flex !important; }
     .cta-text-full { display: none; }
     .cta-text-short { display: inline; }
@@ -3140,6 +3167,87 @@ footer {
     }
     .floor-tables-grid {
         grid-template-columns: 1fr 1fr;
+    }
+    .simulator-cta-card {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1.6rem 1.25rem;
+        gap: 1.4rem;
+    }
+    .sim-cta-left {
+        max-width: 100%;
+        width: 100%;
+    }
+    .sim-cta-right {
+        width: 100%;
+    }
+    .btn-open-simulator {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        justify-content: center;
+        text-align: center;
+        white-space: normal;
+        padding: 13px 18px;
+    }
+}
+
+@media (max-width: 640px) {
+    .quick-items-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    .quick-item-btn {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    .db-box-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+    }
+    .db-reset-btn {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 560px) {
+    .db-entity-tabs {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.45rem;
+    }
+    .db-tab-btn {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 480px) {
+    .shift-metrics-grid {
+        grid-template-columns: 1fr;
+    }
+    .shift-live-bar {
+        padding: 1.15rem 0.95rem;
+    }
+    .sim-card-box {
+        padding: 1.15rem 0.9rem;
+    }
+    .digital-pass-card {
+        padding: 1rem 0.85rem;
+    }
+    .demo-hero-header h2 {
+        font-size: 1.65rem;
+    }
+    .quick-chip {
+        padding: 5px 11px;
+        font-size: 0.76rem;
     }
 }
 
