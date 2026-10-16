@@ -1973,6 +1973,31 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    // ==========================================================================
+    // FOOD PARTNERS / SUPPLIERS FILTER
+    // ==========================================================================
+    const supplierFilterBtns = document.querySelectorAll('.supplier-filter-btn');
+    const supplierCards = document.querySelectorAll('.supplier-card');
+
+    if (supplierFilterBtns.length > 0 && supplierCards.length > 0) {
+        supplierFilterBtns.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                const filter = btn.getAttribute('data-supplier-filter');
+                supplierFilterBtns.forEach((b) => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                supplierCards.forEach((card) => {
+                    const cat = card.getAttribute('data-supplier-cat');
+                    if (filter === 'all' || filter === cat) {
+                        card.classList.remove('filtered-out');
+                    } else {
+                        card.classList.add('filtered-out');
+                    }
+                });
+            });
+        });
+    }
+
     const revealOptions = {
         threshold: 0.08,
         rootMargin: "0px 0px -40px 0px"

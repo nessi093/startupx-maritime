@@ -62,6 +62,7 @@
             <ul class="nav-links" id="main-nav-links">
                 <li><a href="#dashboard">Зал &amp; Меню</a></li>
                 <li><a href="#features">Оформлення</a></li>
+                <li><a href="#food-partners">Постачальники</a></li>
                 <li><a href="#comparison">Переваги</a></li>
                 <li><a href="#monetization">ROI Калькулятор</a></li>
                 <li><a href="#pricing">Coffee Pass</a></li>
@@ -98,6 +99,7 @@
             <ul class="mobile-nav-links">
                 <li><a href="#dashboard" class="mobile-nav-link">План Залу &amp; Меню</a></li>
                 <li><a href="#features" class="mobile-nav-link">План оформлення (7 кроків)</a></li>
+                <li><a href="#food-partners" class="mobile-nav-link">Постачальники їжі &amp; Партнери</a></li>
                 <li><a href="#comparison" class="mobile-nav-link">Порівняння концепту</a></li>
                 <li><a href="#monetization" class="mobile-nav-link">ROI Калькулятор точки</a></li>
                 <li><a href="#pricing" class="mobile-nav-link">Тарифи Coffee Pass</a></li>
@@ -298,6 +300,11 @@
                                             </div>
                                             <div class="stat-bar-track"><div class="stat-bar-fill" style="width: 92%;"></div></div>
                                         </div>
+                                    </div>
+                                    <div class="panel-supplier-quickbadge">
+                                        <span class="badge-dot"></span>
+                                        <span>Партнери: Bakehouse, Pastrami Lab, Доообра Ферма, Nordic Salmon</span>
+                                        <a href="#food-partners" class="panel-supplier-anchor">Специфікація постачань &rarr;</a>
                                     </div>
                                     <div class="panel-note-box">
                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
@@ -640,6 +647,310 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- 4.1. Ланцюг постачання та Гастро-партнери (Food Supply Chain & Partners) -->
+        <section id="food-partners" class="section reveal">
+            <div class="container">
+                <div class="section-header">
+                    <div class="hero-pill-badge" style="margin-bottom: 0.85rem;">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                        </svg>
+                        <span>FARM-TO-FORK &bull; HACCP КЛАС А+ &bull; SPECIALTY SUPPLY ECOSYSTEM</span>
+                    </div>
+                    <h2>Ланцюг постачання та Гастро-партнери лофту</h2>
+                    <p class="section-subtitle">Хто постачає їжу в CHROME &amp; BEAN: прямі річні контракти з провідними крафтовими пекарнями, сертифікованими коптильнями, фермами та specialty-обсмажчиками для стабільного Food Cost &lt; 28%</p>
+                </div>
+
+                <!-- Фільтр категорій постачальників -->
+                <div class="supplier-filter-bar" id="supplier-filters">
+                    <button class="supplier-filter-btn active" data-supplier-filter="all">Всі партнери (6)</button>
+                    <button class="supplier-filter-btn" data-supplier-filter="bakery">Хліб &amp; Бріош</button>
+                    <button class="supplier-filter-btn" data-supplier-filter="meat">М'ясо &amp; Смокер</button>
+                    <button class="supplier-filter-btn" data-supplier-filter="seafood">Морепродукти</button>
+                    <button class="supplier-filter-btn" data-supplier-filter="dairy">Фермерські сири</button>
+                    <button class="supplier-filter-btn" data-supplier-filter="greens">Мікрогрін &amp; Hass</button>
+                    <button class="supplier-filter-btn" data-supplier-filter="coffee">Specialty Кава</button>
+                </div>
+
+                <!-- Сітка карток партнерів-постачальників -->
+                <div class="suppliers-grid" id="suppliers-grid">
+                    
+                    <!-- Партнер 1: Bakehouse & Завертайло -->
+                    <div class="supplier-card card reveal-item" data-supplier-cat="bakery">
+                        <div class="supplier-card-top">
+                            <span class="card-tag">Хліб та випічка &bull; Київ, Поділ</span>
+                            <span class="supplier-cert-badge">Daily 06:30 Fresh</span>
+                        </div>
+                        <h3 class="supplier-title">Реміснича пекарня «Bakehouse» (Goodwine) &amp; «Завертайло»</h3>
+                        <p class="supplier-desc">Щоденна нічна випічка ремісничого житнього та пшеничного тартину на 48-годинній живій заквасці без додавання промислових дріжджів. Вершкова здобна бріош на 100% французькому маслі 82.5% — ідеальна золотава текстура для фірмових гарячих тостів з яловичим пастрамі.</p>
+                        
+                        <div class="supplier-spec-list">
+                            <div class="supplier-spec-item">
+                                <span class="spec-label">Продукція:</span>
+                                <span class="spec-val">Бріош вершкова, житній тартин, багети, круасани з мигдалем</span>
+                            </div>
+                            <div class="supplier-spec-item">
+                                <span class="spec-label">Графік доставки:</span>
+                                <span class="spec-val">Щоденно о 06:30 ранку в герметичних термобоксах (за 90 хв до відкриття)</span>
+                            </div>
+                            <div class="supplier-spec-item">
+                                <span class="spec-label">Стандарт якості:</span>
+                                <span class="spec-val">Кам'яномолоте борошно жорнового помолу, 0% поліпшувачів тіста</span>
+                            </div>
+                        </div>
+
+                        <div class="supplier-dish-crossref">
+                            <span class="crossref-label">Позиції в меню:</span>
+                            <span class="crossref-tags">
+                                <span class="crossref-pill">Бріош з пастрамі (320 ₴)</span>
+                                <span class="crossref-pill">Авокадо-тост (260 ₴)</span>
+                            </span>
+                        </div>
+
+                        <div class="card-metric">
+                            <span class="status-dot"></span>
+                            <span>99.4% стабільність постачань &bull; 0% вчорашнього хліба у залі</span>
+                        </div>
+                    </div>
+
+                    <!-- Партнер 2: Pastrami Kyiv Lab & М'ясторія -->
+                    <div class="supplier-card card reveal-item" data-supplier-cat="meat">
+                        <div class="supplier-card-top">
+                            <span class="card-tag">М'ясні делікатеси &bull; Dry-Aged 14–21 день</span>
+                            <span class="supplier-cert-badge">18h Smoker Wood</span>
+                        </div>
+                        <h3 class="supplier-title">Крафтова коптильня «Pastrami Kyiv Lab» &amp; «М'ясторія HoReCa»</h3>
+                        <p class="supplier-desc">Витримана українська мармурова яловичина сухої витримки (Ukrainian Black Angus). Маринується у суміші 12 авторських спецій з коріандром, копченою паприкою та гірчичним зерном, після чого томиться 18 годин на яблуневих дровах. Порційна фасовка у вакуумі виключає перевитрати шефа.</p>
+                        
+                        <div class="supplier-spec-list">
+                            <div class="supplier-spec-item">
+                                <span class="spec-label">Продукція:</span>
+                                <span class="spec-val">Пастрамі з яловичого бріскета су-від, філе індички, сухий бекон</span>
+                            </div>
+                            <div class="supplier-spec-item">
+                                <span class="spec-label">Графік доставки:</span>
+                                <span class="spec-val">3 рази на тиждень (Вт, Чт, Сб) рефрижератором із датчиком +2°C...+4°C</span>
+                            </div>
+                            <div class="supplier-spec-item">
+                                <span class="spec-label">Стандарт якості:</span>
+                                <span class="spec-val">Сертифікат НАССР, контроль температурного трекера в кожній коробці</span>
+                            </div>
+                        </div>
+
+                        <div class="supplier-dish-crossref">
+                            <span class="crossref-label">Позиції в меню:</span>
+                            <span class="crossref-tags">
+                                <span class="crossref-pill">Бріош з пастрамі (320 ₴)</span>
+                                <span class="crossref-pill">Бенедикт з беконом (270 ₴)</span>
+                            </span>
+                        </div>
+
+                        <div class="card-metric">
+                            <span class="status-dot"></span>
+                            <span>Точне калібрування порції 120 г (&plusmn;2г) &bull; Гарантія Food Cost</span>
+                        </div>
+                    </div>
+
+                    <!-- Партнер 3: Nordic Seafood & Egersund -->
+                    <div class="supplier-card card reveal-item" data-supplier-cat="seafood">
+                        <div class="supplier-card-top">
+                            <span class="card-tag">Морепродукти &bull; Superior Salmon</span>
+                            <span class="supplier-cert-badge">GlobalG.A.P. &bull; ASC</span>
+                        </div>
+                        <h3 class="supplier-title">Преміальний імпортер «Nordic Seafood Partner» &amp; «Egersund»</h3>
+                        <p class="supplier-desc">Прямий імпорт охолодженого атлантичного лосося вищої категорії Superior з норвезьких фіордів. Для нашого слабосолоного лосося шеф готує фірмовий гравлакс: засол морською сіллю з кропом, розчавленими ягодами ялівцю та цедрою лайма, що дає маслянисту текстуру та чистий свіжий смак.</p>
+                        
+                        <div class="supplier-spec-list">
+                            <div class="supplier-spec-item">
+                                <span class="spec-label">Продукція:</span>
+                                <span class="spec-val">Охолоджене філе лосося Trim E, слабосолоний гравлакс, тунець Yellowfin</span>
+                            </div>
+                            <div class="supplier-spec-item">
+                                <span class="spec-label">Графік доставки:</span>
+                                <span class="spec-val">Вівторок і п'ятниця термобоксами з сухим льодом за регламентом Cold Chain</span>
+                            </div>
+                            <div class="supplier-spec-item">
+                                <span class="spec-label">Стандарт якості:</span>
+                                <span class="spec-val">0% антибіотиків і хімічних барвників, ASC еко-сертифікація</span>
+                            </div>
+                        </div>
+
+                        <div class="supplier-dish-crossref">
+                            <span class="crossref-label">Позиції в меню:</span>
+                            <span class="crossref-tags">
+                                <span class="crossref-pill">Слабосолоний лосось з рості (380 ₴)</span>
+                                <span class="crossref-pill">Боул з лососем (340 ₴)</span>
+                            </span>
+                        </div>
+
+                        <div class="card-metric">
+                            <span class="status-dot"></span>
+                            <span>&lt; 48 годин від вилову в Норвегії до шеф-станції лофту</span>
+                        </div>
+                    </div>
+
+                    <!-- Партнер 4: Доообра Ферма & Селиська -->
+                    <div class="supplier-card card reveal-item" data-supplier-cat="dairy">
+                        <div class="supplier-card-top">
+                            <span class="card-tag">Органічна молочка &bull; Київщина &amp; Карпати</span>
+                            <span class="supplier-cert-badge">Organic Standard UA</span>
+                        </div>
+                        <h3 class="supplier-title">Органічне фермерське господарство «Доообра Ферма» &amp; «Селиська»</h3>
+                        <p class="supplier-desc">Натуральний фермерський сир найвищої жирності з цільного молока вільного випасу — головний секрет наших популярних сирників (0% білого пшеничного борошна в тісті). Цільне пастеризоване молоко з високим вмістом білка (3.4%) дає щільну, глянцеву мікропіну для лате-арту бариста.</p>
+                        
+                        <div class="supplier-spec-list">
+                            <div class="supplier-spec-item">
+                                <span class="spec-label">Продукція:</span>
+                                <span class="spec-val">Сир кисломолочний фермерський 9%, молоко цільне 3.4%, козиний сир, маскарпоне</span>
+                            </div>
+                            <div class="supplier-spec-item">
+                                <span class="spec-label">Графік доставки:</span>
+                                <span class="spec-val">Понеділок, середа, п'ятниця прямим рейсом з еко-ферми Київщини</span>
+                            </div>
+                            <div class="supplier-spec-item">
+                                <span class="spec-label">Стандарт якості:</span>
+                                <span class="spec-val">Сертифікація «Органік Стандарт», відсутність рослинних жирів та сухого молока</span>
+                            </div>
+                        </div>
+
+                        <div class="supplier-dish-crossref">
+                            <span class="crossref-label">Позиції в меню:</span>
+                            <span class="crossref-tags">
+                                <span class="crossref-pill">Сирники з маскарпоне (220 ₴)</span>
+                                <span class="crossref-pill">Капучино / Флет Уайт / Лате</span>
+                            </span>
+                        </div>
+
+                        <div class="card-metric">
+                            <span class="status-dot"></span>
+                            <span>92% частка української локальної сировини в молочній групі</span>
+                        </div>
+                    </div>
+
+                    <!-- Партнер 5: Kyiv Urban Greens & Fresh Trend -->
+                    <div class="supplier-card card reveal-item" data-supplier-cat="greens">
+                        <div class="supplier-card-top">
+                            <span class="card-tag">Сіті-фармінг &bull; Зріз за 3 год до сервісу</span>
+                            <span class="supplier-cert-badge">Zero-Km Urban Farm</span>
+                        </div>
+                        <h3 class="supplier-title">Вертикальна міська ферма «Kyiv Urban Greens» &amp; «Fresh Trend»</h3>
+                        <p class="supplier-desc">Гідропонічна міська ферма в межах Києва (8 км від кав'ярні). Свіжий зелений горошок, амарант, редис і кінза зрізаються о 07:00 безпосередньо у лотки для ранкової кухні. Відкаліброване авокадо преміум-сорту Hass із Перу з гарантованою маслянистою зрілістю без темних волокон.</p>
+                        
+                        <div class="supplier-spec-list">
+                            <div class="supplier-spec-item">
+                                <span class="spec-label">Продукція:</span>
+                                <span class="spec-val">Лотки живого мікрогріну, бейбі-шпинат, стиглі авокадо Hass калібру 18–20</span>
+                            </div>
+                            <div class="supplier-spec-item">
+                                <span class="spec-label">Графік доставки:</span>
+                                <span class="spec-val">Щоденно о 07:15 свіжий зріз зелені; авокадо — 4 рази на тиждень</span>
+                            </div>
+                            <div class="supplier-spec-item">
+                                <span class="spec-label">Стандарт якості:</span>
+                                <span class="spec-val">Гідропоніка без пестицидів, ручна перевірка щільності кожного плоду</span>
+                            </div>
+                        </div>
+
+                        <div class="supplier-dish-crossref">
+                            <span class="crossref-label">Позиції в меню:</span>
+                            <span class="crossref-tags">
+                                <span class="crossref-pill">Авокадо-тост на тартині (260 ₴)</span>
+                                <span class="crossref-pill">Зелені боули з кіноа (290 ₴)</span>
+                            </span>
+                        </div>
+
+                        <div class="card-metric">
+                            <span class="status-dot"></span>
+                            <span>Нульовий вуглецевий слід доставки &bull; 100% збереження вітамінів</span>
+                        </div>
+                    </div>
+
+                    <!-- Партнер 6: Mad Heads & Fresh Black -->
+                    <div class="supplier-card card reveal-item" data-supplier-cat="coffee">
+                        <div class="supplier-card-top">
+                            <span class="card-tag">Specialty Кава &bull; 85+ SCA Direct Trade</span>
+                            <span class="supplier-cert-badge">SCA Q-Grade 86.5+</span>
+                        </div>
+                        <h3 class="supplier-title">Specialty Roasting Lab «Mad Heads Coffee Roasters» &amp; «Fresh Black»</h3>
+                        <p class="supplier-desc">Офіційний кавовий партнер лофту CHROME &amp; BEAN. Прямий імпорт зеленого зерна (Direct Trade) з ферм Ефіопії Гуджі, Кенії Ньєрі та Колумбії Уїла. Профіль обсмаження розроблено спеціально під гідравліку екстракції кавомашини Slayer Espresso та фільтр-станції Marco.</p>
+                        
+                        <div class="supplier-spec-list">
+                            <div class="supplier-spec-item">
+                                <span class="spec-label">Продукція:</span>
+                                <span class="spec-val">Зерно для еспресо-бленду «Chrome 86+», Single Origin мікролоти для фільтра, мерч</span>
+                            </div>
+                            <div class="supplier-spec-item">
+                                <span class="spec-label">Графік доставки:</span>
+                                <span class="spec-val">Щотижневе свіже обсмаження з точним періодом дегазації 14 днів у балотах</span>
+                            </div>
+                            <div class="supplier-spec-item">
+                                <span class="spec-label">Стандарт якості:</span>
+                                <span class="spec-val">Щоквартальний публічний каппінг з Q-грейдером, вологість зерна 10.8%</span>
+                            </div>
+                        </div>
+
+                        <div class="supplier-dish-crossref">
+                            <span class="crossref-label">Позиції в меню:</span>
+                            <span class="crossref-tags">
+                                <span class="crossref-pill">Фільтр Batch Brew (95 ₴)</span>
+                                <span class="crossref-pill">Флет Уайт (125 ₴) &bull; Coffee Pass</span>
+                            </span>
+                        </div>
+
+                        <div class="card-metric">
+                            <span class="status-dot"></span>
+                            <span>100% Specialty Арабіка &bull; Прозора простежуваність до ферми</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- 4 Стовпи економіки постачання та контролю Food Cost -->
+                <div class="supply-chain-strip reveal-item">
+                    <div class="supply-pillar">
+                        <div class="pillar-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                        </div>
+                        <div class="pillar-text">
+                            <h4>Food Cost під контролем &lt; 28%</h4>
+                            <p>Прямі річні B2B-контракти фіксують ціну сировини без посередників і сезонних коливань.</p>
+                        </div>
+                    </div>
+
+                    <div class="supply-pillar">
+                        <div class="pillar-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                        </div>
+                        <div class="pillar-text">
+                            <h4>Холодний ланцюг Cold Chain</h4>
+                            <p>Авторефрижератори +2°C...+4°C та цифрові логери температури за протоколом НАССР Клас А+.</p>
+                        </div>
+                    </div>
+
+                    <div class="supply-pillar">
+                        <div class="pillar-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        </div>
+                        <div class="pillar-text">
+                            <h4>Швидка видача: 6 хвилин</h4>
+                            <p>Попередньо вакуумований Mise en place дозволяє віддавати гарячі страви за 6–8 хв без простою залу.</p>
+                        </div>
+                    </div>
+
+                    <div class="supply-pillar">
+                        <div class="pillar-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                        </div>
+                        <div class="pillar-text">
+                            <h4>Zero Food Waste &lt; 2.1%</h4>
+                            <p>Алгоритми CafeDB прогнозують попит на зміну за історією замовлень і зводять списання майже до нуля.</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 

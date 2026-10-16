@@ -4634,4 +4634,284 @@ footer {
     }
 }
 
+/* ==========================================================================
+   Food Supply Chain & Gastro Partners Section (#food-partners)
+   ========================================================================== */
+.panel-supplier-quickbadge {
+    margin-top: 1rem;
+    margin-bottom: 0.85rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.65rem;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+}
+
+.panel-supplier-anchor {
+    margin-left: auto;
+    color: #ffffff;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
+}
+
+.panel-supplier-anchor:hover {
+    color: #a1a1aa;
+}
+
+.supplier-filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 2.25rem;
+    padding: 0.4rem;
+    background: rgba(24, 24, 27, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    backdrop-filter: blur(16px);
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+}
+
+.supplier-filter-btn {
+    padding: 0.55rem 1rem;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: transparent;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.supplier-filter-btn:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.supplier-filter-btn.active {
+    color: #000000;
+    background: #ffffff;
+    border-color: #ffffff;
+    font-weight: 600;
+    box-shadow: 0 4px 14px rgba(255, 255, 255, 0.15);
+}
+
+.suppliers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.supplier-card {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 1.85rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 14px;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, opacity 0.3s ease;
+}
+
+.supplier-card.filtered-out {
+    display: none !important;
+}
+
+.supplier-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65);
+}
+
+.supplier-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.supplier-card-top .card-tag {
+    margin-bottom: 0;
+}
+
+.supplier-cert-badge {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    padding: 0.2rem 0.55rem;
+    white-space: nowrap;
+}
+
+.supplier-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.35;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.2px;
+}
+
+.supplier-desc {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 1.25rem;
+}
+
+.supplier-spec-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    padding: 1rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    margin-bottom: 1.25rem;
+}
+
+.supplier-spec-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    font-size: 0.82rem;
+}
+
+.supplier-spec-item .spec-label {
+    color: #a1a1aa;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+}
+
+.supplier-spec-item .spec-val {
+    color: #e4e4e7;
+    line-height: 1.45;
+}
+
+.supplier-dish-crossref {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    margin-bottom: 1.25rem;
+}
+
+.crossref-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: #71717a;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+.crossref-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.crossref-pill {
+    font-size: 0.76rem;
+    color: #d4d4d8;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    padding: 0.25rem 0.6rem;
+}
+
+/* 4 Pillars Supply Chain Strip */
+.supply-chain-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    padding: 1.85rem;
+    border-radius: 14px;
+    background: rgba(24, 24, 27, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+}
+
+.supply-pillar {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.pillar-icon {
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+}
+
+.pillar-text h4 {
+    font-size: 0.98rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 0.35rem;
+}
+
+.pillar-text p {
+    font-size: 0.84rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+@media (max-width: 1024px) {
+    .suppliers-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .supply-chain-strip {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .suppliers-grid {
+        grid-template-columns: 1fr;
+    }
+    .supply-chain-strip {
+        grid-template-columns: 1fr;
+        padding: 1.25rem;
+        gap: 1.25rem;
+    }
+    .supplier-card-top {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .supplier-filter-bar {
+        width: 100%;
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding: 0.35rem;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
 
