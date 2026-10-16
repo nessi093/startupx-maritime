@@ -1697,6 +1697,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 .map(item => `<li><span>&bull;</span> ${item}</li>`)
                 .join('');
         }
+
+        // Trigger smooth fade-in & scale-up animation on card update
+        const specCard = document.getElementById('bp-zone-spec-card');
+        if (specCard) {
+            specCard.classList.remove('card-reanimated');
+            void specCard.offsetWidth;
+            specCard.classList.add('card-reanimated');
+        }
     }
 
     function initBlueprintModule() {
