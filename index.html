@@ -33,16 +33,20 @@
                 </div>
             </a>
 
-            <!-- SPA Page Switcher (Головний перемикач) -->
+            <!-- SPA Page Switcher (Головний перемикач 3 екранів) -->
             <div class="spa-nav-switcher">
                 <button class="spa-nav-btn active" id="btn-page-main" data-target-page="main">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                    <span>Концепт &amp; Бізнес-план</span>
+                    <span>Концепт і Бізнес-план</span>
                 </button>
                 <button class="spa-nav-btn" id="btn-page-menu" data-target-page="menu">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path></svg>
-                    <span>Повне Меню &amp; Замовлення</span>
+                    <span>Повне Меню</span>
                     <span class="menu-pill-count">24</span>
+                </button>
+                <button class="spa-nav-btn nav-btn-demo" id="btn-page-demo" data-target-page="demo">
+                    <span class="live-dot-pulse"></span>
+                    <span>Демо-стенд (POS &amp; Guest)</span>
                 </button>
             </div>
 
@@ -53,7 +57,6 @@
                 <li><a href="#comparison">Переваги</a></li>
                 <li><a href="#monetization">ROI Калькулятор</a></li>
                 <li><a href="#pricing">Coffee Pass</a></li>
-                <li><a href="#demo-db">Демо POS &amp; БД</a></li>
                 <li><a href="#faq">FAQ</a></li>
             </ul>
 
@@ -79,7 +82,11 @@
         <div id="mobile-menu" class="mobile-nav-panel">
             <div class="mobile-page-switch">
                 <button class="mobile-switch-btn active" data-target-page="main">Концепт і Бізнес-план</button>
-                <button class="mobile-switch-btn" data-target-page="menu">Повне Меню &amp; Замовлення (24)</button>
+                <button class="mobile-switch-btn" data-target-page="menu">Повне Меню (24)</button>
+                <button class="mobile-switch-btn mobile-switch-demo" data-target-page="demo">
+                    <span class="live-dot-pulse"></span>
+                    <span>Демо-стенд (Live Simulator)</span>
+                </button>
             </div>
             <ul class="mobile-nav-links">
                 <li><a href="#dashboard" class="mobile-nav-link">План Залу &amp; Меню</a></li>
@@ -87,7 +94,7 @@
                 <li><a href="#comparison" class="mobile-nav-link">Порівняння концепту</a></li>
                 <li><a href="#monetization" class="mobile-nav-link">ROI Калькулятор точки</a></li>
                 <li><a href="#pricing" class="mobile-nav-link">Тарифи Coffee Pass</a></li>
-                <li><a href="#demo-db" class="mobile-nav-link mobile-highlight-link">Демо-стенд: POS &amp; Жива БД</a></li>
+                <li><a href="#" class="mobile-nav-link mobile-highlight-link" data-target-page="demo">Демо-стенд: POS &amp; Симулятор</a></li>
                 <li><a href="#faq" class="mobile-nav-link">FAQ</a></li>
             </ul>
             <div class="mobile-nav-footer">
@@ -925,141 +932,29 @@
             </div>
         </section>
 
-        <!-- 8. ДЕМО-СТЕНД: Активація підписки & Жива База Даних CafeDB (#demo-db) -->
-        <section id="demo-db" class="section reveal">
+        <!-- 8. ДЕМО-СТЕНД: Тизер переходу на Live Симулятор (#demo-teaser) -->
+        <section id="demo-teaser" class="section reveal">
             <div class="container">
-                <div class="section-header">
-                    <div class="demo-tag-top">ДЛЯ ДЕМОНСТРАЦІЇ ЖУРІ ХАКАТОНУ</div>
-                    <h2>Демо-стенд: Активація підписки &amp; Жива База Даних POS</h2>
-                    <p class="section-subtitle">Спробуйте активувати картку Coffee Pass, списати чашку кави на касі бариста та подивіться, як миттєво оновлюється клієнтська база у localStorage</p>
-                </div>
-
-                <div class="demo-grid-layout">
-                    <!-- Ліва частина: Інтерактивне демо активації картки -->
-                    <div class="demo-card-box">
-                        <div class="demo-box-header">
-                            <span class="card-tag">Термінал гостя</span>
-                            <h3>1. Оформлення та Тест Каси</h3>
+                <div class="simulator-cta-card">
+                    <div class="sim-cta-left">
+                        <div class="sim-cta-badge">
+                            <span class="live-dot-pulse"></span>
+                            <span>LIVE POS &amp; GUEST SIMULATOR 2026</span>
                         </div>
-
-                        <form id="subscription-demo-form" class="demo-inner-form">
-                            <div class="form-group">
-                                <label for="sub-name">Ім'я гостя:</label>
-                                <input type="text" id="sub-name" placeholder="Богдан Мельник" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="sub-phone">Номер телефону (Україна):</label>
-                                <input type="tel" id="sub-phone" placeholder="+380 (67) 123-45-67" required pattern="^\+380\s?\(?\d{2}\)?\s?\d{3}[-\s]?\d{2}[-\s]?\d{2}$">
-                            </div>
-                            <div class="form-group">
-                                <label for="sub-tier">Обраний тариф підписки:</label>
-                                <select id="sub-tier">
-                                    <option value="smart">Smart Coffee Pass — 790 ₴ (15 чашок)</option>
-                                    <option value="milk">Milk &amp; Barista Pro — 1 190 ₴ (20 напоїв)</option>
-                                </select>
-                            </div>
-                            <button type="submit" class="cta-button demo-submit-btn">
-                                <span>Демо-оплата Monobank / Apple Pay &rarr;</span>
-                            </button>
-                        </form>
-
-                        <!-- Згенерована цифрова картка підписника -->
-                        <div id="active-pass-display" class="digital-pass-card">
-                            <div class="pass-card-top">
-                                <div class="pass-brand">
-                                    <span class="pass-logo-text">CHROME &amp; BEAN</span>
-                                    <span class="pass-tier-badge" id="pass-plan-name">Smart Pass</span>
-                                </div>
-                                <span class="pass-id-tag tabular-numbers" id="pass-card-id">#PASS-UA-8419</span>
-                            </div>
-
-                            <div class="pass-user-info">
-                                <div class="pass-user-name" id="pass-user-name">Олександр Коваленко</div>
-                                <div class="pass-user-phone" id="pass-user-phone">+380 (67) 482-19-04</div>
-                            </div>
-
-                            <!-- Прогрес-бар залишку чашок -->
-                            <div class="pass-cups-block">
-                                <div class="cups-metric-row">
-                                    <span class="cups-label">Баланс чашок кави:</span>
-                                    <span class="cups-count tabular-numbers" id="pass-cups-count">15 із 15</span>
-                                </div>
-                                <div class="cups-bar-track">
-                                    <div class="cups-bar-fill" id="pass-cups-bar" style="width: 100%;"></div>
-                                </div>
-                                <div class="pass-discount-note" id="pass-discount-note">Включено: знижка 15% на всю кухню та десерти</div>
-                            </div>
-
-                            <div class="pass-card-footer">
-                                <div class="pass-qr-box">
-                                    <!-- Чистий векторний SVG QR-код -->
-                                    <svg width="68" height="68" viewBox="0 0 100 100" fill="#ffffff">
-                                        <rect x="0" y="0" width="30" height="30" fill="none" stroke="#ffffff" stroke-width="6"/>
-                                        <rect x="8" y="8" width="14" height="14"/>
-                                        <rect x="70" y="0" width="30" height="30" fill="none" stroke="#ffffff" stroke-width="6"/>
-                                        <rect x="78" y="8" width="14" height="14"/>
-                                        <rect x="0" y="70" width="30" height="30" fill="none" stroke="#ffffff" stroke-width="6"/>
-                                        <rect x="8" y="78" width="14" height="14"/>
-                                        <rect x="42" y="10" width="16" height="8"/>
-                                        <rect x="42" y="28" width="8" height="16"/>
-                                        <rect x="10" y="42" width="16" height="8"/>
-                                        <rect x="36" y="42" width="28" height="16"/>
-                                        <rect x="74" y="42" width="16" height="16"/>
-                                        <rect x="42" y="70" width="16" height="20"/>
-                                        <rect x="68" y="70" width="22" height="10"/>
-                                        <rect x="70" y="86" width="20" height="8"/>
-                                    </svg>
-                                </div>
-                                <div class="pass-action-box">
-                                    <button class="pass-deduct-btn" id="btn-deduct-cup">
-                                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path></svg>
-                                        <span>Тест каси: Списати 1 чашку (-1)</span>
-                                    </button>
-                                    <span class="pass-subtext">Імітація зчитування сканером бариста</span>
-                                </div>
-                            </div>
+                        <h3>Інтерактивний Демо-стенд: POS-термінал, KDS та Мапа Залу</h3>
+                        <p class="sim-cta-desc">Усю інтерактивну екосистему закладу (цифрову картку підписника, швидке передзамовлення в 1 клік, інтерактивну мапу 8 столиків, екран кухні KDS та живу базу CafeDB) винесено на окремий повноекранний екран симулятора.</p>
+                        <div class="sim-cta-tags">
+                            <span class="sim-spec-tag">Виручка зміни live</span>
+                            <span class="sim-spec-tag">Черга KDS бариста</span>
+                            <span class="sim-spec-tag">Floor Plan 8 столів</span>
+                            <span class="sim-spec-tag">CafeDB у localStorage</span>
                         </div>
                     </div>
-
-                    <!-- Права частина: Жива База Даних CafeDB у localStorage -->
-                    <div class="demo-db-box">
-                        <div class="db-box-header">
-                            <div>
-                                <span class="card-tag">POS &bull; LocalStorage Database</span>
-                                <h3>2. Жива База Даних CafeDB</h3>
-                            </div>
-                            <button class="db-reset-btn" id="btn-reset-db" title="Скинути до початкових демо-записів">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
-                                <span>Скинути БД</span>
-                            </button>
-                        </div>
-
-                        <!-- Перемикач сутностей БД -->
-                        <div class="db-entity-tabs">
-                            <button class="db-tab-btn active" data-db-tab="subscribers">
-                                <span>Підписники Pass</span>
-                                <span class="db-counter-badge tabular-numbers" id="db-count-subscribers">3</span>
-                            </button>
-                            <button class="db-tab-btn" data-db-tab="orders">
-                                <span>Замовлення з меню</span>
-                                <span class="db-counter-badge tabular-numbers" id="db-count-orders">2</span>
-                            </button>
-                            <button class="db-tab-btn" data-db-tab="bookings">
-                                <span>Броні столів</span>
-                                <span class="db-counter-badge tabular-numbers" id="db-count-bookings">2</span>
-                            </button>
-                        </div>
-
-                        <!-- Пошук по базі даних -->
-                        <div class="db-search-bar">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                            <input type="text" id="db-search-input" placeholder="Швидкий пошук за ім'ям або телефоном +380...">
-                        </div>
-
-                        <!-- Контейнер списку записів БД (БЕЗ ТЕГІВ ТАБЛИЦІ) -->
-                        <div class="db-records-viewport" id="db-records-container">
-                            <!-- Рендериться динамічно в js/app.js -->
-                        </div>
+                    <div class="sim-cta-right">
+                        <button type="button" class="btn-open-simulator" data-target-page="demo">
+                            <span class="live-dot-pulse"></span>
+                            <span>Запустити Демо-стенд &rarr;</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -1256,6 +1151,347 @@
                             </form>
                         </div>
                     </aside>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ======================================================================= -->
+    <!-- СТОРІНКА 3: ДЕМО-СТЕНД (LIVE SIMULATOR: POS & GUEST) (#page-demo)       -->
+    <!-- ======================================================================= -->
+    <main id="page-demo" class="spa-page">
+        <section class="demo-page-hero">
+            <div class="container">
+                <div class="demo-hero-header">
+                    <div class="demo-tag-top">
+                        <span class="live-dot-pulse"></span>
+                        <span>LIVE POS &bull; KDS &bull; WALLET &bull; FLOOR PLAN SIMULATOR 2026</span>
+                    </div>
+                    <h2>Демо-стенд: Інтерактивний Симулятор Закладу</h2>
+                    <p class="demo-hero-sub">Повна екосистема взаємодії гостя та бариста в реальному часі. Оформлюйте швидкі замовлення в 1 клік, бронюйте столики на мапі залу, тестуйте списання чашок сканером та керуйте KDS-чергою приготування.</p>
+                </div>
+
+                <!-- 1. Верхня панель телеметрії зміни (Shift Live Bar) -->
+                <div class="shift-live-bar">
+                    <div class="shift-bar-header">
+                        <div class="shift-status-pill">
+                            <span class="live-dot-pulse"></span>
+                            <span class="shift-status-text">ЗМІНА ВІДКРИТА &bull; LIVE ТЕЛЕМЕТРІЯ</span>
+                        </div>
+                        <div class="shift-venue-info">CHROME &amp; BEAN (Київ, вул. Архітектора Городецького, 14)</div>
+                    </div>
+                    <div class="shift-metrics-grid">
+                        <div class="shift-metric-card">
+                            <div class="shift-metric-label">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                                <span>Виручка зміни</span>
+                            </div>
+                            <div class="shift-metric-val tabular-numbers" id="live-shift-revenue">0 ₴</div>
+                            <span class="shift-metric-hint">+ замовлення та нові абонементи</span>
+                        </div>
+                        <div class="shift-metric-card">
+                            <div class="shift-metric-label">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                                <span>Активних Pass</span>
+                            </div>
+                            <div class="shift-metric-val tabular-numbers" id="live-shift-passes">3</div>
+                            <span class="shift-metric-hint">підписників із балансом</span>
+                        </div>
+                        <div class="shift-metric-card">
+                            <div class="shift-metric-label">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                                <span>Замовлень у роботі (KDS)</span>
+                            </div>
+                            <div class="shift-metric-val tabular-numbers" id="live-shift-kds">1</div>
+                            <span class="shift-metric-hint">на екрані кухні / бару</span>
+                        </div>
+                        <div class="shift-metric-card">
+                            <div class="shift-metric-label">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                                <span>Вільних столів</span>
+                            </div>
+                            <div class="shift-metric-val tabular-numbers" id="live-shift-tables">6 із 8</div>
+                            <span class="shift-metric-hint">інтерактивна мапа залу</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Основна сітка симулятора: 2 повноцінні колонки (Desktop: 2col, Mobile: 1col) -->
+                <div class="sim-main-grid">
+
+                    <!-- ЛІВА КОЛОНКА: Інтерфейс Гостя (Mobile Wallet & Зал) -->
+                    <div class="sim-guest-column">
+                        <div class="sim-column-header">
+                            <div class="col-badge guest-badge">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                                <span>ІНТЕРФЕЙС ГОСТЯ (MOBILE WALLET &amp; ЗАЛ)</span>
+                            </div>
+                            <h3>Картка гостя, Замовлення та Бронь</h3>
+                        </div>
+
+                        <!-- 2.1 Цифрова карта підписника Coffee Pass -->
+                        <div class="sim-card-box">
+                            <div class="sim-box-title-row">
+                                <span class="card-tag">1. Цифрова карта Pass</span>
+                                <span class="sim-sub-tag">Wallet Ready &bull; NFC / QR</span>
+                            </div>
+
+                            <div id="active-pass-display" class="digital-pass-card">
+                                <div class="pass-card-top">
+                                    <div class="pass-brand">
+                                        <span class="pass-logo-text">CHROME &amp; BEAN</span>
+                                        <span class="pass-tier-badge" id="pass-plan-name">Smart Pass</span>
+                                    </div>
+                                    <span class="pass-id-tag tabular-numbers" id="pass-card-id">#PASS-UA-8419</span>
+                                </div>
+
+                                <div class="pass-user-info">
+                                    <div class="pass-user-name" id="pass-user-name">Олександр Коваленко</div>
+                                    <div class="pass-user-phone" id="pass-user-phone">+380 (67) 482-19-04</div>
+                                </div>
+
+                                <!-- Прогрес-бар залишку чашок -->
+                                <div class="pass-cups-block">
+                                    <div class="cups-metric-row">
+                                        <span class="cups-label">Баланс чашок кави:</span>
+                                        <span class="cups-count tabular-numbers" id="pass-cups-count">15 із 15</span>
+                                    </div>
+                                    <div class="cups-bar-track">
+                                        <div class="cups-bar-fill" id="pass-cups-bar" style="width: 100%;"></div>
+                                    </div>
+                                    <div class="pass-discount-note" id="pass-discount-note">Включено: знижка 15% на всю кухню та десерти</div>
+                                </div>
+
+                                <div class="pass-card-footer">
+                                    <div class="pass-qr-box">
+                                        <svg width="68" height="68" viewBox="0 0 100 100" fill="#ffffff">
+                                            <rect x="0" y="0" width="30" height="30" fill="none" stroke="#ffffff" stroke-width="6"/>
+                                            <rect x="8" y="8" width="14" height="14"/>
+                                            <rect x="70" y="0" width="30" height="30" fill="none" stroke="#ffffff" stroke-width="6"/>
+                                            <rect x="78" y="8" width="14" height="14"/>
+                                            <rect x="0" y="70" width="30" height="30" fill="none" stroke="#ffffff" stroke-width="6"/>
+                                            <rect x="8" y="78" width="14" height="14"/>
+                                            <rect x="42" y="10" width="16" height="8"/>
+                                            <rect x="42" y="28" width="8" height="16"/>
+                                            <rect x="10" y="42" width="16" height="8"/>
+                                            <rect x="36" y="42" width="28" height="16"/>
+                                            <rect x="74" y="42" width="16" height="16"/>
+                                            <rect x="42" y="70" width="16" height="20"/>
+                                            <rect x="68" y="70" width="22" height="10"/>
+                                            <rect x="70" y="86" width="20" height="8"/>
+                                        </svg>
+                                    </div>
+                                    <div class="pass-action-box">
+                                        <button class="pass-deduct-btn" id="btn-deduct-cup">
+                                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path></svg>
+                                            <span>Тест каси: Списати 1 чашку (-1)</span>
+                                        </button>
+                                        <span class="pass-subtext">Миттєве зчитування QR-коду на касі</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Форма реєстрації / покупки нового Coffee Pass -->
+                            <details class="sim-expand-form" open>
+                                <summary class="sim-expand-summary">
+                                    <span>+ Оформити новий абонемент Pass</span>
+                                    <svg class="summary-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                                </summary>
+                                <form id="subscription-demo-form" class="demo-inner-form" style="margin-top: 1rem;">
+                                    <div class="form-group">
+                                        <label for="sub-name">Ім'я гостя:</label>
+                                        <input type="text" id="sub-name" placeholder="Богдан Мельник" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="sub-phone">Номер телефону (+380):</label>
+                                        <input type="tel" id="sub-phone" placeholder="+380 (67) 123-45-67" required pattern="^\+380\s?\(?\d{2}\)?\s?\d{3}[-\s]?\d{2}[-\s]?\d{2}$">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="sub-tier">Тариф підписки:</label>
+                                        <select id="sub-tier">
+                                            <option value="smart">Smart Coffee Pass — 790 ₴ (15 чашок)</option>
+                                            <option value="milk">Milk &amp; Barista Pro — 1 190 ₴ (20 напоїв)</option>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="cta-button demo-submit-btn">
+                                        <span>Активувати картку та додати в CafeDB &rarr;</span>
+                                    </button>
+                                </form>
+                            </details>
+                        </div>
+
+                        <!-- 2.2 Швидкий предзаказ ко часу (1-Click Order) -->
+                        <div class="sim-card-box">
+                            <div class="sim-box-title-row">
+                                <span class="card-tag">2. Швидкий предзаказ ко часу</span>
+                                <span class="sim-sub-tag">1-Click Fast Order</span>
+                            </div>
+                            <p class="sim-box-desc">Оберіть час отримання та натисніть на позицію — замовлення автоматично врахує знижку Coffee Pass і полетить на KDS-екран бариста праворуч:</p>
+
+                            <div class="quick-time-chips" id="quick-order-time-selector">
+                                <button type="button" class="quick-chip active" data-time-slot="Через 5 хв">Через 5 хв</button>
+                                <button type="button" class="quick-chip" data-time-slot="Через 15 хв">Через 15 хв</button>
+                                <button type="button" class="quick-chip" data-time-slot="За столик">За столик</button>
+                            </div>
+
+                            <div class="quick-items-grid">
+                                <button type="button" class="quick-item-btn" data-quick-item="Капучино з пармезаном (300 мл)" data-quick-price="90">
+                                    <div class="quick-item-info">
+                                        <span class="quick-item-name">Капучино з пармезаном</span>
+                                        <span class="quick-item-meta">300 мл &bull; Авторська подача</span>
+                                    </div>
+                                    <div class="quick-item-action">
+                                        <span class="quick-item-price">90 ₴</span>
+                                        <span class="quick-add-badge">+ Замовити</span>
+                                    </div>
+                                </button>
+
+                                <button type="button" class="quick-item-btn" data-quick-item="Флет Уайт на вівсяному (180 мл)" data-quick-price="95">
+                                    <div class="quick-item-info">
+                                        <span class="quick-item-name">Флет Уайт на вівсяному</span>
+                                        <span class="quick-item-meta">180 мл &bull; Подвійний шот</span>
+                                    </div>
+                                    <div class="quick-item-action">
+                                        <span class="quick-item-price">95 ₴</span>
+                                        <span class="quick-add-badge">+ Замовити</span>
+                                    </div>
+                                </button>
+
+                                <button type="button" class="quick-item-btn" data-quick-item="Круасан з мигдалем &amp; кремом" data-quick-price="110">
+                                    <div class="quick-item-info">
+                                        <span class="quick-item-name">Круасан з мигдалем</span>
+                                        <span class="quick-item-meta">160 г &bull; Власна випічка</span>
+                                    </div>
+                                    <div class="quick-item-action">
+                                        <span class="quick-item-price">110 ₴</span>
+                                        <span class="quick-add-badge">+ Замовити</span>
+                                    </div>
+                                </button>
+
+                                <button type="button" class="quick-item-btn" data-quick-item="Авокадо-тост з лососем" data-quick-price="260">
+                                    <div class="quick-item-info">
+                                        <span class="quick-item-name">Авокадо-тост з лососем</span>
+                                        <span class="quick-item-meta">310 г &bull; Тартин, яйце пашот</span>
+                                    </div>
+                                    <div class="quick-item-action">
+                                        <span class="quick-item-price">260 ₴</span>
+                                        <span class="quick-add-badge">+ Замовити</span>
+                                    </div>
+                                </button>
+                            </div>
+
+                            <div id="quick-order-toast" class="quick-toast-banner" style="display:none;"></div>
+                        </div>
+
+                        <!-- 2.3 Інтерактивна карта залу (Floor Plan — 8 столів) -->
+                        <div class="sim-card-box">
+                            <div class="sim-box-title-row">
+                                <div>
+                                    <span class="card-tag">3. Інтерактивна мапа залу</span>
+                                    <h4 style="margin: 4px 0 0; color: #fff; font-size: 1rem;">План розміщення столиків (8 столів)</h4>
+                                </div>
+                                <div class="floor-legend">
+                                    <span class="legend-item"><span class="legend-dot free"></span> Вільний</span>
+                                    <span class="legend-item"><span class="legend-dot booked"></span> Заброньовано</span>
+                                </div>
+                            </div>
+                            <p class="sim-box-desc">Клікніть на будь-який столик, щоб змінити статус «Вільний» &harr; «Заброньовано». Зміни синхронізуються з базою та панеллю виручки/заповненості:</p>
+
+                            <div class="floor-tables-grid" id="floor-tables-container">
+                                <!-- Рендериться динамічно в js/app.js (8 столиків) -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ПРАВА КОЛОНКА: POS-термінал Бариста, KDS та База CafeDB -->
+                    <div class="sim-barista-column">
+                        <div class="sim-column-header">
+                            <div class="col-badge barista-badge">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path></svg>
+                                <span>POS-ТЕРМІНАЛ БАРИСТА, KDS &amp; CAFEDB</span>
+                            </div>
+                            <h3>Операційний бекенд та KDS-екран</h3>
+                        </div>
+
+                        <!-- 3.1 Сканер каси & Журнал операцій -->
+                        <div class="sim-card-box">
+                            <div class="sim-box-title-row">
+                                <span class="card-tag">1. POS Сканер каси</span>
+                                <span class="sim-sub-tag">NFC / Optical Reader</span>
+                            </div>
+                            <div class="scanner-status-indicator">
+                                <span class="live-dot-pulse"></span>
+                                <span>Сканер активний &bull; Очікує зчитування Coffee Pass</span>
+                            </div>
+
+                            <div class="scanner-log-panel">
+                                <div class="scanner-log-header">
+                                    <span>Журнал операцій сканування:</span>
+                                    <span class="log-badge-sync">Live Sync</span>
+                                </div>
+                                <div class="scanner-logs-list" id="scanner-logs-list">
+                                    <!-- Рендериться динамічно -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3.2 Табло черги замовлень (Live KDS Queue) -->
+                        <div class="sim-card-box">
+                            <div class="sim-box-title-row">
+                                <div>
+                                    <span class="card-tag">2. Екран кухні &amp; бару (Live KDS)</span>
+                                    <h4 style="margin: 4px 0 0; color: #fff; font-size: 1rem;">Черга замовлень у роботі</h4>
+                                </div>
+                                <span class="kds-counter-pill" id="kds-active-count">0 замовлень</span>
+                            </div>
+                            <p class="sim-box-desc">Клікайте на кнопку статусу картки, щоб перевести замовлення по етапах: «Прийнято» &rarr; «Готується» &rarr; «Видано ✓»:</p>
+
+                            <div class="kds-orders-container" id="kds-orders-list">
+                                <!-- Рендериться динамічно в js/app.js -->
+                            </div>
+                        </div>
+
+                        <!-- 3.3 Жива База Даних CafeDB у localStorage -->
+                        <div class="demo-db-box sim-db-full">
+                            <div class="db-box-header">
+                                <div>
+                                    <span class="card-tag">3. LocalStorage Database</span>
+                                    <h3>Жива База Даних CafeDB</h3>
+                                </div>
+                                <button class="db-reset-btn" id="btn-reset-db" title="Скинути до початкових демо-записів">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+                                    <span>Скинути демо-БД</span>
+                                </button>
+                            </div>
+
+                            <!-- Перемикач сутностей БД -->
+                            <div class="db-entity-tabs">
+                                <button class="db-tab-btn active" data-db-tab="subscribers">
+                                    <span>Підписники Pass</span>
+                                    <span class="db-counter-badge tabular-numbers" id="db-count-subscribers">3</span>
+                                </button>
+                                <button class="db-tab-btn" data-db-tab="orders">
+                                    <span>Замовлення з меню</span>
+                                    <span class="db-counter-badge tabular-numbers" id="db-count-orders">2</span>
+                                </button>
+                                <button class="db-tab-btn" data-db-tab="bookings">
+                                    <span>Броні столів</span>
+                                    <span class="db-counter-badge tabular-numbers" id="db-count-bookings">2</span>
+                                </button>
+                            </div>
+
+                            <!-- Пошук по базі даних -->
+                            <div class="db-search-bar">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                                <input type="text" id="db-search-input" placeholder="Швидкий пошук за ім'ям або телефоном +380...">
+                            </div>
+
+                            <!-- Контейнер списку записів БД -->
+                            <div class="db-records-viewport" id="db-records-container">
+                                <!-- Рендериться динамічно в js/app.js -->
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

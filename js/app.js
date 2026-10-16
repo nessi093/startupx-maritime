@@ -17,27 +17,36 @@ document.addEventListener("DOMContentLoaded", () => {
     // ==========================================================================
     const pageMain = document.getElementById('page-main');
     const pageMenu = document.getElementById('page-menu');
+    const pageDemo = document.getElementById('page-demo');
     const btnPageMain = document.getElementById('btn-page-main');
     const btnPageMenu = document.getElementById('btn-page-menu');
+    const btnPageDemo = document.getElementById('btn-page-demo');
     const headerCartToggle = document.getElementById('header-cart-toggle');
 
     function switchPage(target) {
-        const isMenu = target === 'menu';
+        [pageMain, pageMenu, pageDemo].forEach(p => {
+            if (p) p.classList.remove('active');
+        });
 
-        if (pageMain && pageMenu) {
-            if (isMenu) {
-                pageMain.classList.remove('active');
-                pageMenu.classList.add('active');
-                if (btnPageMain) btnPageMain.classList.remove('active');
-                if (btnPageMenu) btnPageMenu.classList.add('active');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else {
-                pageMenu.classList.remove('active');
-                pageMain.classList.add('active');
-                if (btnPageMenu) btnPageMenu.classList.remove('active');
-                if (btnPageMain) btnPageMain.classList.add('active');
-            }
+        if (target === 'menu' && pageMenu) {
+            pageMenu.classList.add('active');
+        } else if (target === 'demo' && pageDemo) {
+            pageDemo.classList.add('active');
+            if (typeof updateShiftTelemetry === 'function') updateShiftTelemetry();
+            if (typeof renderFloorPlan === 'function') renderFloorPlan();
+            if (typeof renderLiveKds === 'function') renderLiveKds();
+            if (typeof renderScannerLogs === 'function') renderScannerLogs();
+        } else if (pageMain) {
+            pageMain.classList.add('active');
         }
+
+        [btnPageMain, btnPageMenu, btnPageDemo].forEach(btn => {
+            if (btn) {
+                const page = btn.getAttribute('data-target-page');
+                if (page === target) btn.classList.add('active');
+                else btn.classList.remove('active');
+            }
+        });
 
         // Sync mobile drawer link active states
         document.querySelectorAll('[data-page-link], [data-target-page]').forEach(el => {
@@ -48,6 +57,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 el.classList.remove('active');
             }
         });
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     if (btnPageMain) {
@@ -55,6 +66,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     if (btnPageMenu) {
         btnPageMenu.addEventListener('click', () => switchPage('menu'));
+    }
+    if (btnPageDemo) {
+        btnPageDemo.addEventListener('click', () => switchPage('demo'));
     }
 
     document.querySelectorAll('[data-target-page]').forEach(btn => {
@@ -439,6 +453,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 status: 'Підтверджено'
             }
         ],
+        tables: [
+            { id: 1, name: 'Стіл #1 Вікно', seats: 2, zone: 'Панорама', status: 'Вільний', bookedBy: null },
+            { id: 2, name: 'Стіл #2 Вікно', seats: 4, zone: 'Панорама', status: 'Заброньовано', bookedBy: 'Ярослав К.' },
+            { id: 3, name: 'Стіл #3 Коворкінг', seats: 2, zone: 'Коворкінг', status: 'Вільний', bookedBy: null },
+            { id: 4, name: 'Стіл #4 Коворкінг', seats: 2, zone: 'Коворкінг', status: 'Вільний', bookedBy: null },
+            { id: 5, name: 'Стіл #5 Лаунж', seats: 6, zone: 'Лаунж', status: 'Заброньовано', bookedBy: 'Ірина С.' },
+            { id: 6, name: 'Стіл #6 Лаунж', seats: 4, zone: 'Лаунж', status: 'Вільний', bookedBy: null },
+            { id: 7, name: 'Стіл #7 Тераса', seats: 2, zone: 'Тераса', status: 'Вільний', bookedBy: null },
+            { id: 8, name: 'Стіл #8 Bar Counter', seats: 2, zone: 'Барна стійка', status: 'Вільний', bookedBy: null }
+        ],
+        scannerLogs: [
+            { id: 'LOG-1', time: '11:15', name: 'Марія Бондаренко', action: 'Списано 1 чашку (Milk Pro)', cupsLeft: 12 },
+            { id: 'LOG-2', time: '10:48', name: 'Олександр Коваленко', action: 'Списано 1 чашку (Smart Pass)', cupsLeft: 15 }
+        ],
         activeSubscriberId: 'PASS-UA-8419'
     };
 
@@ -451,6 +479,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 const parsed = JSON.parse(raw);
                 if (parsed && Array.isArray(parsed.subscribers) && Array.isArray(parsed.orders) && Array.isArray(parsed.bookings)) {
                     cafeDB = parsed;
+                    if (!Array.isArray(cafeDB.tables) || cafeDB.tables.length === 0) {
+                        cafeDB.tables = JSON.parse(JSON.stringify(INITIAL_CAFEDB.tables));
+                    }
+                    if (!Array.isArray(cafeDB.scannerLogs)) {
+                        cafeDB.scannerLogs = JSON.parse(JSON.stringify(INITIAL_CAFEDB.scannerLogs));
+                    }
                     return;
                 }
             }
@@ -700,6 +734,10 @@ document.addEventListener("DOMContentLoaded", () => {
             saveCafeDB();
             updateActivePassDisplay();
             renderDbRecords();
+            renderFloorPlan();
+            renderLiveKds();
+            renderScannerLogs();
+            updateShiftTelemetry();
         });
     }
 
@@ -711,9 +749,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (sub.cupsLeft > 0) {
                 sub.cupsLeft -= 1;
+                const now = new Date();
+                const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+                if (!Array.isArray(cafeDB.scannerLogs)) cafeDB.scannerLogs = [];
+                cafeDB.scannerLogs.unshift({
+                    id: 'LOG-' + Date.now(),
+                    time: timeStr,
+                    name: sub.name,
+                    action: `Списано 1 чашку (${sub.tierName})`,
+                    cupsLeft: sub.cupsLeft
+                });
+                if (cafeDB.scannerLogs.length > 8) cafeDB.scannerLogs.pop();
+
                 saveCafeDB();
                 updateActivePassDisplay();
                 renderDbRecords();
+                renderScannerLogs();
+                updateShiftTelemetry();
             }
         });
     }
@@ -765,6 +817,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 else b.classList.remove('active');
             });
             renderDbRecords();
+            renderScannerLogs();
+            updateShiftTelemetry();
 
             const card = document.getElementById('active-pass-display');
             if (card) {
@@ -773,9 +827,242 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Initial render of DB and Pass card
+    // ==========================================================================
+    // LIVE SIMULATOR: TELEMETRY, 1-CLICK ORDER, FLOOR PLAN & KDS QUEUE
+    // ==========================================================================
+
+    function updateShiftTelemetry() {
+        if (!cafeDB) return;
+
+        // 1. Shift Revenue: sum of all orders + sum of subscribers
+        const ordersSum = Array.isArray(cafeDB.orders) ? cafeDB.orders.reduce((sum, o) => sum + (o.total || 0), 0) : 0;
+        const subsSum = Array.isArray(cafeDB.subscribers) ? cafeDB.subscribers.reduce((sum, s) => sum + (s.price || 0), 0) : 0;
+        const totalRevenue = ordersSum + subsSum;
+        const revEl = document.getElementById('live-shift-revenue');
+        if (revEl) revEl.textContent = formatUAH(totalRevenue);
+
+        // 2. Active passes with remaining cups
+        const activePasses = Array.isArray(cafeDB.subscribers) ? cafeDB.subscribers.filter(s => s.cupsLeft > 0).length : 0;
+        const passesEl = document.getElementById('live-shift-passes');
+        if (passesEl) passesEl.textContent = activePasses.toString();
+
+        // 3. Active KDS orders
+        const kdsCount = Array.isArray(cafeDB.orders) ? cafeDB.orders.filter(o => o.status === 'Прийнято' || o.status === 'Готується').length : 0;
+        const kdsEl = document.getElementById('live-shift-kds');
+        if (kdsEl) kdsEl.textContent = kdsCount.toString();
+
+        // 4. Free tables in hall
+        const tables = Array.isArray(cafeDB.tables) ? cafeDB.tables : [];
+        const freeCount = tables.filter(t => t.status === 'Вільний').length;
+        const tablesEl = document.getElementById('live-shift-tables');
+        if (tablesEl) tablesEl.textContent = `${freeCount} із ${tables.length || 8}`;
+    }
+
+    // 1-Click Fast Pre-order
+    let selectedQuickTime = 'Через 5 хв';
+    const quickTimeChips = document.querySelectorAll('#quick-order-time-selector .quick-chip');
+    quickTimeChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            quickTimeChips.forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+            selectedQuickTime = chip.getAttribute('data-time-slot') || 'Через 5 хв';
+        });
+    });
+
+    const quickItemBtns = document.querySelectorAll('[data-quick-item]');
+    const quickOrderToast = document.getElementById('quick-order-toast');
+
+    quickItemBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const itemName = btn.getAttribute('data-quick-item') || 'Кава Specialty';
+            const rawPrice = parseInt(btn.getAttribute('data-quick-price') || '90', 10);
+            const sub = getActiveSubscriber();
+            const hasDiscount = sub && sub.cupsLeft > 0;
+            const discountPct = hasDiscount ? (sub.tier === 'milk' ? 20 : 15) : 0;
+            const finalPrice = discountPct > 0 ? Math.round(rawPrice * (1 - discountPct / 100)) : rawPrice;
+
+            const randomNum = Math.floor(1000 + Math.random() * 9000);
+            const orderId = `ORD-UA-${randomNum}`;
+            const now = new Date();
+            const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+
+            const newOrder = {
+                id: orderId,
+                customer: sub ? sub.name : 'Гість залу',
+                phone: sub ? sub.phone : '+380 (50) ...',
+                items: `${itemName} (${selectedQuickTime})`,
+                total: finalPrice,
+                payment: 'Monobank QR',
+                time: timeStr,
+                orderType: `Швидке замовлення (${selectedQuickTime})`,
+                status: 'Прийнято'
+            };
+
+            cafeDB.orders.unshift(newOrder);
+            saveCafeDB();
+            renderLiveKds();
+            renderDbRecords();
+            updateShiftTelemetry();
+
+            if (quickOrderToast) {
+                quickOrderToast.style.display = 'flex';
+                quickOrderToast.innerHTML = `
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    <span>Замовлення #${orderId} надіслано на екран бариста (${formatUAH(finalPrice)}, ${selectedQuickTime})!</span>
+                `;
+                setTimeout(() => {
+                    if (quickOrderToast) quickOrderToast.style.display = 'none';
+                }, 3500);
+            }
+        });
+    });
+
+    // Floor Plan (8 tables)
+    function renderFloorPlan() {
+        const container = document.getElementById('floor-tables-container');
+        if (!container || !cafeDB || !Array.isArray(cafeDB.tables)) return;
+
+        container.innerHTML = cafeDB.tables.map(t => {
+            const isBooked = t.status === 'Заброньовано';
+            return `
+                <div class="floor-table-card ${isBooked ? 'booked' : 'free'}" data-table-id="${t.id}" title="Клікніть для зміни статусу">
+                    <div class="floor-table-top">
+                        <span class="floor-table-num">${t.name}</span>
+                        <span class="floor-table-status">${isBooked ? 'Заброньовано' : 'Вільний'}</span>
+                    </div>
+                    <div class="floor-table-zone">${t.zone} &bull; ${t.seats} місця</div>
+                    <div class="floor-table-guest">${isBooked ? (t.bookedBy || 'Гість') : 'Вільний стіл &rarr;'}</div>
+                </div>
+            `;
+        }).join('');
+
+        container.querySelectorAll('[data-table-id]').forEach(card => {
+            card.addEventListener('click', () => {
+                const tid = parseInt(card.getAttribute('data-table-id') || '0', 10);
+                const table = cafeDB.tables.find(t => t.id === tid);
+                if (!table) return;
+
+                const sub = getActiveSubscriber();
+                if (table.status === 'Вільний') {
+                    table.status = 'Заброньовано';
+                    table.bookedBy = sub ? sub.name : 'Гість із симулятора';
+                    const randomCode = Math.floor(1000 + Math.random() * 9000);
+                    cafeDB.bookings.unshift({
+                        id: `BOOK-UA-${randomCode}`,
+                        name: table.bookedBy,
+                        phone: sub ? sub.phone : '+380 (67) 000-00-00',
+                        guests: `${table.seats} гостя`,
+                        zone: `${table.name} (${table.zone})`,
+                        dateTime: 'Зараз (Live)',
+                        comment: 'Бронь з интерактивної мапи залу',
+                        status: 'Підтверджено'
+                    });
+                } else {
+                    table.status = 'Вільний';
+                    table.bookedBy = null;
+                }
+                saveCafeDB();
+                renderFloorPlan();
+                renderDbRecords();
+                updateShiftTelemetry();
+            });
+        });
+    }
+
+    // KDS Live Queue
+    function renderLiveKds() {
+        const container = document.getElementById('kds-orders-list');
+        const countPill = document.getElementById('kds-active-count');
+        if (!container || !cafeDB || !Array.isArray(cafeDB.orders)) return;
+
+        const activeOrders = cafeDB.orders.filter(o => o.status !== 'Видано');
+        if (countPill) {
+            countPill.textContent = `${activeOrders.length} у роботі`;
+        }
+
+        if (cafeDB.orders.length === 0) {
+            container.innerHTML = `<div class="record-empty-state">Черга KDS порожня. Зробіть швидке замовлення зліва!</div>`;
+            return;
+        }
+
+        const displayOrders = cafeDB.orders.slice(0, 8);
+        container.innerHTML = displayOrders.map(order => {
+            let statusClass = 'status-accepted';
+            let nextStatusText = 'Прийнято &rarr;';
+            if (order.status === 'Готується') {
+                statusClass = 'status-cooking';
+                nextStatusText = 'Готується &rarr;';
+            } else if (order.status === 'Видано') {
+                statusClass = 'status-done';
+                nextStatusText = 'Видано ✓';
+            }
+
+            const isDone = order.status === 'Видано';
+            return `
+                <div class="kds-order-card ${isDone ? 'ready' : ''}">
+                    <div class="kds-card-head">
+                        <span class="kds-card-id">#${order.id}</span>
+                        <span class="kds-card-time">${order.time || '12:00'} &bull; ${order.orderType || 'Зал'}</span>
+                    </div>
+                    <div class="kds-card-items">${order.items}</div>
+                    <div class="kds-card-footer">
+                        <span class="kds-card-client">${order.customer} &bull; ${formatUAH(order.total)}</span>
+                        <button type="button" class="kds-status-btn ${statusClass}" data-kds-btn-id="${order.id}">
+                            <span>${nextStatusText}</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+        container.querySelectorAll('[data-kds-btn-id]').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const oid = btn.getAttribute('data-kds-btn-id');
+                const ord = cafeDB.orders.find(o => o.id === oid);
+                if (!ord) return;
+
+                if (ord.status === 'Прийнято') {
+                    ord.status = 'Готується';
+                } else if (ord.status === 'Готується') {
+                    ord.status = 'Видано';
+                } else {
+                    ord.status = 'Прийнято';
+                }
+                saveCafeDB();
+                renderLiveKds();
+                renderDbRecords();
+                updateShiftTelemetry();
+            });
+        });
+    }
+
+    // Scanner Logs List
+    function renderScannerLogs() {
+        const container = document.getElementById('scanner-logs-list');
+        if (!container || !cafeDB || !Array.isArray(cafeDB.scannerLogs)) return;
+
+        if (cafeDB.scannerLogs.length === 0) {
+            container.innerHTML = `<div style="font-size:0.76rem; color:#71717a; padding:6px 0;">Операцій сканування ще не зафіксовано.</div>`;
+            return;
+        }
+
+        container.innerHTML = cafeDB.scannerLogs.slice(0, 4).map(log => `
+            <div class="scanner-log-entry">
+                <span class="scanner-log-time">${log.time}</span>
+                <span class="scanner-log-desc"><strong>${log.name}</strong>: ${log.action}</span>
+                <span class="scanner-log-badge">${log.cupsLeft} чашок</span>
+            </div>
+        `).join('');
+    }
+
+    // Initial render of DB and Pass card, Floor plan, KDS and Telemetry
     updateActivePassDisplay();
     renderDbRecords();
+    renderFloorPlan();
+    renderLiveKds();
+    renderScannerLogs();
+    updateShiftTelemetry();
 
     // ==========================================================================
     // 7. ONLINE MENU & SHOPPING CART
@@ -1053,6 +1340,8 @@ document.addEventListener("DOMContentLoaded", () => {
             cafeDB.orders.unshift(newOrder);
             saveCafeDB();
             renderDbRecords();
+            renderLiveKds();
+            updateShiftTelemetry();
 
             cart = [];
             renderCart();
@@ -1176,6 +1465,7 @@ document.addEventListener("DOMContentLoaded", () => {
             cafeDB.bookings.unshift(newBooking);
             saveCafeDB();
             renderDbRecords();
+            updateShiftTelemetry();
 
             if (bookingConfirmationCode) {
                 bookingConfirmationCode.textContent = `#${bookingId}`;
@@ -1227,6 +1517,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     switchPage('menu');
                     return;
                 }
+                if (targetId.startsWith('#demo') || targetId === '#page-demo') {
+                    switchPage('demo');
+                    return;
+                }
                 // Switch back to main page if navigating to a main section
                 switchPage('main');
                 const targetElement = document.querySelector(targetId);
@@ -1239,6 +1533,13 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+
+    // Check initial hash on load
+    if (window.location.hash.startsWith('#menu') || window.location.hash === '#page-menu') {
+        switchPage('menu');
+    } else if (window.location.hash.startsWith('#demo') || window.location.hash === '#page-demo') {
+        switchPage('demo');
+    }
 
     const revealOptions = {
         threshold: 0.08,
